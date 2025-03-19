@@ -73,7 +73,12 @@ namespace KursProject
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
+            
             FormAddOrChange FAOC = new FormAddOrChange();
+            foreach (DataRow Row in kP_2024_SuslovDataSet.Мера_Поддержки.Rows)
+                FAOC.MeraGet().Items.Add(Row["Название"].ToString());
+            foreach (DataRow Row in kP_2024_SuslovDataSet.Статус.Rows)
+                FAOC.StatGet().Items.Add(Row["Название"].ToString());
             FAOC.ShowDialog();
         }
 

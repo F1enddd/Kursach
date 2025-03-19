@@ -31,26 +31,26 @@ namespace KursProject
         {
             this.textBoxFIOAOC = new System.Windows.Forms.TextBox();
             this.groupBoxEmployee = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.textBoxAddresAOC = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dateTimePickerBirthdayAOC = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBoxPhoneAOC = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxSocStatusAOC = new System.Windows.Forms.TextBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBoxPhoneAOC = new System.Windows.Forms.TextBox();
+            this.dateTimePickerBirthdayAOC = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.label2 = new System.Windows.Forms.Label();
+            this.textBoxAddresAOC = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.groupBoxRequestAOC = new System.Windows.Forms.GroupBox();
+            this.comboBoxStatReqAOC = new System.Windows.Forms.ComboBox();
+            this.buttonAddStatReqAOC = new System.Windows.Forms.Button();
+            this.comboBoxMeraAOC = new System.Windows.Forms.ComboBox();
+            this.buttonAddMeraAOC = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.textBoxCommentAOC = new System.Windows.Forms.TextBox();
             this.dateTimePickerDateAddAOC = new System.Windows.Forms.DateTimePicker();
             this.label8 = new System.Windows.Forms.Label();
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
-            this.textBoxCommentAOC = new System.Windows.Forms.TextBox();
-            this.buttonAddMeraAOC = new System.Windows.Forms.Button();
-            this.comboBoxMeraAOC = new System.Windows.Forms.ComboBox();
-            this.comboBoxStatReqAOC = new System.Windows.Forms.ComboBox();
-            this.buttonAddStatReqAOC = new System.Windows.Forms.Button();
             this.ButtonSaveAOC = new System.Windows.Forms.Button();
             this.tableAdapterManager1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.TableAdapterManager();
             this.гражданинTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.ГражданинTableAdapter();
@@ -91,46 +91,21 @@ namespace KursProject
             this.groupBoxEmployee.TabStop = false;
             this.groupBoxEmployee.Text = "Гражданин*";
             // 
-            // label1
+            // label5
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(34, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "ФИО";
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(487, 28);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(106, 13);
+            this.label5.TabIndex = 8;
+            this.label5.Text = "Социальный статус";
             // 
-            // label2
+            // textBoxSocStatusAOC
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(254, 28);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(38, 13);
-            this.label2.TabIndex = 3;
-            this.label2.Text = "Адрес";
-            // 
-            // textBoxAddresAOC
-            // 
-            this.textBoxAddresAOC.Location = new System.Drawing.Point(257, 44);
-            this.textBoxAddresAOC.Name = "textBoxAddresAOC";
-            this.textBoxAddresAOC.Size = new System.Drawing.Size(227, 20);
-            this.textBoxAddresAOC.TabIndex = 2;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 80);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 13);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "Дата рождения";
-            // 
-            // dateTimePickerBirthdayAOC
-            // 
-            this.dateTimePickerBirthdayAOC.Location = new System.Drawing.Point(6, 96);
-            this.dateTimePickerBirthdayAOC.Name = "dateTimePickerBirthdayAOC";
-            this.dateTimePickerBirthdayAOC.Size = new System.Drawing.Size(227, 20);
-            this.dateTimePickerBirthdayAOC.TabIndex = 4;
+            this.textBoxSocStatusAOC.Location = new System.Drawing.Point(490, 44);
+            this.textBoxSocStatusAOC.Name = "textBoxSocStatusAOC";
+            this.textBoxSocStatusAOC.Size = new System.Drawing.Size(227, 20);
+            this.textBoxSocStatusAOC.TabIndex = 7;
             // 
             // label4
             // 
@@ -149,21 +124,46 @@ namespace KursProject
             this.textBoxPhoneAOC.TabIndex = 5;
             this.textBoxPhoneAOC.Text = "+7";
             // 
-            // label5
+            // dateTimePickerBirthdayAOC
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(487, 28);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(106, 13);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Социальный статус";
+            this.dateTimePickerBirthdayAOC.Location = new System.Drawing.Point(6, 96);
+            this.dateTimePickerBirthdayAOC.Name = "dateTimePickerBirthdayAOC";
+            this.dateTimePickerBirthdayAOC.Size = new System.Drawing.Size(227, 20);
+            this.dateTimePickerBirthdayAOC.TabIndex = 4;
             // 
-            // textBoxSocStatusAOC
+            // label3
             // 
-            this.textBoxSocStatusAOC.Location = new System.Drawing.Point(490, 44);
-            this.textBoxSocStatusAOC.Name = "textBoxSocStatusAOC";
-            this.textBoxSocStatusAOC.Size = new System.Drawing.Size(227, 20);
-            this.textBoxSocStatusAOC.TabIndex = 7;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(3, 80);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(86, 13);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "Дата рождения";
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(254, 28);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(38, 13);
+            this.label2.TabIndex = 3;
+            this.label2.Text = "Адрес";
+            // 
+            // textBoxAddresAOC
+            // 
+            this.textBoxAddresAOC.Location = new System.Drawing.Point(257, 44);
+            this.textBoxAddresAOC.Name = "textBoxAddresAOC";
+            this.textBoxAddresAOC.Size = new System.Drawing.Size(227, 20);
+            this.textBoxAddresAOC.TabIndex = 2;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(3, 28);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(34, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "ФИО";
             // 
             // groupBoxRequestAOC
             // 
@@ -184,6 +184,43 @@ namespace KursProject
             this.groupBoxRequestAOC.TabStop = false;
             this.groupBoxRequestAOC.Text = "Заявка*";
             // 
+            // comboBoxStatReqAOC
+            // 
+            this.comboBoxStatReqAOC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxStatReqAOC.FormattingEnabled = true;
+            this.comboBoxStatReqAOC.Location = new System.Drawing.Point(257, 45);
+            this.comboBoxStatReqAOC.Name = "comboBoxStatReqAOC";
+            this.comboBoxStatReqAOC.Size = new System.Drawing.Size(195, 21);
+            this.comboBoxStatReqAOC.TabIndex = 12;
+            // 
+            // buttonAddStatReqAOC
+            // 
+            this.buttonAddStatReqAOC.Location = new System.Drawing.Point(458, 45);
+            this.buttonAddStatReqAOC.Name = "buttonAddStatReqAOC";
+            this.buttonAddStatReqAOC.Size = new System.Drawing.Size(25, 21);
+            this.buttonAddStatReqAOC.TabIndex = 11;
+            this.buttonAddStatReqAOC.Text = "+";
+            this.buttonAddStatReqAOC.UseVisualStyleBackColor = true;
+            // 
+            // comboBoxMeraAOC
+            // 
+            this.comboBoxMeraAOC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBoxMeraAOC.FormattingEnabled = true;
+            this.comboBoxMeraAOC.Location = new System.Drawing.Point(6, 44);
+            this.comboBoxMeraAOC.Name = "comboBoxMeraAOC";
+            this.comboBoxMeraAOC.Size = new System.Drawing.Size(195, 21);
+            this.comboBoxMeraAOC.TabIndex = 10;
+            this.comboBoxMeraAOC.SelectedIndexChanged += new System.EventHandler(this.comboBoxMeraAOC_SelectedIndexChanged);
+            // 
+            // buttonAddMeraAOC
+            // 
+            this.buttonAddMeraAOC.Location = new System.Drawing.Point(207, 44);
+            this.buttonAddMeraAOC.Name = "buttonAddMeraAOC";
+            this.buttonAddMeraAOC.Size = new System.Drawing.Size(25, 21);
+            this.buttonAddMeraAOC.TabIndex = 9;
+            this.buttonAddMeraAOC.Text = "+";
+            this.buttonAddMeraAOC.UseVisualStyleBackColor = true;
+            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -192,6 +229,15 @@ namespace KursProject
             this.label6.Size = new System.Drawing.Size(77, 13);
             this.label6.TabIndex = 8;
             this.label6.Text = "Комментарий";
+            // 
+            // textBoxCommentAOC
+            // 
+            this.textBoxCommentAOC.Location = new System.Drawing.Point(490, 44);
+            this.textBoxCommentAOC.Multiline = true;
+            this.textBoxCommentAOC.Name = "textBoxCommentAOC";
+            this.textBoxCommentAOC.Size = new System.Drawing.Size(227, 72);
+            this.textBoxCommentAOC.TabIndex = 7;
+            this.textBoxCommentAOC.Text = "-";
             // 
             // dateTimePickerDateAddAOC
             // 
@@ -226,51 +272,6 @@ namespace KursProject
             this.label10.Size = new System.Drawing.Size(34, 13);
             this.label10.TabIndex = 1;
             this.label10.Text = "Мера";
-            // 
-            // textBoxCommentAOC
-            // 
-            this.textBoxCommentAOC.Location = new System.Drawing.Point(490, 44);
-            this.textBoxCommentAOC.Multiline = true;
-            this.textBoxCommentAOC.Name = "textBoxCommentAOC";
-            this.textBoxCommentAOC.Size = new System.Drawing.Size(227, 72);
-            this.textBoxCommentAOC.TabIndex = 7;
-            this.textBoxCommentAOC.Text = "-";
-            // 
-            // buttonAddMeraAOC
-            // 
-            this.buttonAddMeraAOC.Location = new System.Drawing.Point(207, 44);
-            this.buttonAddMeraAOC.Name = "buttonAddMeraAOC";
-            this.buttonAddMeraAOC.Size = new System.Drawing.Size(25, 21);
-            this.buttonAddMeraAOC.TabIndex = 9;
-            this.buttonAddMeraAOC.Text = "+";
-            this.buttonAddMeraAOC.UseVisualStyleBackColor = true;
-            // 
-            // comboBoxMeraAOC
-            // 
-            this.comboBoxMeraAOC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxMeraAOC.FormattingEnabled = true;
-            this.comboBoxMeraAOC.Location = new System.Drawing.Point(6, 44);
-            this.comboBoxMeraAOC.Name = "comboBoxMeraAOC";
-            this.comboBoxMeraAOC.Size = new System.Drawing.Size(195, 21);
-            this.comboBoxMeraAOC.TabIndex = 10;
-            // 
-            // comboBoxStatReqAOC
-            // 
-            this.comboBoxStatReqAOC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStatReqAOC.FormattingEnabled = true;
-            this.comboBoxStatReqAOC.Location = new System.Drawing.Point(257, 45);
-            this.comboBoxStatReqAOC.Name = "comboBoxStatReqAOC";
-            this.comboBoxStatReqAOC.Size = new System.Drawing.Size(195, 21);
-            this.comboBoxStatReqAOC.TabIndex = 12;
-            // 
-            // buttonAddStatReqAOC
-            // 
-            this.buttonAddStatReqAOC.Location = new System.Drawing.Point(458, 45);
-            this.buttonAddStatReqAOC.Name = "buttonAddStatReqAOC";
-            this.buttonAddStatReqAOC.Size = new System.Drawing.Size(25, 21);
-            this.buttonAddStatReqAOC.TabIndex = 11;
-            this.buttonAddStatReqAOC.Text = "+";
-            this.buttonAddStatReqAOC.UseVisualStyleBackColor = true;
             // 
             // ButtonSaveAOC
             // 

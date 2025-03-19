@@ -13,8 +13,11 @@ namespace KursProject
 {
     public partial class FormAddOrChange : Form
     {
+        
         public KP_2024_SuslovDataSet newDataSet;
         public Boolean AddOrChange;
+        public ComboBox MeraGet() { return comboBoxMeraAOC; }
+        public ComboBox StatGet() { return comboBoxStatReqAOC; }
 
         public FormAddOrChange()
         {
@@ -23,7 +26,7 @@ namespace KursProject
 
         private void FormAddOrChange_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void ButtonSaveAOC_Click(object sender, EventArgs e)
@@ -52,6 +55,11 @@ namespace KursProject
             //    DataRow OldWorkersRow = newDataSet.Workers.Select("ID = '" + Convert.ToString(OldRowID) + "'")[0];
             //    workersTableAdapter1.Update(textBoxFIO.Text, BornDate.Value.Date, Convert.ToInt32(DepartamentID), Convert.ToInt32(PostID), textBox_Image.Text, Convert.ToInt32(OldWorkersRow[0]), Convert.ToString(OldWorkersRow[1]), Convert.ToDateTime(OldWorkersRow[2]), Convert.ToInt32(OldWorkersRow[3]), Convert.ToInt32(OldWorkersRow[4]));
             }
+        }
+
+        private void comboBoxMeraAOC_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
