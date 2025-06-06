@@ -41,15 +41,9 @@ namespace KursProject
             this.textBoxAddresAOC = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxRequestAOC = new System.Windows.Forms.GroupBox();
-            this.comboBoxStatReqAOC = new System.Windows.Forms.ComboBox();
-            this.buttonAddStatReqAOC = new System.Windows.Forms.Button();
             this.comboBoxMeraAOC = new System.Windows.Forms.ComboBox();
             this.buttonAddMeraAOC = new System.Windows.Forms.Button();
-            this.label6 = new System.Windows.Forms.Label();
             this.textBoxCommentAOC = new System.Windows.Forms.TextBox();
-            this.dateTimePickerDateAddAOC = new System.Windows.Forms.DateTimePicker();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.ButtonSaveAOC = new System.Windows.Forms.Button();
             this.tableAdapterManager1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.TableAdapterManager();
@@ -61,6 +55,9 @@ namespace KursProject
             this.мера_ПоддержкиTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.Мера_ПоддержкиTableAdapter();
             this.сотрудникTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.СотрудникTableAdapter();
             this.статусTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.СтатусTableAdapter();
+            this.buttonListCitizen = new System.Windows.Forms.Button();
+            this.SelectedCitizen = new System.Windows.Forms.Label();
+            this.label6 = new System.Windows.Forms.Label();
             this.groupBoxEmployee.SuspendLayout();
             this.groupBoxRequestAOC.SuspendLayout();
             this.SuspendLayout();
@@ -74,6 +71,7 @@ namespace KursProject
             // 
             // groupBoxEmployee
             // 
+            this.groupBoxEmployee.Controls.Add(this.buttonListCitizen);
             this.groupBoxEmployee.Controls.Add(this.label5);
             this.groupBoxEmployee.Controls.Add(this.textBoxSocStatusAOC);
             this.groupBoxEmployee.Controls.Add(this.label4);
@@ -167,40 +165,17 @@ namespace KursProject
             // 
             // groupBoxRequestAOC
             // 
-            this.groupBoxRequestAOC.Controls.Add(this.comboBoxStatReqAOC);
-            this.groupBoxRequestAOC.Controls.Add(this.buttonAddStatReqAOC);
             this.groupBoxRequestAOC.Controls.Add(this.comboBoxMeraAOC);
             this.groupBoxRequestAOC.Controls.Add(this.buttonAddMeraAOC);
             this.groupBoxRequestAOC.Controls.Add(this.label6);
             this.groupBoxRequestAOC.Controls.Add(this.textBoxCommentAOC);
-            this.groupBoxRequestAOC.Controls.Add(this.dateTimePickerDateAddAOC);
-            this.groupBoxRequestAOC.Controls.Add(this.label8);
-            this.groupBoxRequestAOC.Controls.Add(this.label9);
             this.groupBoxRequestAOC.Controls.Add(this.label10);
-            this.groupBoxRequestAOC.Location = new System.Drawing.Point(12, 166);
+            this.groupBoxRequestAOC.Location = new System.Drawing.Point(12, 199);
             this.groupBoxRequestAOC.Name = "groupBoxRequestAOC";
             this.groupBoxRequestAOC.Size = new System.Drawing.Size(747, 148);
             this.groupBoxRequestAOC.TabIndex = 9;
             this.groupBoxRequestAOC.TabStop = false;
             this.groupBoxRequestAOC.Text = "Заявка*";
-            // 
-            // comboBoxStatReqAOC
-            // 
-            this.comboBoxStatReqAOC.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBoxStatReqAOC.FormattingEnabled = true;
-            this.comboBoxStatReqAOC.Location = new System.Drawing.Point(257, 45);
-            this.comboBoxStatReqAOC.Name = "comboBoxStatReqAOC";
-            this.comboBoxStatReqAOC.Size = new System.Drawing.Size(195, 21);
-            this.comboBoxStatReqAOC.TabIndex = 12;
-            // 
-            // buttonAddStatReqAOC
-            // 
-            this.buttonAddStatReqAOC.Location = new System.Drawing.Point(458, 45);
-            this.buttonAddStatReqAOC.Name = "buttonAddStatReqAOC";
-            this.buttonAddStatReqAOC.Size = new System.Drawing.Size(25, 21);
-            this.buttonAddStatReqAOC.TabIndex = 11;
-            this.buttonAddStatReqAOC.Text = "+";
-            this.buttonAddStatReqAOC.UseVisualStyleBackColor = true;
             // 
             // comboBoxMeraAOC
             // 
@@ -221,48 +196,14 @@ namespace KursProject
             this.buttonAddMeraAOC.Text = "+";
             this.buttonAddMeraAOC.UseVisualStyleBackColor = true;
             // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(487, 28);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Комментарий";
-            // 
             // textBoxCommentAOC
             // 
-            this.textBoxCommentAOC.Location = new System.Drawing.Point(490, 44);
+            this.textBoxCommentAOC.Location = new System.Drawing.Point(257, 44);
             this.textBoxCommentAOC.Multiline = true;
             this.textBoxCommentAOC.Name = "textBoxCommentAOC";
             this.textBoxCommentAOC.Size = new System.Drawing.Size(227, 72);
             this.textBoxCommentAOC.TabIndex = 7;
             this.textBoxCommentAOC.Text = "-";
-            // 
-            // dateTimePickerDateAddAOC
-            // 
-            this.dateTimePickerDateAddAOC.Location = new System.Drawing.Point(6, 96);
-            this.dateTimePickerDateAddAOC.Name = "dateTimePickerDateAddAOC";
-            this.dateTimePickerDateAddAOC.Size = new System.Drawing.Size(227, 20);
-            this.dateTimePickerDateAddAOC.TabIndex = 4;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 80);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(71, 13);
-            this.label8.TabIndex = 3;
-            this.label8.Text = "Дата подачи";
-            // 
-            // label9
-            // 
-            this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(254, 28);
-            this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(80, 13);
-            this.label9.TabIndex = 3;
-            this.label9.Text = "Статус заявки";
             // 
             // label10
             // 
@@ -275,7 +216,7 @@ namespace KursProject
             // 
             // ButtonSaveAOC
             // 
-            this.ButtonSaveAOC.Location = new System.Drawing.Point(304, 320);
+            this.ButtonSaveAOC.Location = new System.Drawing.Point(304, 353);
             this.ButtonSaveAOC.Name = "ButtonSaveAOC";
             this.ButtonSaveAOC.Size = new System.Drawing.Size(178, 73);
             this.ButtonSaveAOC.TabIndex = 10;
@@ -328,11 +269,39 @@ namespace KursProject
             // 
             this.статусTableAdapter1.ClearBeforeFill = true;
             // 
+            // buttonListCitizen
+            // 
+            this.buttonListCitizen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonListCitizen.Location = new System.Drawing.Point(490, 74);
+            this.buttonListCitizen.Name = "buttonListCitizen";
+            this.buttonListCitizen.Size = new System.Drawing.Size(227, 62);
+            this.buttonListCitizen.TabIndex = 9;
+            this.buttonListCitizen.Text = "Выбрать существующего";
+            this.buttonListCitizen.UseVisualStyleBackColor = true;
+            // 
+            // SelectedCitizen
+            // 
+            this.SelectedCitizen.AutoSize = true;
+            this.SelectedCitizen.Location = new System.Drawing.Point(15, 172);
+            this.SelectedCitizen.Name = "SelectedCitizen";
+            this.SelectedCitizen.Size = new System.Drawing.Size(0, 13);
+            this.SelectedCitizen.TabIndex = 10;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(254, 28);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Комментарий";
+            // 
             // FormAddOrChange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(784, 402);
+            this.ClientSize = new System.Drawing.Size(784, 432);
+            this.Controls.Add(this.SelectedCitizen);
             this.Controls.Add(this.ButtonSaveAOC);
             this.Controls.Add(this.groupBoxRequestAOC);
             this.Controls.Add(this.groupBoxEmployee);
@@ -344,6 +313,7 @@ namespace KursProject
             this.groupBoxRequestAOC.ResumeLayout(false);
             this.groupBoxRequestAOC.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -361,14 +331,8 @@ namespace KursProject
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox textBoxSocStatusAOC;
         private System.Windows.Forms.GroupBox groupBoxRequestAOC;
-        private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.DateTimePicker dateTimePickerDateAddAOC;
-        private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxCommentAOC;
-        private System.Windows.Forms.ComboBox comboBoxStatReqAOC;
-        private System.Windows.Forms.Button buttonAddStatReqAOC;
         private System.Windows.Forms.ComboBox comboBoxMeraAOC;
         private System.Windows.Forms.Button buttonAddMeraAOC;
         private System.Windows.Forms.Button ButtonSaveAOC;
@@ -381,5 +345,8 @@ namespace KursProject
         private KP_2024_SuslovDataSetTableAdapters.Мера_ПоддержкиTableAdapter мера_ПоддержкиTableAdapter1;
         private KP_2024_SuslovDataSetTableAdapters.СотрудникTableAdapter сотрудникTableAdapter1;
         private KP_2024_SuslovDataSetTableAdapters.СтатусTableAdapter статусTableAdapter1;
+        private System.Windows.Forms.Button buttonListCitizen;
+        private System.Windows.Forms.Label SelectedCitizen;
+        private System.Windows.Forms.Label label6;
     }
 }

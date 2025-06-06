@@ -31,17 +31,22 @@ namespace KursProject
         {
             this.components = new System.ComponentModel.Container();
             this.MainlistView = new System.Windows.Forms.ListView();
+            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FIO = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Phone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Support = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Date_Collect = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
             this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.выйтиИзАккаунтаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.завершениеРаботыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.общаяСтруктураToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчётыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.сменитьТемуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelLvlAccess = new System.Windows.Forms.Label();
             this.groupBoxFilters = new System.Windows.Forms.GroupBox();
@@ -74,11 +79,8 @@ namespace KursProject
             this.buttonViewDocument = new System.Windows.Forms.Button();
             this.buttonUpdateHistory = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
-            this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Phone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.завершениеРаботыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выйтиИзАккаунтаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сменитьТемуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.buttonViewWorkers = new System.Windows.Forms.Button();
+            this.buttonListCitizen = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.groupBoxFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet)).BeginInit();
@@ -95,6 +97,7 @@ namespace KursProject
             // MainlistView
             // 
             this.MainlistView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.MainlistView.CheckBoxes = true;
             this.MainlistView.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
             this.FIO,
@@ -114,10 +117,20 @@ namespace KursProject
             this.MainlistView.View = System.Windows.Forms.View.Details;
             this.MainlistView.SelectedIndexChanged += new System.EventHandler(this.MainlistView_SelectedIndexChanged);
             // 
+            // ID
+            // 
+            this.ID.Text = "ID";
+            this.ID.Width = 50;
+            // 
             // FIO
             // 
             this.FIO.Text = "ФИО";
             this.FIO.Width = 251;
+            // 
+            // Phone
+            // 
+            this.Phone.Text = "Номер телефона";
+            this.Phone.Width = 100;
             // 
             // Support
             // 
@@ -156,6 +169,7 @@ namespace KursProject
             this.buttonDelete.TabIndex = 1;
             this.buttonDelete.Text = "Удалить";
             this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
             // файлToolStripMenuItem
             // 
@@ -166,6 +180,18 @@ namespace KursProject
             this.файлToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.файлToolStripMenuItem.Text = "Главная";
             this.файлToolStripMenuItem.Click += new System.EventHandler(this.файлToolStripMenuItem_Click);
+            // 
+            // выйтиИзАккаунтаToolStripMenuItem
+            // 
+            this.выйтиИзАккаунтаToolStripMenuItem.Name = "выйтиИзАккаунтаToolStripMenuItem";
+            this.выйтиИзАккаунтаToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.выйтиИзАккаунтаToolStripMenuItem.Text = "Выйти из аккаунта";
+            // 
+            // завершениеРаботыToolStripMenuItem
+            // 
+            this.завершениеРаботыToolStripMenuItem.Name = "завершениеРаботыToolStripMenuItem";
+            this.завершениеРаботыToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
+            this.завершениеРаботыToolStripMenuItem.Text = "Завершение работы";
             // 
             // общаяСтруктураToolStripMenuItem
             // 
@@ -201,6 +227,13 @@ namespace KursProject
             this.видToolStripMenuItem.Name = "видToolStripMenuItem";
             this.видToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
             this.видToolStripMenuItem.Text = "Вид";
+            // 
+            // сменитьТемуToolStripMenuItem
+            // 
+            this.сменитьТемуToolStripMenuItem.Name = "сменитьТемуToolStripMenuItem";
+            this.сменитьТемуToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
+            this.сменитьТемуToolStripMenuItem.Text = "Сменить тему";
+            this.сменитьТемуToolStripMenuItem.Click += new System.EventHandler(this.сменитьТемуToolStripMenuItem_Click);
             // 
             // оПрограммеToolStripMenuItem
             // 
@@ -376,6 +409,7 @@ namespace KursProject
             // 
             // groupBoxAdmin
             // 
+            this.groupBoxAdmin.Controls.Add(this.buttonViewWorkers);
             this.groupBoxAdmin.Controls.Add(this.labelLvlAccess);
             this.groupBoxAdmin.Controls.Add(this.buttonLVLAccesInfo);
             this.groupBoxAdmin.Controls.Add(this.buttonAddWorker);
@@ -437,40 +471,32 @@ namespace KursProject
             this.buttonUpdate.Text = "Обработать заявку";
             this.buttonUpdate.UseVisualStyleBackColor = true;
             // 
-            // ID
+            // buttonViewWorkers
             // 
-            this.ID.Text = "ID";
-            this.ID.Width = 50;
+            this.buttonViewWorkers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonViewWorkers.Location = new System.Drawing.Point(314, 65);
+            this.buttonViewWorkers.Name = "buttonViewWorkers";
+            this.buttonViewWorkers.Size = new System.Drawing.Size(302, 62);
+            this.buttonViewWorkers.TabIndex = 4;
+            this.buttonViewWorkers.Text = "Просмотр сотрудников";
+            this.buttonViewWorkers.UseVisualStyleBackColor = true;
             // 
-            // Phone
+            // buttonListCitizen
             // 
-            this.Phone.Text = "Номер телефона";
-            this.Phone.Width = 100;
-            // 
-            // завершениеРаботыToolStripMenuItem
-            // 
-            this.завершениеРаботыToolStripMenuItem.Name = "завершениеРаботыToolStripMenuItem";
-            this.завершениеРаботыToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.завершениеРаботыToolStripMenuItem.Text = "Завершение работы";
-            // 
-            // выйтиИзАккаунтаToolStripMenuItem
-            // 
-            this.выйтиИзАккаунтаToolStripMenuItem.Name = "выйтиИзАккаунтаToolStripMenuItem";
-            this.выйтиИзАккаунтаToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.выйтиИзАккаунтаToolStripMenuItem.Text = "Выйти из аккаунта";
-            // 
-            // сменитьТемуToolStripMenuItem
-            // 
-            this.сменитьТемуToolStripMenuItem.Name = "сменитьТемуToolStripMenuItem";
-            this.сменитьТемуToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
-            this.сменитьТемуToolStripMenuItem.Text = "Сменить тему";
-            this.сменитьТемуToolStripMenuItem.Click += new System.EventHandler(this.сменитьТемуToolStripMenuItem_Click);
+            this.buttonListCitizen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonListCitizen.Location = new System.Drawing.Point(870, 372);
+            this.buttonListCitizen.Name = "buttonListCitizen";
+            this.buttonListCitizen.Size = new System.Drawing.Size(302, 62);
+            this.buttonListCitizen.TabIndex = 5;
+            this.buttonListCitizen.Text = "Список граждан";
+            this.buttonListCitizen.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1187, 577);
+            this.Controls.Add(this.buttonListCitizen);
             this.Controls.Add(this.groupBoxAdmin);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonUpdateHistory);
@@ -554,6 +580,8 @@ namespace KursProject
         private System.Windows.Forms.ToolStripMenuItem выйтиИзАккаунтаToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem завершениеРаботыToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem сменитьТемуToolStripMenuItem;
+        private System.Windows.Forms.Button buttonViewWorkers;
+        private System.Windows.Forms.Button buttonListCitizen;
     }
 }
 

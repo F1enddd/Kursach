@@ -13,11 +13,10 @@ namespace KursProject
 {
     public partial class FormAddOrChange : Form
     {
-        
+        public MainForm MF;
         public KP_2024_SuslovDataSet newDataSet;
         public Boolean AddOrChange;
         public ComboBox MeraGet() { return comboBoxMeraAOC; }
-        public ComboBox StatGet() { return comboBoxStatReqAOC; }
 
         public FormAddOrChange()
         {
@@ -27,6 +26,7 @@ namespace KursProject
         private void FormAddOrChange_Load(object sender, EventArgs e)
         {
             
+
         }
 
         private void ButtonSaveAOC_Click(object sender, EventArgs e)
@@ -34,21 +34,53 @@ namespace KursProject
             DataRow[] Rows;
             ulong MeraID, StatReqID;
 
-            Rows = newDataSet.Мера_Поддержки.Select("Название = '" + comboBoxMeraAOC.Text.ToString() + "'");
+            newDataSet = new KP_2024_SuslovDataSet();
+            
+            мера_ПоддержкиTableAdapter1.Fill(newDataSet.Мера_Поддержки);
+            статусTableAdapter1.Fill(newDataSet.Статус);
+
+
+            Rows = newDataSet.Мера_Поддержки.Select("Название ='" + comboBoxMeraAOC.Text.ToString() + "'");
             MeraID = Convert.ToUInt16(Rows[0]["ID_Меры"]);
-            Rows = newDataSet.Статус.Select("Название = '" + comboBoxStatReqAOC.Text.ToString() + "'");
+            Rows = newDataSet.Статус.Select("Название = 'Ожидает рассмотрения'");
             StatReqID = Convert.ToUInt16(Rows[0]["ID_Статус"]);
 
             if (AddOrChange == false)
             {
-                гражданинTableAdapter1.Insert(textBoxFIOAOC.Text.ToString(), dateTimePickerBirthdayAOC.Value.Date, textBoxAddresAOC.Text.ToString(), textBoxPhoneAOC.Text.ToString(), textBoxSocStatusAOC.Text.ToString());
+                // 1. Создаём новую строку
+                var newRow = newDataSet.Гражданин.NewГражданинRow();
+                newRow.ФИО = textBoxFIOAOC.Text;
+                newRow.Дата_Рождения = dateTimePickerBirthdayAOC.Value.Date;
+                newRow.Адрес = textBoxAddresAOC.Text;
+                newRow.Телефон = textBoxPhoneAOC.Text;
+                newRow.Социальный_Статус = textBoxSocStatusAOC.Text;
+
+                // 2. Добавляем строку в таблицу
+                newDataSet.Гражданин.AddГражданинRow(newRow);
+
+                // 3. Сохраняем изменения в базе
+                гражданинTableAdapter1.Update(newDataSet.Гражданин);
+
+                // 4. Обновляем данные (получим ID, который был присвоен базе)
                 гражданинTableAdapter1.Fill(newDataSet.Гражданин);
 
-                int newCitizenID = (int)new SqlCommand("SELECT SCOPE_IDENTITY();", гражданинTableAdapter1.Connection).ExecuteScalar();
+                // 5. Получаем ID последнего гражданина (по максимальному ID)
+                int newCitizenID = newDataSet.Гражданин.Max(r => r.ID_Гражданина);
 
+                // 6. Добавляем заявление
+                заявлениеTableAdapter1.Insert(
+                    newCitizenID,
+                    Convert.ToInt32(MeraID),
+                    dateTimePickerDateAddAOC.Value.Date,
+                    Convert.ToInt32(StatReqID),
+                    textBoxCommentAOC.Text);
 
-                заявлениеTableAdapter1.Insert(newCitizenID, Convert.ToInt32(MeraID), dateTimePickerDateAddAOC.Value.Date, Convert.ToInt32(StatReqID), textBoxCommentAOC.Text.ToString());
                 заявлениеTableAdapter1.Fill(newDataSet.Заявление);
+
+                MF.FillListView();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+
             }
             else
             {

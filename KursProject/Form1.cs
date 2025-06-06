@@ -39,6 +39,7 @@ namespace KursProject
             this.заявлениеTableAdapter.Fill(this.kP_2024_SuslovDataSet.Заявление);
             this.документTableAdapter.Fill(this.kP_2024_SuslovDataSet.Документ);
             this.гражданинTableAdapter.Fill(this.kP_2024_SuslovDataSet.Гражданин);
+            MainlistView.Items.Clear();
 
             string[] items = new string[6];
             DataRow TempRow;
@@ -51,11 +52,11 @@ namespace KursProject
                 TempRow = Row.GetParentRow("FK_Заявления_Меры_Поддержки");
                 items[3] = TempRow[1].ToString();
 
-                items[4] = Row[3].ToString();
+                items[4] = ((DateTime)Row[3]).ToString("dd.MM.yyyy");
                 TempRow = Row.GetParentRow("FK_Заявление_Статус");
                 items[5] = TempRow[1].ToString();
                 ListViewItem it = new ListViewItem();
-                
+
                 it.Text = Row[0].ToString();
                 it.SubItems.AddRange(items);
                 MainlistView.Items.Add(it);
@@ -73,12 +74,11 @@ namespace KursProject
 
         private void buttonAdd_Click(object sender, EventArgs e)
         {
-            
+
             FormAddOrChange FAOC = new FormAddOrChange();
+            FAOC.MF = this;
             foreach (DataRow Row in kP_2024_SuslovDataSet.Мера_Поддержки.Rows)
                 FAOC.MeraGet().Items.Add(Row["Название"].ToString());
-            foreach (DataRow Row in kP_2024_SuslovDataSet.Статус.Rows)
-                FAOC.StatGet().Items.Add(Row["Название"].ToString());
             FAOC.ShowDialog();
         }
 
@@ -113,12 +113,44 @@ namespace KursProject
             {
                 ThemeWhite = true;
                 menuStrip1.BackColor = SystemColors.Control; ;
-                groupBoxAdmin.BackColor = SystemColors.Control; 
+                groupBoxAdmin.BackColor = SystemColors.Control;
                 groupBoxFilters.BackColor = SystemColors.Control;
                 this.BackColor = SystemColors.Control;
                 MainlistView.BackColor = SystemColors.Window;
             }
 
+        }
+
+        private void buttonDelete_Click(object sender, EventArgs e)
+        {
+            if (MainlistView.SelectedItems.Count == 0)
+            {
+                MessageBox.Show("Выберите хотя бы одну запись для удаления.");
+                return;
+            }
+
+            DialogResult result = MessageBox.Show(
+                "Вы действительно хотите удалить выбранные записи?",
+                "Подтверждение удаления",
+                MessageBoxButtons.YesNo,
+                MessageBoxIcon.Warning);
+
+            if (result != DialogResult.Yes) return;
+
+            foreach (ListViewItem item in MainlistView.SelectedItems)
+            {
+                int statementID = int.Parse(item.Text);
+
+                DataRow[] rows = kP_2024_SuslovDataSet.Заявление.Select($"ID_Заявления = {statementID}");
+                if (rows.Length > 0)
+                    rows[0].Delete();
+            }
+
+
+            заявлениеTableAdapter.Update(kP_2024_SuslovDataSet.Заявление);
+
+
+            FillListView();
         }
     }
 }

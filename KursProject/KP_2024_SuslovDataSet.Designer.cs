@@ -4624,7 +4624,7 @@ SELECT ID_Записи, ID_Заявления, Дата_Изменения, Но
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Гражданин] WHERE (([ID_Гражданина] = @Original_ID_Гражданина) AND ([ФИО] = @Original_ФИО) AND ([Дата_Рождения] = @Original_Дата_Рождения) AND ([Адрес] = @Original_Адрес) AND ([Телефон] = @Original_Телефон) AND ((@IsNull_Социальный_Статус = 1 AND [Социальный_Статус] IS NULL) OR ([Социальный_Статус] = @Original_Социальный_Статус)))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Гражданин] WHERE (([ID_Гражданина] = @Original_ID_Гражданина) AND ([ФИО] = @Original_ФИО) AND ([Дата_Рождения] = @Original_Дата_Рождения) AND ([Адрес] = @Original_Адрес) AND ([Телефон] = @Original_Телефон) AND ((@IsNull_Социальный_Статус = 1 AND [Социальный_Статус] IS NULL) OR ([Социальный_Статус] = @Original_Социальный_Статус)))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Гражданина", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Гражданина", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ФИО", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ФИО", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -4635,7 +4635,7 @@ SELECT ID_Записи, ID_Заявления, Дата_Изменения, Но
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Социальный_Статус", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Социальный_Статус", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Гражданин] ([ФИО], [Дата_Рождения], [Адрес], [Телефон], [Социальный_Статус]) VALUES (@ФИО, @Дата_Рождения, @Адрес, @Телефон, @Социальный_Статус);
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Гражданин] ([ФИО], [Дата_Рождения], [Адрес], [Телефон], [Социальный_Статус]) VALUES (@ФИО, @Дата_Рождения, @Адрес, @Телефон, @Социальный_Статус);
 SELECT ID_Гражданина, ФИО, Дата_Рождения, Адрес, Телефон, Социальный_Статус FROM Гражданин WHERE (ID_Гражданина = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ФИО", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ФИО", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4645,7 +4645,7 @@ SELECT ID_Гражданина, ФИО, Дата_Рождения, Адрес, �
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Социальный_Статус", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Социальный_Статус", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Гражданин] SET [ФИО] = @ФИО, [Дата_Рождения] = @Дата_Рождения, [Адрес] = @Адрес, [Телефон] = @Телефон, [Социальный_Статус] = @Социальный_Статус WHERE (([ID_Гражданина] = @Original_ID_Гражданина) AND ([ФИО] = @Original_ФИО) AND ([Дата_Рождения] = @Original_Дата_Рождения) AND ([Адрес] = @Original_Адрес) AND ([Телефон] = @Original_Телефон) AND ((@IsNull_Социальный_Статус = 1 AND [Социальный_Статус] IS NULL) OR ([Социальный_Статус] = @Original_Социальный_Статус)));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Гражданин] SET [ФИО] = @ФИО, [Дата_Рождения] = @Дата_Рождения, [Адрес] = @Адрес, [Телефон] = @Телефон, [Социальный_Статус] = @Социальный_Статус WHERE (([ID_Гражданина] = @Original_ID_Гражданина) AND ([ФИО] = @Original_ФИО) AND ([Дата_Рождения] = @Original_Дата_Рождения) AND ([Адрес] = @Original_Адрес) AND ([Телефон] = @Original_Телефон) AND ((@IsNull_Социальный_Статус = 1 AND [Социальный_Статус] IS NULL) OR ([Социальный_Статус] = @Original_Социальный_Статус)));
 SELECT ID_Гражданина, ФИО, Дата_Рождения, Адрес, Телефон, Социальный_Статус FROM Гражданин WHERE (ID_Гражданина = @ID_Гражданина)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@ФИО", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ФИО", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -4673,12 +4673,16 @@ SELECT ID_Гражданина, ФИО, Дата_Рождения, Адрес, �
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
         private void InitCommandCollection() {
-            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
+            this._commandCollection = new global::System.Data.SqlClient.SqlCommand[2];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_Гражданина, ФИО, Дата_Рождения, Адрес, Телефон, Социальный_Статус FROM " +
-                "dbo.Гражданин";
+            this._commandCollection[0].CommandText = "SELECT        ID_Гражданина, ФИО, Дата_Рождения, Адрес, Телефон, Социальный_Стату" +
+                "с\r\nFROM            Гражданин";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
+            this._commandCollection[1] = new global::System.Data.SqlClient.SqlCommand();
+            this._commandCollection[1].Connection = this.Connection;
+            this._commandCollection[1].CommandText = "SELECT TOP 1 ID_Гражданина FROM Гражданин ORDER BY ID_Гражданина DESC\r\n";
+            this._commandCollection[1].CommandType = global::System.Data.CommandType.Text;
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -4910,6 +4914,29 @@ SELECT ID_Гражданина, ФИО, Дата_Рождения, Адрес, �
         [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Update, true)]
         public virtual int Update(string ФИО, System.DateTime Дата_Рождения, string Адрес, string Телефон, string Социальный_Статус, int Original_ID_Гражданина, string Original_ФИО, System.DateTime Original_Дата_Рождения, string Original_Адрес, string Original_Телефон, string Original_Социальный_Статус) {
             return this.Update(ФИО, Дата_Рождения, Адрес, Телефон, Социальный_Статус, Original_ID_Гражданина, Original_ФИО, Original_Дата_Рождения, Original_Адрес, Original_Телефон, Original_Социальный_Статус, Original_ID_Гражданина);
+        }
+        
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "16.0.0.0")]
+        [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")]
+        [global::System.ComponentModel.DataObjectMethodAttribute(global::System.ComponentModel.DataObjectMethodType.Insert, false)]
+        public virtual int GetLastCitizenID() {
+            global::System.Data.SqlClient.SqlCommand command = this.CommandCollection[1];
+            global::System.Data.ConnectionState previousConnectionState = command.Connection.State;
+            if (((command.Connection.State & global::System.Data.ConnectionState.Open) 
+                        != global::System.Data.ConnectionState.Open)) {
+                command.Connection.Open();
+            }
+            int returnValue;
+            try {
+                returnValue = command.ExecuteNonQuery();
+            }
+            finally {
+                if ((previousConnectionState == global::System.Data.ConnectionState.Closed)) {
+                    command.Connection.Close();
+                }
+            }
+            return returnValue;
         }
     }
     
@@ -5788,7 +5815,7 @@ SELECT ID_Заявления, ID_Гражданина, ID_Меры, Дата_П�
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [dbo].[Мера_Поддержки] WHERE (([ID_Меры] = @Original_ID_Меры) AND ([Название] = @Original_Название) AND ([Описание] = @Original_Описание) AND ([Условия_Предоставления] = @Original_Условия_Предоставления) AND ([Срок_Действия] = @Original_Срок_Действия))";
+            this._adapter.DeleteCommand.CommandText = @"DELETE FROM [Мера_Поддержки] WHERE (([ID_Меры] = @Original_ID_Меры) AND ([Название] = @Original_Название) AND ([Описание] = @Original_Описание) AND ([Условия_Предоставления] = @Original_Условия_Предоставления) AND ([Срок_Действия] = @Original_Срок_Действия))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Меры", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Меры", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Название", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Название", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -5797,7 +5824,7 @@ SELECT ID_Заявления, ID_Гражданина, ID_Меры, Дата_П�
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Срок_Действия", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Срок_Действия", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = @"INSERT INTO [dbo].[Мера_Поддержки] ([Название], [Описание], [Условия_Предоставления], [Срок_Действия]) VALUES (@Название, @Описание, @Условия_Предоставления, @Срок_Действия);
+            this._adapter.InsertCommand.CommandText = @"INSERT INTO [Мера_Поддержки] ([Название], [Описание], [Условия_Предоставления], [Срок_Действия]) VALUES (@Название, @Описание, @Условия_Предоставления, @Срок_Действия);
 SELECT ID_Меры, Название, Описание, Условия_Предоставления, Срок_Действия FROM Мера_Поддержки WHERE (ID_Меры = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Название", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Название", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5806,7 +5833,7 @@ SELECT ID_Меры, Название, Описание, Условия_Пред�
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Срок_Действия", global::System.Data.SqlDbType.Date, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Срок_Действия", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = @"UPDATE [dbo].[Мера_Поддержки] SET [Название] = @Название, [Описание] = @Описание, [Условия_Предоставления] = @Условия_Предоставления, [Срок_Действия] = @Срок_Действия WHERE (([ID_Меры] = @Original_ID_Меры) AND ([Название] = @Original_Название) AND ([Описание] = @Original_Описание) AND ([Условия_Предоставления] = @Original_Условия_Предоставления) AND ([Срок_Действия] = @Original_Срок_Действия));
+            this._adapter.UpdateCommand.CommandText = @"UPDATE [Мера_Поддержки] SET [Название] = @Название, [Описание] = @Описание, [Условия_Предоставления] = @Условия_Предоставления, [Срок_Действия] = @Срок_Действия WHERE (([ID_Меры] = @Original_ID_Меры) AND ([Название] = @Original_Название) AND ([Описание] = @Original_Описание) AND ([Условия_Предоставления] = @Original_Условия_Предоставления) AND ([Срок_Действия] = @Original_Срок_Действия));
 SELECT ID_Меры, Название, Описание, Условия_Предоставления, Срок_Действия FROM Мера_Поддержки WHERE (ID_Меры = @ID_Меры)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Название", global::System.Data.SqlDbType.VarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Название", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
@@ -5834,8 +5861,8 @@ SELECT ID_Меры, Название, Описание, Условия_Пред�
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_Меры, Название, Описание, Условия_Предоставления, Срок_Действия FROM db" +
-                "o.Мера_Поддержки";
+            this._commandCollection[0].CommandText = "SELECT        ID_Меры, Название, Описание, Условия_Предоставления, Срок_Действия\r" +
+                "\nFROM            Мера_Поддержки";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
@@ -6667,22 +6694,22 @@ SELECT ID_Сотрудника, ФИО, Уровень_доступа, Конт�
             this._adapter.TableMappings.Add(tableMapping);
             this._adapter.DeleteCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.DeleteCommand.Connection = this.Connection;
-            this._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Статус] WHERE (([ID_Статус] = @Original_ID_Статус) AND ([Назва" +
-                "ние] = @Original_Название))";
+            this._adapter.DeleteCommand.CommandText = "DELETE FROM [Статус] WHERE (([ID_Статус] = @Original_ID_Статус) AND ([Название] =" +
+                " @Original_Название))";
             this._adapter.DeleteCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Статус", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Статус", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.DeleteCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_Название", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Название", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
             this._adapter.InsertCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.InsertCommand.Connection = this.Connection;
-            this._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Статус] ([Название]) VALUES (@Название);\r\nSELECT ID_Статус, На" +
-                "звание FROM Статус WHERE (ID_Статус = SCOPE_IDENTITY())";
+            this._adapter.InsertCommand.CommandText = "INSERT INTO [Статус] ([Название]) VALUES (@Название);\r\nSELECT ID_Статус, Название" +
+                " FROM Статус WHERE (ID_Статус = SCOPE_IDENTITY())";
             this._adapter.InsertCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.InsertCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Название", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Название", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand = new global::System.Data.SqlClient.SqlCommand();
             this._adapter.UpdateCommand.Connection = this.Connection;
-            this._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Статус] SET [Название] = @Название WHERE (([ID_Статус] = @Original_" +
-                "ID_Статус) AND ([Название] = @Original_Название));\r\nSELECT ID_Статус, Название F" +
-                "ROM Статус WHERE (ID_Статус = @ID_Статус)";
+            this._adapter.UpdateCommand.CommandText = "UPDATE [Статус] SET [Название] = @Название WHERE (([ID_Статус] = @Original_ID_Ста" +
+                "тус) AND ([Название] = @Original_Название));\r\nSELECT ID_Статус, Название FROM Ст" +
+                "атус WHERE (ID_Статус = @ID_Статус)";
             this._adapter.UpdateCommand.CommandType = global::System.Data.CommandType.Text;
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Название", global::System.Data.SqlDbType.NVarChar, 0, global::System.Data.ParameterDirection.Input, 0, 0, "Название", global::System.Data.DataRowVersion.Current, false, null, "", "", ""));
             this._adapter.UpdateCommand.Parameters.Add(new global::System.Data.SqlClient.SqlParameter("@Original_ID_Статус", global::System.Data.SqlDbType.Int, 0, global::System.Data.ParameterDirection.Input, 0, 0, "ID_Статус", global::System.Data.DataRowVersion.Original, false, null, "", "", ""));
@@ -6703,7 +6730,7 @@ SELECT ID_Сотрудника, ФИО, Уровень_доступа, Конт�
             this._commandCollection = new global::System.Data.SqlClient.SqlCommand[1];
             this._commandCollection[0] = new global::System.Data.SqlClient.SqlCommand();
             this._commandCollection[0].Connection = this.Connection;
-            this._commandCollection[0].CommandText = "SELECT ID_Статус, Название FROM dbo.Статус";
+            this._commandCollection[0].CommandText = "SELECT        ID_Статус, Название\r\nFROM            Статус";
             this._commandCollection[0].CommandType = global::System.Data.CommandType.Text;
         }
         
