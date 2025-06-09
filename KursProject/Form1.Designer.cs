@@ -74,13 +74,14 @@ namespace KursProject
             this.сотрудникBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.статусBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.groupBoxAdmin = new System.Windows.Forms.GroupBox();
+            this.buttonViewWorkers = new System.Windows.Forms.Button();
             this.buttonLVLAccesInfo = new System.Windows.Forms.Button();
             this.buttonAddWorker = new System.Windows.Forms.Button();
             this.buttonViewDocument = new System.Windows.Forms.Button();
             this.buttonUpdateHistory = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
-            this.buttonViewWorkers = new System.Windows.Forms.Button();
             this.buttonListCitizen = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.menuStrip1.SuspendLayout();
             this.groupBoxFilters.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet)).BeginInit();
@@ -116,6 +117,7 @@ namespace KursProject
             this.MainlistView.UseCompatibleStateImageBehavior = false;
             this.MainlistView.View = System.Windows.Forms.View.Details;
             this.MainlistView.SelectedIndexChanged += new System.EventHandler(this.MainlistView_SelectedIndexChanged);
+            this.MainlistView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainlistView_MouseDown);
             // 
             // ID
             // 
@@ -419,6 +421,17 @@ namespace KursProject
             this.groupBoxAdmin.TabIndex = 4;
             this.groupBoxAdmin.TabStop = false;
             this.groupBoxAdmin.Text = "Административный доступ";
+            this.groupBoxAdmin.Enter += new System.EventHandler(this.groupBoxAdmin_Enter);
+            // 
+            // buttonViewWorkers
+            // 
+            this.buttonViewWorkers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonViewWorkers.Location = new System.Drawing.Point(314, 65);
+            this.buttonViewWorkers.Name = "buttonViewWorkers";
+            this.buttonViewWorkers.Size = new System.Drawing.Size(302, 62);
+            this.buttonViewWorkers.TabIndex = 4;
+            this.buttonViewWorkers.Text = "Просмотр сотрудников";
+            this.buttonViewWorkers.UseVisualStyleBackColor = true;
             // 
             // buttonLVLAccesInfo
             // 
@@ -471,16 +484,6 @@ namespace KursProject
             this.buttonUpdate.Text = "Обработать заявку";
             this.buttonUpdate.UseVisualStyleBackColor = true;
             // 
-            // buttonViewWorkers
-            // 
-            this.buttonViewWorkers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonViewWorkers.Location = new System.Drawing.Point(314, 65);
-            this.buttonViewWorkers.Name = "buttonViewWorkers";
-            this.buttonViewWorkers.Size = new System.Drawing.Size(302, 62);
-            this.buttonViewWorkers.TabIndex = 4;
-            this.buttonViewWorkers.Text = "Просмотр сотрудников";
-            this.buttonViewWorkers.UseVisualStyleBackColor = true;
-            // 
             // buttonListCitizen
             // 
             this.buttonListCitizen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -490,6 +493,11 @@ namespace KursProject
             this.buttonListCitizen.TabIndex = 5;
             this.buttonListCitizen.Text = "Список граждан";
             this.buttonListCitizen.UseVisualStyleBackColor = true;
+            // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
             // 
             // MainForm
             // 
@@ -582,6 +590,7 @@ namespace KursProject
         private System.Windows.Forms.ToolStripMenuItem сменитьТемуToolStripMenuItem;
         private System.Windows.Forms.Button buttonViewWorkers;
         private System.Windows.Forms.Button buttonListCitizen;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
     }
 }
 

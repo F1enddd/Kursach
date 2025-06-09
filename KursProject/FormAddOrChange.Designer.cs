@@ -31,6 +31,7 @@ namespace KursProject
         {
             this.textBoxFIOAOC = new System.Windows.Forms.TextBox();
             this.groupBoxEmployee = new System.Windows.Forms.GroupBox();
+            this.buttonListCitizen = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.textBoxSocStatusAOC = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -43,6 +44,7 @@ namespace KursProject
             this.groupBoxRequestAOC = new System.Windows.Forms.GroupBox();
             this.comboBoxMeraAOC = new System.Windows.Forms.ComboBox();
             this.buttonAddMeraAOC = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
             this.textBoxCommentAOC = new System.Windows.Forms.TextBox();
             this.label10 = new System.Windows.Forms.Label();
             this.ButtonSaveAOC = new System.Windows.Forms.Button();
@@ -55,9 +57,7 @@ namespace KursProject
             this.мера_ПоддержкиTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.Мера_ПоддержкиTableAdapter();
             this.сотрудникTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.СотрудникTableAdapter();
             this.статусTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.СтатусTableAdapter();
-            this.buttonListCitizen = new System.Windows.Forms.Button();
-            this.SelectedCitizen = new System.Windows.Forms.Label();
-            this.label6 = new System.Windows.Forms.Label();
+            this.labelSelectedCitizen = new System.Windows.Forms.Label();
             this.groupBoxEmployee.SuspendLayout();
             this.groupBoxRequestAOC.SuspendLayout();
             this.SuspendLayout();
@@ -88,6 +88,17 @@ namespace KursProject
             this.groupBoxEmployee.TabIndex = 1;
             this.groupBoxEmployee.TabStop = false;
             this.groupBoxEmployee.Text = "Гражданин*";
+            // 
+            // buttonListCitizen
+            // 
+            this.buttonListCitizen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonListCitizen.Location = new System.Drawing.Point(490, 74);
+            this.buttonListCitizen.Name = "buttonListCitizen";
+            this.buttonListCitizen.Size = new System.Drawing.Size(227, 62);
+            this.buttonListCitizen.TabIndex = 9;
+            this.buttonListCitizen.Text = "Выбрать существующего";
+            this.buttonListCitizen.UseVisualStyleBackColor = true;
+            this.buttonListCitizen.Click += new System.EventHandler(this.buttonListCitizen_Click);
             // 
             // label5
             // 
@@ -196,6 +207,15 @@ namespace KursProject
             this.buttonAddMeraAOC.Text = "+";
             this.buttonAddMeraAOC.UseVisualStyleBackColor = true;
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(254, 28);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(77, 13);
+            this.label6.TabIndex = 8;
+            this.label6.Text = "Комментарий";
+            // 
             // textBoxCommentAOC
             // 
             this.textBoxCommentAOC.Location = new System.Drawing.Point(257, 44);
@@ -269,39 +289,21 @@ namespace KursProject
             // 
             this.статусTableAdapter1.ClearBeforeFill = true;
             // 
-            // buttonListCitizen
+            // labelSelectedCitizen
             // 
-            this.buttonListCitizen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonListCitizen.Location = new System.Drawing.Point(490, 74);
-            this.buttonListCitizen.Name = "buttonListCitizen";
-            this.buttonListCitizen.Size = new System.Drawing.Size(227, 62);
-            this.buttonListCitizen.TabIndex = 9;
-            this.buttonListCitizen.Text = "Выбрать существующего";
-            this.buttonListCitizen.UseVisualStyleBackColor = true;
-            // 
-            // SelectedCitizen
-            // 
-            this.SelectedCitizen.AutoSize = true;
-            this.SelectedCitizen.Location = new System.Drawing.Point(15, 172);
-            this.SelectedCitizen.Name = "SelectedCitizen";
-            this.SelectedCitizen.Size = new System.Drawing.Size(0, 13);
-            this.SelectedCitizen.TabIndex = 10;
-            // 
-            // label6
-            // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(254, 28);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(77, 13);
-            this.label6.TabIndex = 8;
-            this.label6.Text = "Комментарий";
+            this.labelSelectedCitizen.AutoSize = true;
+            this.labelSelectedCitizen.Location = new System.Drawing.Point(9, 174);
+            this.labelSelectedCitizen.Name = "labelSelectedCitizen";
+            this.labelSelectedCitizen.Size = new System.Drawing.Size(308, 13);
+            this.labelSelectedCitizen.TabIndex = 11;
+            this.labelSelectedCitizen.Text = "Не выбран существующий гражданин, будет создан новый";
             // 
             // FormAddOrChange
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(784, 432);
-            this.Controls.Add(this.SelectedCitizen);
+            this.Controls.Add(this.labelSelectedCitizen);
             this.Controls.Add(this.ButtonSaveAOC);
             this.Controls.Add(this.groupBoxRequestAOC);
             this.Controls.Add(this.groupBoxEmployee);
@@ -346,7 +348,7 @@ namespace KursProject
         private KP_2024_SuslovDataSetTableAdapters.СотрудникTableAdapter сотрудникTableAdapter1;
         private KP_2024_SuslovDataSetTableAdapters.СтатусTableAdapter статусTableAdapter1;
         private System.Windows.Forms.Button buttonListCitizen;
-        private System.Windows.Forms.Label SelectedCitizen;
         private System.Windows.Forms.Label label6;
+        public System.Windows.Forms.Label labelSelectedCitizen;
     }
 }

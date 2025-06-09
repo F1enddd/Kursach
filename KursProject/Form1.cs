@@ -28,6 +28,7 @@ namespace KursProject
                 buttonDelete.Enabled = false;
             }
             FillListView();
+            MainlistView.ContextMenuStrip = contextMenuStrip1;
         }
 
         public void FillListView()
@@ -151,6 +152,27 @@ namespace KursProject
 
 
             FillListView();
+        }
+
+        private void MainlistView_MouseDown(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Right)
+            {
+                var hitTest = MainlistView.HitTest(e.Location);
+                if (hitTest.Item != null)
+                {
+                    MainlistView.FocusedItem = hitTest.Item;
+                }
+                else
+                {
+                    MainlistView.FocusedItem = null;
+                }
+            }
+        }
+
+        private void groupBoxAdmin_Enter(object sender, EventArgs e)
+        {
+
         }
     }
 }

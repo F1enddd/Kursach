@@ -13,6 +13,7 @@ namespace KursProject
     public partial class FormLoggining : Form
     {
         public string lvlAccess;
+        
         public FormLoggining()
         {
             InitializeComponent();

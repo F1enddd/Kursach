@@ -15,9 +15,10 @@ namespace KursProject
     {
         public MainForm MF;
         public KP_2024_SuslovDataSet newDataSet;
-        public Boolean AddOrChange;
+        public bool AddOrChange;
+        public bool CitizenSelected = false;
+        public int LastSelectedCitizen;
         public ComboBox MeraGet() { return comboBoxMeraAOC; }
-
         public FormAddOrChange()
         {
             InitializeComponent();
@@ -27,6 +28,26 @@ namespace KursProject
         {
             
 
+        }
+
+        public void ChangeSelectedCitizen()
+        {
+            if (CitizenSelected == true)
+            {
+                textBoxAddresAOC.Enabled = false;
+                textBoxFIOAOC.Enabled = false;
+                textBoxPhoneAOC.Enabled = false;
+                textBoxSocStatusAOC.Enabled = false;
+                dateTimePickerBirthdayAOC.Enabled = false;
+            }
+            else
+            {
+                textBoxAddresAOC.Enabled = true;
+                textBoxFIOAOC.Enabled = true;
+                textBoxPhoneAOC.Enabled = true;
+                textBoxSocStatusAOC.Enabled = true;
+                dateTimePickerBirthdayAOC.Enabled = true;
+            }
         }
 
         private void ButtonSaveAOC_Click(object sender, EventArgs e)
@@ -45,9 +66,8 @@ namespace KursProject
             Rows = newDataSet.Статус.Select("Название = 'Ожидает рассмотрения'");
             StatReqID = Convert.ToUInt16(Rows[0]["ID_Статус"]);
 
-            if (AddOrChange == false)
+            if (AddOrChange == false && CitizenSelected == false)
             {
-                // 1. Создаём новую строку
                 var newRow = newDataSet.Гражданин.NewГражданинRow();
                 newRow.ФИО = textBoxFIOAOC.Text;
                 newRow.Дата_Рождения = dateTimePickerBirthdayAOC.Value.Date;
@@ -55,23 +75,23 @@ namespace KursProject
                 newRow.Телефон = textBoxPhoneAOC.Text;
                 newRow.Социальный_Статус = textBoxSocStatusAOC.Text;
 
-                // 2. Добавляем строку в таблицу
+
                 newDataSet.Гражданин.AddГражданинRow(newRow);
 
-                // 3. Сохраняем изменения в базе
+
                 гражданинTableAdapter1.Update(newDataSet.Гражданин);
 
-                // 4. Обновляем данные (получим ID, который был присвоен базе)
+
                 гражданинTableAdapter1.Fill(newDataSet.Гражданин);
 
-                // 5. Получаем ID последнего гражданина (по максимальному ID)
+
                 int newCitizenID = newDataSet.Гражданин.Max(r => r.ID_Гражданина);
 
-                // 6. Добавляем заявление
+
                 заявлениеTableAdapter1.Insert(
                     newCitizenID,
                     Convert.ToInt32(MeraID),
-                    dateTimePickerDateAddAOC.Value.Date,
+                    DateTime.Today,
                     Convert.ToInt32(StatReqID),
                     textBoxCommentAOC.Text);
 
@@ -82,7 +102,22 @@ namespace KursProject
                 this.Close();
 
             }
-            else
+            if(AddOrChange == false && CitizenSelected == true)
+            {
+                заявлениеTableAdapter1.Insert(
+                   LastSelectedCitizen,
+                   Convert.ToInt32(MeraID),
+                   DateTime.Today,
+                   Convert.ToInt32(StatReqID),
+                   textBoxCommentAOC.Text);
+
+                заявлениеTableAdapter1.Fill(newDataSet.Заявление);
+
+                MF.FillListView();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
+            }
+            if(AddOrChange == true)
             {
             //    DataRow OldWorkersRow = newDataSet.Workers.Select("ID = '" + Convert.ToString(OldRowID) + "'")[0];
             //    workersTableAdapter1.Update(textBoxFIO.Text, BornDate.Value.Date, Convert.ToInt32(DepartamentID), Convert.ToInt32(PostID), textBox_Image.Text, Convert.ToInt32(OldWorkersRow[0]), Convert.ToString(OldWorkersRow[1]), Convert.ToDateTime(OldWorkersRow[2]), Convert.ToInt32(OldWorkersRow[3]), Convert.ToInt32(OldWorkersRow[4]));
@@ -92,6 +127,24 @@ namespace KursProject
         private void comboBoxMeraAOC_SelectedIndexChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonListCitizen_Click(object sender, EventArgs e)
+        {
+            if(CitizenSelected == false)
+            {
+                Form3 F3 = new Form3(this);
+                F3.ShowDialog();
+                buttonListCitizen.Text = "Отменить выбор";
+            }
+            else
+            {
+                CitizenSelected = false;
+                ChangeSelectedCitizen();
+                labelSelectedCitizen.Text = "Не выбран существующий гражданин, будет создан новый";
+                buttonListCitizen.Text = "Выбрать существующего";
+            }
+            
         }
     }
 }
