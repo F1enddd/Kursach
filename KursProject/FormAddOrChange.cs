@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Data.SqlClient;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -18,7 +19,19 @@ namespace KursProject
         public bool AddOrChange;
         public bool CitizenSelected = false;
         public int LastSelectedCitizen;
+        public string OldRowID;
+        private List<DataRow> currentDocs = new List<DataRow>();
+        private int currentDocIndex = 0;
+        private int currentZayavkaID = -1;
+
         public ComboBox MeraGet() { return comboBoxMeraAOC; }
+        public TextBox TBFIO() { return textBoxFIOAOC; }
+        public TextBox TBAdress() { return textBoxAddresAOC; }
+        public TextBox TBSocStatus() { return textBoxSocStatusAOC; }
+        public TextBox TBPhone() { return textBoxPhoneAOC; }
+        public TextBox TBComment() { return textBoxCommentAOC; }
+        public DateTimePicker DTPBirthDay() { return dateTimePickerBirthdayAOC; }
+        public ComboBox CBMera() { return comboBoxMeraAOC; }
         public FormAddOrChange()
         {
             InitializeComponent();
@@ -26,7 +39,15 @@ namespace KursProject
 
         private void FormAddOrChange_Load(object sender, EventArgs e)
         {
-            
+            this.статусTableAdapter.Fill(this.kP_2024_SuslovDataSet.Статус);
+            this.сотрудникTableAdapter.Fill(this.kP_2024_SuslovDataSet.Сотрудник);
+            this.мера_ПоддержкиTableAdapter.Fill(this.kP_2024_SuslovDataSet.Мера_Поддержки);
+            this.история_ОбработкиTableAdapter.Fill(this.kP_2024_SuslovDataSet.История_Обработки);
+            this.заявлениеTableAdapter.Fill(this.kP_2024_SuslovDataSet.Заявление);
+            this.должностьTableAdapter.Fill(this.kP_2024_SuslovDataSet.Должность);
+            this.документTableAdapter.Fill(this.kP_2024_SuslovDataSet.Документ);
+            this.гражданинTableAdapter.Fill(this.kP_2024_SuslovDataSet.Гражданин);
+            this.документTableAdapter.Fill(this.kP_2024_SuslovDataSet.Документ);
 
         }
 
@@ -52,77 +73,138 @@ namespace KursProject
 
         private void ButtonSaveAOC_Click(object sender, EventArgs e)
         {
-            DataRow[] Rows;
-            ulong MeraID, StatReqID;
-
+            // Обновляем данные из БД
             newDataSet = new KP_2024_SuslovDataSet();
-            
-            мера_ПоддержкиTableAdapter1.Fill(newDataSet.Мера_Поддержки);
-            статусTableAdapter1.Fill(newDataSet.Статус);
+            мера_ПоддержкиTableAdapter.Fill(newDataSet.Мера_Поддержки);
+            статусTableAdapter.Fill(newDataSet.Статус);
+            гражданинTableAdapter.Fill(newDataSet.Гражданин);
+            заявлениеTableAdapter.Fill(newDataSet.Заявление);
+            документTableAdapter.Fill(newDataSet.Документ);
 
+            // Получаем ID меры и статуса
+            var мера = newDataSet.Мера_Поддержки.FirstOrDefault(m => m.Название == comboBoxMeraAOC.Text);
+            var статус = newDataSet.Статус.FirstOrDefault(s => s.Название == "Ожидает рассмотрения");
 
-            Rows = newDataSet.Мера_Поддержки.Select("Название ='" + comboBoxMeraAOC.Text.ToString() + "'");
-            MeraID = Convert.ToUInt16(Rows[0]["ID_Меры"]);
-            Rows = newDataSet.Статус.Select("Название = 'Ожидает рассмотрения'");
-            StatReqID = Convert.ToUInt16(Rows[0]["ID_Статус"]);
-
-            if (AddOrChange == false && CitizenSelected == false)
+            if (мера == null || статус == null)
             {
-                var newRow = newDataSet.Гражданин.NewГражданинRow();
-                newRow.ФИО = textBoxFIOAOC.Text;
-                newRow.Дата_Рождения = dateTimePickerBirthdayAOC.Value.Date;
-                newRow.Адрес = textBoxAddresAOC.Text;
-                newRow.Телефон = textBoxPhoneAOC.Text;
-                newRow.Социальный_Статус = textBoxSocStatusAOC.Text;
+                MessageBox.Show("Ошибка: не удалось найти меру поддержки или статус.");
+                return;
+            }
 
+            int мераID = мера.ID_Меры;
+            int статусID = статус.ID_Статус;
 
-                newDataSet.Гражданин.AddГражданинRow(newRow);
+            int zayavlenieId = 0;
 
+            if (!AddOrChange && !CitizenSelected)
+            {
+                // 1. Добавление нового гражданина и заявки
+                var newCitizen = newDataSet.Гражданин.NewГражданинRow();
+                newCitizen.ФИО = textBoxFIOAOC.Text;
+                newCitizen.Дата_Рождения = dateTimePickerBirthdayAOC.Value.Date;
+                newCitizen.Адрес = textBoxAddresAOC.Text;
+                newCitizen.Телефон = textBoxPhoneAOC.Text;
+                newCitizen.Социальный_Статус = textBoxSocStatusAOC.Text;
 
-                гражданинTableAdapter1.Update(newDataSet.Гражданин);
-
-
-                гражданинTableAdapter1.Fill(newDataSet.Гражданин);
-
+                newDataSet.Гражданин.AddГражданинRow(newCitizen);
+                гражданинTableAdapter.Update(newDataSet.Гражданин);
+                гражданинTableAdapter.Fill(newDataSet.Гражданин);
 
                 int newCitizenID = newDataSet.Гражданин.Max(r => r.ID_Гражданина);
 
-
-                заявлениеTableAdapter1.Insert(
+                заявлениеTableAdapter.Insert(
                     newCitizenID,
-                    Convert.ToInt32(MeraID),
+                    мераID,
                     DateTime.Today,
-                    Convert.ToInt32(StatReqID),
-                    textBoxCommentAOC.Text);
+                    статусID,
+                    textBoxCommentAOC.Text
+                );
 
-                заявлениеTableAdapter1.Fill(newDataSet.Заявление);
-
-                MF.FillListView();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
-
+                заявлениеTableAdapter.Fill(newDataSet.Заявление);
+                zayavlenieId = newDataSet.Заявление.Max(z => z.ID_Заявления);
             }
-            if(AddOrChange == false && CitizenSelected == true)
+            else if (!AddOrChange && CitizenSelected)
             {
-                заявлениеTableAdapter1.Insert(
-                   LastSelectedCitizen,
-                   Convert.ToInt32(MeraID),
-                   DateTime.Today,
-                   Convert.ToInt32(StatReqID),
-                   textBoxCommentAOC.Text);
+                // 2. Добавление заявки существующему гражданину
+                заявлениеTableAdapter.Insert(
+                    LastSelectedCitizen,
+                    мераID,
+                    DateTime.Today,
+                    статусID,
+                    textBoxCommentAOC.Text
+                );
 
-                заявлениеTableAdapter1.Fill(newDataSet.Заявление);
-
-                MF.FillListView();
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                заявлениеTableAdapter.Fill(newDataSet.Заявление);
+                zayavlenieId = newDataSet.Заявление.Max(z => z.ID_Заявления);
             }
-            if(AddOrChange == true)
+            else if (AddOrChange && CitizenSelected)
             {
-            //    DataRow OldWorkersRow = newDataSet.Workers.Select("ID = '" + Convert.ToString(OldRowID) + "'")[0];
-            //    workersTableAdapter1.Update(textBoxFIO.Text, BornDate.Value.Date, Convert.ToInt32(DepartamentID), Convert.ToInt32(PostID), textBox_Image.Text, Convert.ToInt32(OldWorkersRow[0]), Convert.ToString(OldWorkersRow[1]), Convert.ToDateTime(OldWorkersRow[2]), Convert.ToInt32(OldWorkersRow[3]), Convert.ToInt32(OldWorkersRow[4]));
+                // 4. Изменение на другого гражданина у существующей заявки
+                var заявлениеRow = newDataSet.Заявление.FindByID_Заявления(Convert.ToInt32(OldRowID));
+                if (заявлениеRow == null)
+                {
+                    MessageBox.Show("Ошибка: Заявка не найдена.");
+                    return;
+                }
+
+                заявлениеRow.ID_Гражданина = LastSelectedCitizen;
+                заявлениеRow.ID_Меры = мераID;
+                заявлениеRow.Дата_Подачи = DateTime.Today;
+                заявлениеRow.ID_Статус = статусID;
+                заявлениеRow.Комментарий = textBoxCommentAOC.Text;
+
+                заявлениеTableAdapter.Update(newDataSet.Заявление);
+                zayavlenieId = заявлениеRow.ID_Заявления;
             }
+            else if (AddOrChange && !CitizenSelected)
+            {
+                // 3. Изменение данных гражданина и заявки
+                var заявлениеRow = newDataSet.Заявление.FindByID_Заявления(Convert.ToInt32(OldRowID));
+                if (заявлениеRow == null)
+                {
+                    MessageBox.Show("Ошибка: Заявка не найдена.");
+                    return;
+                }
+
+                var гражданинRow = newDataSet.Гражданин.FindByID_Гражданина(заявлениеRow.ID_Гражданина);
+                if (гражданинRow == null)
+                {
+                    MessageBox.Show("Ошибка: Гражданин не найден.");
+                    return;
+                }
+
+                // Обновляем гражданина
+                гражданинRow.ФИО = textBoxFIOAOC.Text;
+                гражданинRow.Дата_Рождения = dateTimePickerBirthdayAOC.Value.Date;
+                гражданинRow.Адрес = textBoxAddresAOC.Text;
+                гражданинRow.Телефон = textBoxPhoneAOC.Text;
+                гражданинRow.Социальный_Статус = textBoxSocStatusAOC.Text;
+
+                // Обновляем заявку
+                заявлениеRow.ID_Меры = мераID;
+                заявлениеRow.Дата_Подачи = DateTime.Today;
+                заявлениеRow.ID_Статус = статусID;
+                заявлениеRow.Комментарий = textBoxCommentAOC.Text;
+
+                гражданинTableAdapter.Update(newDataSet.Гражданин);
+                заявлениеTableAdapter.Update(newDataSet.Заявление);
+                zayavlenieId = заявлениеRow.ID_Заявления;
+            }
+
+            // Сохраняем документы, привязанные к заявке
+            if (zayavlenieId != 0)
+            {
+                SaveDocumentsForZayavlenie(zayavlenieId);
+            }
+
+            // Обновляем данные и закрываем форму
+            заявлениеTableAdapter.Fill(newDataSet.Заявление);
+            MF?.FillListView();
+            this.DialogResult = DialogResult.OK;
+            this.Close();
         }
+
+
 
         private void comboBoxMeraAOC_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -146,5 +228,115 @@ namespace KursProject
             }
             
         }
+
+        private void textBoxPhoneAOC_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Back && textBoxPhoneAOC.SelectionStart <= 2) ||
+                (e.KeyCode == Keys.Delete && textBoxPhoneAOC.SelectionStart <= 2))
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void buttonAddDoc_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog();
+            ofd.Filter = "Изображения|*.png;*.jpg;*.jpeg;*.bmp";
+
+            if (ofd.ShowDialog() == DialogResult.OK)
+            {
+                byte[] imageData = File.ReadAllBytes(ofd.FileName);
+
+                TemporaryDocumentsList.Add(new DocumentModel
+                {
+                    Название = Path.GetFileName(ofd.FileName),
+                    Скан = imageData
+                });
+
+                currentDocIndex = TemporaryDocumentsList.Count - 1;
+                UpdatePictureBox();
+                
+            }
+
+        }
+        private void UpdatePictureBox()
+        {
+            if (TemporaryDocumentsList.Count == 0)
+            {
+                pictureBoxDoc.Image = null;
+                labelDocCounter.Text = "0/0";
+                return;
+            }
+
+            var imgBytes = TemporaryDocumentsList[currentDocIndex].Скан;
+            using (var ms = new MemoryStream(imgBytes))
+            {
+                pictureBoxDoc.Image = Image.FromStream(ms);
+            }
+
+            labelDocCounter.Text = $"{currentDocIndex + 1}/{TemporaryDocumentsList.Count}";
+        }
+
+
+        private void buttonNextDoc_Click(object sender, EventArgs e)
+        {
+            if (TemporaryDocumentsList.Count == 0) return;
+            currentDocIndex = (currentDocIndex + 1) % TemporaryDocumentsList.Count;
+            UpdatePictureBox();
+        }
+
+        private void buttonPrevDoc_Click(object sender, EventArgs e)
+        {
+            if (TemporaryDocumentsList.Count == 0) return;
+            currentDocIndex = (currentDocIndex - 1 + TemporaryDocumentsList.Count) % TemporaryDocumentsList.Count;
+            UpdatePictureBox();
+        }
+
+
+        private void SaveDocumentsForZayavlenie(int zayavlenieId)
+        {
+            foreach (var doc in TemporaryDocumentsList)
+            {
+                var newDoc = newDataSet.Документ.NewДокументRow();
+                newDoc.ID_Заявления = zayavlenieId;
+                newDoc.Название = doc.Название;
+                newDoc.Статус_Проверки = "Не проверен";
+                newDoc.Скан = doc.Скан;
+                newDataSet.Документ.AddДокументRow(newDoc);
+            }
+            документTableAdapter.Update(newDataSet.Документ);
+            TemporaryDocumentsList.Clear(); // очистка после сохранения
+        }
+        // Класс для хранения документа во временном списке
+        private class DocumentModel
+        {
+            public string Название { get; set; }
+            public byte[] Скан { get; set; }
+        }
+
+        // Список для временного хранения добавленных документов
+        private List<DocumentModel> TemporaryDocumentsList = new List<DocumentModel>();
+
+        private void документBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.документBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.kP_2024_SuslovDataSet);
+
+        }
+
+        private void гражданинBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void гражданинBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.гражданинBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.kP_2024_SuslovDataSet);
+
+        }
     }
+
 }

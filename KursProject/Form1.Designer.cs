@@ -39,15 +39,6 @@ namespace KursProject
             this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.buttonAdd = new System.Windows.Forms.Button();
             this.buttonDelete = new System.Windows.Forms.Button();
-            this.файлToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.выйтиИзАккаунтаToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.завершениеРаботыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.общаяСтруктураToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отчётыToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.видToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.сменитьТемуToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.оПрограммеToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.labelLvlAccess = new System.Windows.Forms.Label();
             this.groupBoxFilters = new System.Windows.Forms.GroupBox();
             this.labelSupportFilter = new System.Windows.Forms.Label();
@@ -57,42 +48,49 @@ namespace KursProject
             this.textBoxPhoneFilter = new System.Windows.Forms.TextBox();
             this.textBoxFIOFilter = new System.Windows.Forms.TextBox();
             this.buttonClearFilters = new System.Windows.Forms.Button();
-            this.kP_2024_SuslovDataSet = new KursProject.KP_2024_SuslovDataSet();
+            this.groupBoxAdmin = new System.Windows.Forms.GroupBox();
+            this.buttonViewWorkers = new System.Windows.Forms.Button();
+            this.buttonLVLAccesInfo = new System.Windows.Forms.Button();
+            this.buttonAddWorker = new System.Windows.Forms.Button();
+            this.buttonUpdateHistory = new System.Windows.Forms.Button();
+            this.buttonUpdate = new System.Windows.Forms.Button();
+            this.buttonListCitizen = new System.Windows.Forms.Button();
+            this.kP_2024_SuslovDataSet1 = new KursProject.KP_2024_SuslovDataSet();
             this.гражданинBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.гражданинTableAdapter = new KursProject.KP_2024_SuslovDataSetTableAdapters.ГражданинTableAdapter();
-            this.tableAdapterManager = new KursProject.KP_2024_SuslovDataSetTableAdapters.TableAdapterManager();
-            this.документTableAdapter = new KursProject.KP_2024_SuslovDataSetTableAdapters.ДокументTableAdapter();
-            this.заявлениеTableAdapter = new KursProject.KP_2024_SuslovDataSetTableAdapters.ЗаявлениеTableAdapter();
-            this.история_ОбработкиTableAdapter = new KursProject.KP_2024_SuslovDataSetTableAdapters.История_ОбработкиTableAdapter();
-            this.мера_ПоддержкиTableAdapter = new KursProject.KP_2024_SuslovDataSetTableAdapters.Мера_ПоддержкиTableAdapter();
-            this.сотрудникTableAdapter = new KursProject.KP_2024_SuslovDataSetTableAdapters.СотрудникTableAdapter();
-            this.статусTableAdapter = new KursProject.KP_2024_SuslovDataSetTableAdapters.СтатусTableAdapter();
+            this.гражданинTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.ГражданинTableAdapter();
+            this.tableAdapterManager1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.TableAdapterManager();
+            this.документTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.ДокументTableAdapter();
+            this.должностьTableAdapter = new KursProject.KP_2024_SuslovDataSetTableAdapters.ДолжностьTableAdapter();
+            this.заявлениеTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.ЗаявлениеTableAdapter();
+            this.история_ОбработкиTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.История_ОбработкиTableAdapter();
+            this.мера_ПоддержкиTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.Мера_ПоддержкиTableAdapter();
+            this.сотрудникTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.СотрудникTableAdapter();
+            this.статусTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.СтатусTableAdapter();
             this.документBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.должностьBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.заявлениеBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.история_ОбработкиBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.мера_ПоддержкиBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.сотрудникBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.статусBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.groupBoxAdmin = new System.Windows.Forms.GroupBox();
-            this.buttonViewWorkers = new System.Windows.Forms.Button();
-            this.buttonLVLAccesInfo = new System.Windows.Forms.Button();
-            this.buttonAddWorker = new System.Windows.Forms.Button();
-            this.buttonViewDocument = new System.Windows.Forms.Button();
-            this.buttonUpdateHistory = new System.Windows.Forms.Button();
-            this.buttonUpdate = new System.Windows.Forms.Button();
-            this.buttonListCitizen = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.menuStrip1.SuspendLayout();
+            this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.главнаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчётToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxFilters.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet)).BeginInit();
+            this.groupBoxAdmin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.гражданинBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.документBindingSource)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.должностьBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.заявлениеBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.история_ОбработкиBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.мера_ПоддержкиBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.статусBindingSource)).BeginInit();
-            this.groupBoxAdmin.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainlistView
@@ -173,76 +171,6 @@ namespace KursProject
             this.buttonDelete.UseVisualStyleBackColor = true;
             this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
             // 
-            // файлToolStripMenuItem
-            // 
-            this.файлToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.выйтиИзАккаунтаToolStripMenuItem,
-            this.завершениеРаботыToolStripMenuItem});
-            this.файлToolStripMenuItem.Name = "файлToolStripMenuItem";
-            this.файлToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.файлToolStripMenuItem.Text = "Главная";
-            this.файлToolStripMenuItem.Click += new System.EventHandler(this.файлToolStripMenuItem_Click);
-            // 
-            // выйтиИзАккаунтаToolStripMenuItem
-            // 
-            this.выйтиИзАккаунтаToolStripMenuItem.Name = "выйтиИзАккаунтаToolStripMenuItem";
-            this.выйтиИзАккаунтаToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.выйтиИзАккаунтаToolStripMenuItem.Text = "Выйти из аккаунта";
-            // 
-            // завершениеРаботыToolStripMenuItem
-            // 
-            this.завершениеРаботыToolStripMenuItem.Name = "завершениеРаботыToolStripMenuItem";
-            this.завершениеРаботыToolStripMenuItem.Size = new System.Drawing.Size(187, 22);
-            this.завершениеРаботыToolStripMenuItem.Text = "Завершение работы";
-            // 
-            // общаяСтруктураToolStripMenuItem
-            // 
-            this.общаяСтруктураToolStripMenuItem.Name = "общаяСтруктураToolStripMenuItem";
-            this.общаяСтруктураToolStripMenuItem.Size = new System.Drawing.Size(115, 20);
-            this.общаяСтруктураToolStripMenuItem.Text = "Общая структура";
-            this.общаяСтруктураToolStripMenuItem.Click += new System.EventHandler(this.общаяСтруктураToolStripMenuItem_Click);
-            // 
-            // отчётыToolStripMenuItem
-            // 
-            this.отчётыToolStripMenuItem.Name = "отчётыToolStripMenuItem";
-            this.отчётыToolStripMenuItem.Size = new System.Drawing.Size(60, 20);
-            this.отчётыToolStripMenuItem.Text = "Отчёты";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.файлToolStripMenuItem,
-            this.общаяСтруктураToolStripMenuItem,
-            this.отчётыToolStripMenuItem,
-            this.видToolStripMenuItem,
-            this.оПрограммеToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1187, 24);
-            this.menuStrip1.TabIndex = 2;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // видToolStripMenuItem
-            // 
-            this.видToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.сменитьТемуToolStripMenuItem});
-            this.видToolStripMenuItem.Name = "видToolStripMenuItem";
-            this.видToolStripMenuItem.Size = new System.Drawing.Size(39, 20);
-            this.видToolStripMenuItem.Text = "Вид";
-            // 
-            // сменитьТемуToolStripMenuItem
-            // 
-            this.сменитьТемуToolStripMenuItem.Name = "сменитьТемуToolStripMenuItem";
-            this.сменитьТемуToolStripMenuItem.Size = new System.Drawing.Size(151, 22);
-            this.сменитьТемуToolStripMenuItem.Text = "Сменить тему";
-            this.сменитьТемуToolStripMenuItem.Click += new System.EventHandler(this.сменитьТемуToolStripMenuItem_Click);
-            // 
-            // оПрограммеToolStripMenuItem
-            // 
-            this.оПрограммеToolStripMenuItem.Name = "оПрограммеToolStripMenuItem";
-            this.оПрограммеToolStripMenuItem.Size = new System.Drawing.Size(96, 20);
-            this.оПрограммеToolStripMenuItem.Text = "О Программе";
-            // 
             // labelLvlAccess
             // 
             this.labelLvlAccess.AutoSize = true;
@@ -303,6 +231,7 @@ namespace KursProject
             this.comboBoxSupportFilter.Name = "comboBoxSupportFilter";
             this.comboBoxSupportFilter.Size = new System.Drawing.Size(149, 21);
             this.comboBoxSupportFilter.TabIndex = 2;
+            this.comboBoxSupportFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxSupportFilter_SelectedIndexChanged);
             // 
             // textBoxPhoneFilter
             // 
@@ -310,6 +239,8 @@ namespace KursProject
             this.textBoxPhoneFilter.Name = "textBoxPhoneFilter";
             this.textBoxPhoneFilter.Size = new System.Drawing.Size(150, 20);
             this.textBoxPhoneFilter.TabIndex = 1;
+            this.textBoxPhoneFilter.TextChanged += new System.EventHandler(this.textBoxPhoneFilter_TextChanged);
+            this.textBoxPhoneFilter.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBoxPhoneFilter_KeyDown);
             // 
             // textBoxFIOFilter
             // 
@@ -317,6 +248,7 @@ namespace KursProject
             this.textBoxFIOFilter.Name = "textBoxFIOFilter";
             this.textBoxFIOFilter.Size = new System.Drawing.Size(150, 20);
             this.textBoxFIOFilter.TabIndex = 1;
+            this.textBoxFIOFilter.TextChanged += new System.EventHandler(this.textBoxFIOFilter_TextChanged);
             // 
             // buttonClearFilters
             // 
@@ -327,87 +259,7 @@ namespace KursProject
             this.buttonClearFilters.TabIndex = 0;
             this.buttonClearFilters.Text = "Отчистить фильтры";
             this.buttonClearFilters.UseVisualStyleBackColor = true;
-            // 
-            // kP_2024_SuslovDataSet
-            // 
-            this.kP_2024_SuslovDataSet.DataSetName = "KP_2024_SuslovDataSet";
-            this.kP_2024_SuslovDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
-            // 
-            // гражданинBindingSource
-            // 
-            this.гражданинBindingSource.DataMember = "Гражданин";
-            this.гражданинBindingSource.DataSource = this.kP_2024_SuslovDataSet;
-            // 
-            // гражданинTableAdapter
-            // 
-            this.гражданинTableAdapter.ClearBeforeFill = true;
-            // 
-            // tableAdapterManager
-            // 
-            this.tableAdapterManager.BackupDataSetBeforeUpdate = false;
-            this.tableAdapterManager.UpdateOrder = KursProject.KP_2024_SuslovDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
-            this.tableAdapterManager.ГражданинTableAdapter = this.гражданинTableAdapter;
-            this.tableAdapterManager.ДокументTableAdapter = this.документTableAdapter;
-            this.tableAdapterManager.ДолжностьTableAdapter = null;
-            this.tableAdapterManager.ЗаявлениеTableAdapter = this.заявлениеTableAdapter;
-            this.tableAdapterManager.История_ОбработкиTableAdapter = this.история_ОбработкиTableAdapter;
-            this.tableAdapterManager.Мера_ПоддержкиTableAdapter = this.мера_ПоддержкиTableAdapter;
-            this.tableAdapterManager.СотрудникTableAdapter = this.сотрудникTableAdapter;
-            this.tableAdapterManager.СтатусTableAdapter = this.статусTableAdapter;
-            // 
-            // документTableAdapter
-            // 
-            this.документTableAdapter.ClearBeforeFill = true;
-            // 
-            // заявлениеTableAdapter
-            // 
-            this.заявлениеTableAdapter.ClearBeforeFill = true;
-            // 
-            // история_ОбработкиTableAdapter
-            // 
-            this.история_ОбработкиTableAdapter.ClearBeforeFill = true;
-            // 
-            // мера_ПоддержкиTableAdapter
-            // 
-            this.мера_ПоддержкиTableAdapter.ClearBeforeFill = true;
-            // 
-            // сотрудникTableAdapter
-            // 
-            this.сотрудникTableAdapter.ClearBeforeFill = true;
-            // 
-            // статусTableAdapter
-            // 
-            this.статусTableAdapter.ClearBeforeFill = true;
-            // 
-            // документBindingSource
-            // 
-            this.документBindingSource.DataMember = "Документ";
-            this.документBindingSource.DataSource = this.kP_2024_SuslovDataSet;
-            // 
-            // заявлениеBindingSource
-            // 
-            this.заявлениеBindingSource.DataMember = "Заявление";
-            this.заявлениеBindingSource.DataSource = this.kP_2024_SuslovDataSet;
-            // 
-            // история_ОбработкиBindingSource
-            // 
-            this.история_ОбработкиBindingSource.DataMember = "История_Обработки";
-            this.история_ОбработкиBindingSource.DataSource = this.kP_2024_SuslovDataSet;
-            // 
-            // мера_ПоддержкиBindingSource
-            // 
-            this.мера_ПоддержкиBindingSource.DataMember = "Мера_Поддержки";
-            this.мера_ПоддержкиBindingSource.DataSource = this.kP_2024_SuslovDataSet;
-            // 
-            // сотрудникBindingSource
-            // 
-            this.сотрудникBindingSource.DataMember = "Сотрудник";
-            this.сотрудникBindingSource.DataSource = this.kP_2024_SuslovDataSet;
-            // 
-            // статусBindingSource
-            // 
-            this.статусBindingSource.DataMember = "Статус";
-            this.статусBindingSource.DataSource = this.kP_2024_SuslovDataSet;
+            this.buttonClearFilters.Click += new System.EventHandler(this.buttonClearFilters_Click);
             // 
             // groupBoxAdmin
             // 
@@ -454,20 +306,10 @@ namespace KursProject
             this.buttonAddWorker.Text = "Добавить сотрудника";
             this.buttonAddWorker.UseVisualStyleBackColor = true;
             // 
-            // buttonViewDocument
-            // 
-            this.buttonViewDocument.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonViewDocument.Location = new System.Drawing.Point(870, 168);
-            this.buttonViewDocument.Name = "buttonViewDocument";
-            this.buttonViewDocument.Size = new System.Drawing.Size(302, 62);
-            this.buttonViewDocument.TabIndex = 0;
-            this.buttonViewDocument.Text = "Просмотр документа";
-            this.buttonViewDocument.UseVisualStyleBackColor = true;
-            // 
             // buttonUpdateHistory
             // 
             this.buttonUpdateHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdateHistory.Location = new System.Drawing.Point(870, 236);
+            this.buttonUpdateHistory.Location = new System.Drawing.Point(870, 168);
             this.buttonUpdateHistory.Name = "buttonUpdateHistory";
             this.buttonUpdateHistory.Size = new System.Drawing.Size(302, 62);
             this.buttonUpdateHistory.TabIndex = 0;
@@ -477,61 +319,183 @@ namespace KursProject
             // buttonUpdate
             // 
             this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdate.Location = new System.Drawing.Point(870, 304);
+            this.buttonUpdate.Location = new System.Drawing.Point(870, 236);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(302, 62);
             this.buttonUpdate.TabIndex = 0;
-            this.buttonUpdate.Text = "Обработать заявку";
+            this.buttonUpdate.Text = "Обработать заявки";
             this.buttonUpdate.UseVisualStyleBackColor = true;
             // 
             // buttonListCitizen
             // 
             this.buttonListCitizen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonListCitizen.Location = new System.Drawing.Point(870, 372);
+            this.buttonListCitizen.Location = new System.Drawing.Point(870, 304);
             this.buttonListCitizen.Name = "buttonListCitizen";
             this.buttonListCitizen.Size = new System.Drawing.Size(302, 62);
             this.buttonListCitizen.TabIndex = 5;
             this.buttonListCitizen.Text = "Список граждан";
             this.buttonListCitizen.UseVisualStyleBackColor = true;
             // 
+            // kP_2024_SuslovDataSet1
+            // 
+            this.kP_2024_SuslovDataSet1.DataSetName = "KP_2024_SuslovDataSet";
+            this.kP_2024_SuslovDataSet1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema;
+            // 
+            // гражданинBindingSource
+            // 
+            this.гражданинBindingSource.DataMember = "Гражданин";
+            this.гражданинBindingSource.DataSource = this.kP_2024_SuslovDataSet1;
+            // 
+            // гражданинTableAdapter1
+            // 
+            this.гражданинTableAdapter1.ClearBeforeFill = true;
+            // 
+            // tableAdapterManager1
+            // 
+            this.tableAdapterManager1.BackupDataSetBeforeUpdate = false;
+            this.tableAdapterManager1.UpdateOrder = KursProject.KP_2024_SuslovDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete;
+            this.tableAdapterManager1.ГражданинTableAdapter = this.гражданинTableAdapter1;
+            this.tableAdapterManager1.ДокументTableAdapter = this.документTableAdapter1;
+            this.tableAdapterManager1.ДолжностьTableAdapter = this.должностьTableAdapter;
+            this.tableAdapterManager1.ЗаявлениеTableAdapter = this.заявлениеTableAdapter1;
+            this.tableAdapterManager1.История_ОбработкиTableAdapter = this.история_ОбработкиTableAdapter1;
+            this.tableAdapterManager1.Мера_ПоддержкиTableAdapter = this.мера_ПоддержкиTableAdapter1;
+            this.tableAdapterManager1.СотрудникTableAdapter = this.сотрудникTableAdapter1;
+            this.tableAdapterManager1.СтатусTableAdapter = this.статусTableAdapter1;
+            // 
+            // документTableAdapter1
+            // 
+            this.документTableAdapter1.ClearBeforeFill = true;
+            // 
+            // должностьTableAdapter
+            // 
+            this.должностьTableAdapter.ClearBeforeFill = true;
+            // 
+            // заявлениеTableAdapter1
+            // 
+            this.заявлениеTableAdapter1.ClearBeforeFill = true;
+            // 
+            // история_ОбработкиTableAdapter1
+            // 
+            this.история_ОбработкиTableAdapter1.ClearBeforeFill = true;
+            // 
+            // мера_ПоддержкиTableAdapter1
+            // 
+            this.мера_ПоддержкиTableAdapter1.ClearBeforeFill = true;
+            // 
+            // сотрудникTableAdapter1
+            // 
+            this.сотрудникTableAdapter1.ClearBeforeFill = true;
+            // 
+            // статусTableAdapter1
+            // 
+            this.статусTableAdapter1.ClearBeforeFill = true;
+            // 
+            // документBindingSource
+            // 
+            this.документBindingSource.DataMember = "Документ";
+            this.документBindingSource.DataSource = this.kP_2024_SuslovDataSet1;
+            // 
+            // должностьBindingSource
+            // 
+            this.должностьBindingSource.DataMember = "Должность";
+            this.должностьBindingSource.DataSource = this.kP_2024_SuslovDataSet1;
+            // 
+            // заявлениеBindingSource
+            // 
+            this.заявлениеBindingSource.DataMember = "Заявление";
+            this.заявлениеBindingSource.DataSource = this.kP_2024_SuslovDataSet1;
+            // 
+            // история_ОбработкиBindingSource
+            // 
+            this.история_ОбработкиBindingSource.DataMember = "История_Обработки";
+            this.история_ОбработкиBindingSource.DataSource = this.kP_2024_SuslovDataSet1;
+            // 
+            // мера_ПоддержкиBindingSource
+            // 
+            this.мера_ПоддержкиBindingSource.DataMember = "Мера_Поддержки";
+            this.мера_ПоддержкиBindingSource.DataSource = this.kP_2024_SuslovDataSet1;
+            // 
+            // сотрудникBindingSource
+            // 
+            this.сотрудникBindingSource.DataMember = "Сотрудник";
+            this.сотрудникBindingSource.DataSource = this.kP_2024_SuslovDataSet1;
+            // 
+            // статусBindingSource
+            // 
+            this.статусBindingSource.DataMember = "Статус";
+            this.статусBindingSource.DataSource = this.kP_2024_SuslovDataSet1;
+            // 
             // contextMenuStrip1
             // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.изменитьToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(61, 4);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 26);
+            // 
+            // изменитьToolStripMenuItem
+            // 
+            this.изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
+            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.изменитьToolStripMenuItem.Text = "Изменить";
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.главнаяToolStripMenuItem,
+            this.отчётToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1182, 24);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // главнаяToolStripMenuItem
+            // 
+            this.главнаяToolStripMenuItem.Name = "главнаяToolStripMenuItem";
+            this.главнаяToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.главнаяToolStripMenuItem.Text = "Главная";
+            // 
+            // отчётToolStripMenuItem
+            // 
+            this.отчётToolStripMenuItem.Name = "отчётToolStripMenuItem";
+            this.отчётToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.отчётToolStripMenuItem.Text = "Отчёт";
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1187, 577);
+            this.ClientSize = new System.Drawing.Size(1182, 582);
+            this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.buttonListCitizen);
             this.Controls.Add(this.groupBoxAdmin);
             this.Controls.Add(this.buttonUpdate);
             this.Controls.Add(this.buttonUpdateHistory);
-            this.Controls.Add(this.buttonViewDocument);
             this.Controls.Add(this.groupBoxFilters);
             this.Controls.Add(this.buttonDelete);
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.MainlistView);
-            this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "Главное меню";
             this.Load += new System.EventHandler(this.Form1_Load);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.groupBoxFilters.ResumeLayout(false);
             this.groupBoxFilters.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet)).EndInit();
+            this.groupBoxAdmin.ResumeLayout(false);
+            this.groupBoxAdmin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.гражданинBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.документBindingSource)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.должностьBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.заявлениеBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.история_ОбработкиBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.мера_ПоддержкиBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.статусBindingSource)).EndInit();
-            this.groupBoxAdmin.ResumeLayout(false);
-            this.groupBoxAdmin.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -547,28 +511,15 @@ namespace KursProject
         private System.Windows.Forms.ColumnHeader Status;
         private System.Windows.Forms.Button buttonAdd;
         private System.Windows.Forms.Button buttonDelete;
-        private System.Windows.Forms.BindingSource гражданинBindingSource;
         private KP_2024_SuslovDataSetTableAdapters.ГражданинTableAdapter гражданинTableAdapter;
         private KP_2024_SuslovDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private KP_2024_SuslovDataSetTableAdapters.ДокументTableAdapter документTableAdapter;
-        private System.Windows.Forms.ToolStripMenuItem файлToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem общаяСтруктураToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem отчётыToolStripMenuItem;
-        private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.BindingSource документBindingSource;
         private KP_2024_SuslovDataSetTableAdapters.ЗаявлениеTableAdapter заявлениеTableAdapter;
-        private System.Windows.Forms.BindingSource заявлениеBindingSource;
         private KP_2024_SuslovDataSetTableAdapters.История_ОбработкиTableAdapter история_ОбработкиTableAdapter;
-        private System.Windows.Forms.BindingSource история_ОбработкиBindingSource;
         private KP_2024_SuslovDataSetTableAdapters.Мера_ПоддержкиTableAdapter мера_ПоддержкиTableAdapter;
-        private System.Windows.Forms.BindingSource мера_ПоддержкиBindingSource;
         private KP_2024_SuslovDataSetTableAdapters.СотрудникTableAdapter сотрудникTableAdapter;
-        private System.Windows.Forms.BindingSource сотрудникBindingSource;
         private KP_2024_SuslovDataSetTableAdapters.СтатусTableAdapter статусTableAdapter;
-        private System.Windows.Forms.BindingSource статусBindingSource;
         private System.Windows.Forms.Label labelLvlAccess;
-        private System.Windows.Forms.ToolStripMenuItem видToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem оПрограммеToolStripMenuItem;
         private System.Windows.Forms.GroupBox groupBoxFilters;
         private System.Windows.Forms.ComboBox comboBoxSupportFilter;
         private System.Windows.Forms.TextBox textBoxPhoneFilter;
@@ -579,18 +530,36 @@ namespace KursProject
         private System.Windows.Forms.Label labelFIOFilter;
         private System.Windows.Forms.GroupBox groupBoxAdmin;
         private System.Windows.Forms.Button buttonAddWorker;
-        private System.Windows.Forms.Button buttonViewDocument;
         private System.Windows.Forms.Button buttonUpdateHistory;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonLVLAccesInfo;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader Phone;
-        private System.Windows.Forms.ToolStripMenuItem выйтиИзАккаунтаToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem завершениеРаботыToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem сменитьТемуToolStripMenuItem;
         private System.Windows.Forms.Button buttonViewWorkers;
         private System.Windows.Forms.Button buttonListCitizen;
+        private KP_2024_SuslovDataSet kP_2024_SuslovDataSet1;
+        private System.Windows.Forms.BindingSource гражданинBindingSource;
+        private KP_2024_SuslovDataSetTableAdapters.ГражданинTableAdapter гражданинTableAdapter1;
+        private KP_2024_SuslovDataSetTableAdapters.TableAdapterManager tableAdapterManager1;
+        private KP_2024_SuslovDataSetTableAdapters.ДокументTableAdapter документTableAdapter1;
+        private System.Windows.Forms.BindingSource документBindingSource;
+        private KP_2024_SuslovDataSetTableAdapters.ДолжностьTableAdapter должностьTableAdapter;
+        private System.Windows.Forms.BindingSource должностьBindingSource;
+        private KP_2024_SuslovDataSetTableAdapters.ЗаявлениеTableAdapter заявлениеTableAdapter1;
+        private System.Windows.Forms.BindingSource заявлениеBindingSource;
+        private KP_2024_SuslovDataSetTableAdapters.История_ОбработкиTableAdapter история_ОбработкиTableAdapter1;
+        private System.Windows.Forms.BindingSource история_ОбработкиBindingSource;
+        private KP_2024_SuslovDataSetTableAdapters.Мера_ПоддержкиTableAdapter мера_ПоддержкиTableAdapter1;
+        private System.Windows.Forms.BindingSource мера_ПоддержкиBindingSource;
+        private KP_2024_SuslovDataSetTableAdapters.СотрудникTableAdapter сотрудникTableAdapter1;
+        private System.Windows.Forms.BindingSource сотрудникBindingSource;
+        private KP_2024_SuslovDataSetTableAdapters.СтатусTableAdapter статусTableAdapter1;
+        private System.Windows.Forms.BindingSource статусBindingSource;
         private System.Windows.Forms.ContextMenuStrip contextMenuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem изменитьToolStripMenuItem;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem главнаяToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem отчётToolStripMenuItem;
     }
 }
 
