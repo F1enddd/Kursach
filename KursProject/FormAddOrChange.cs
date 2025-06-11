@@ -32,6 +32,7 @@ namespace KursProject
         public TextBox TBComment() { return textBoxCommentAOC; }
         public DateTimePicker DTPBirthDay() { return dateTimePickerBirthdayAOC; }
         public ComboBox CBMera() { return comboBoxMeraAOC; }
+
         public FormAddOrChange()
         {
             InitializeComponent();
@@ -49,6 +50,9 @@ namespace KursProject
             this.гражданинTableAdapter.Fill(this.kP_2024_SuslovDataSet.Гражданин);
             this.документTableAdapter.Fill(this.kP_2024_SuslovDataSet.Документ);
 
+            pictureBoxDoc.AllowDrop = true;
+            pictureBoxDoc.DragEnter += pictureBoxDoc_DragEnter;
+            pictureBoxDoc.DragDrop += pictureBoxDoc_DragDrop;
         }
 
         public void ChangeSelectedCitizen()
@@ -337,6 +341,78 @@ namespace KursProject
             this.tableAdapterManager.UpdateAll(this.kP_2024_SuslovDataSet);
 
         }
+
+        private void pictureBoxDoc_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBoxDoc_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+                if (files.Length > 0 && IsImageFile(files[0]))
+                {
+                    e.Effect = DragDropEffects.Copy;
+                }
+            }
+        }
+
+        private void pictureBoxDoc_DragDrop(object sender, DragEventArgs e)
+        {
+            string[] files = (string[])e.Data.GetData(DataFormats.FileDrop);
+            foreach (string filePath in files)
+            {
+                if (IsImageFile(filePath))
+                {
+                    Image img = Image.FromFile(filePath);
+                    pictureBoxDoc.Image = img;
+
+                    byte[] imgBytes = File.ReadAllBytes(filePath);
+                    TemporaryDocumentsList.Add(new DocumentModel
+                    {
+                        Название = Path.GetFileName(filePath),
+                        Скан = imgBytes
+                    });
+                }
+            }
+        }
+
+        private bool IsImageFile(string path)
+        {
+            string ext = Path.GetExtension(path).ToLower();
+            return ext == ".jpg" || ext == ".jpeg" || ext == ".png" || ext == ".bmp" || ext == ".gif";
+        }
+
+        public void LoadDocumentsByZayavkaId(int zayavkaId)
+        {
+
+            TemporaryDocumentsList.Clear();
+
+            var docs = документTableAdapter.GetData().Where(doc => doc.ID_Заявления == zayavkaId);
+
+            foreach (var row in docs)
+            {
+                if (row["Скан"] != DBNull.Value)
+                {
+                    byte[] imageBytes = (byte[])row["Скан"];
+                    using (MemoryStream ms = new MemoryStream(imageBytes))
+                    {
+                        Image image = Image.FromStream(ms);
+
+                        TemporaryDocumentsList.Add(image);
+
+                    }
+                }
+            }
+
+
+            currentDocIndex = 0;
+
+            UpdatePictureBox();
+        }
+
     }
 
 }

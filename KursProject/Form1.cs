@@ -324,7 +324,47 @@ namespace KursProject
             FormLoggining FL = new FormLoggining();
         }
 
-        private void изменитьToolStripMenuItem_Click(object sender, EventArgs e)
+        private void textBoxFIOFilter_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxFIOFilter.Text.Length > 0)
+                FillListViewFilteredFio(textBoxFIOFilter.Text);
+            else
+                FillListView();
+        }
+
+        private void buttonClearFilters_Click(object sender, EventArgs e)
+        {
+            textBoxFIOFilter.Clear();
+            textBoxPhoneFilter.Text = "+7";
+            comboBoxSupportFilter.Text = "";
+        }
+
+        private void textBoxPhoneFilter_TextChanged(object sender, EventArgs e)
+        {
+            if (textBoxPhoneFilter.Text.Length > 2)
+                FillListViewByPhone(textBoxPhoneFilter.Text);
+            else
+                FillListView();
+        }
+
+        private void textBoxPhoneFilter_KeyDown(object sender, KeyEventArgs e)
+        {
+            if ((e.KeyCode == Keys.Back && textBoxPhoneFilter.SelectionStart <= 2) ||
+        (e.KeyCode == Keys.Delete && textBoxPhoneFilter.SelectionStart <= 2))
+            {
+                e.SuppressKeyPress = true;
+            }
+        }
+
+        private void comboBoxSupportFilter_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!String.IsNullOrEmpty(comboBoxSupportFilter.Text))
+                FillListView_FilterByMera(comboBoxSupportFilter.Text);
+            else
+                FillListView();
+        }
+
+        private void изменитьToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             FormAddOrChange FAOC = new FormAddOrChange();
             FAOC.AddOrChange = true;
@@ -366,64 +406,13 @@ namespace KursProject
                         FAOC.Text = "Изменить";
                         FAOC.labelSelectedCitizen.Text = "Не выбран существующий гражданин, будет изменён текущий";
                         FAOC.OldRowID = selectedItemId;
+                        var idZayavki = Convert.ToInt32(selectedItemId);
+                        FAOC.LoadDocumentsByZayavkaId(idZayavki);
                         FAOC.MF = this;
                         FAOC.Show();
                     }
                 }
             }
-        }
-
-        private void textBoxFIOFilter_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxFIOFilter.Text.Length > 0)
-                FillListViewFilteredFio(textBoxFIOFilter.Text);
-            else
-                FillListView();
-        }
-
-        private void buttonClearFilters_Click(object sender, EventArgs e)
-        {
-            textBoxFIOFilter.Clear();
-            textBoxPhoneFilter.Text = "+7";
-            comboBoxSupportFilter.Text = "";
-        }
-
-        private void textBoxPhoneFilter_TextChanged(object sender, EventArgs e)
-        {
-            if (textBoxPhoneFilter.Text.Length > 2)
-                FillListViewByPhone(textBoxPhoneFilter.Text);
-            else
-                FillListView();
-        }
-
-        private void textBoxPhoneFilter_KeyDown(object sender, KeyEventArgs e)
-        {
-            if ((e.KeyCode == Keys.Back && textBoxPhoneFilter.SelectionStart <= 2) ||
-        (e.KeyCode == Keys.Delete && textBoxPhoneFilter.SelectionStart <= 2))
-            {
-                e.SuppressKeyPress = true;
-            }
-        }
-
-        private void comboBoxSupportFilter_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (!String.IsNullOrEmpty(comboBoxSupportFilter.Text))
-                FillListView_FilterByMera(comboBoxSupportFilter.Text);
-            else
-                FillListView();
-        }
-
-        private void гражданинBindingNavigatorSaveItem_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void гражданинBindingNavigatorSaveItem_Click_1(object sender, EventArgs e)
-        {
-            this.Validate();
-            this.гражданинBindingSource.EndEdit();
-            this.tableAdapterManager1.UpdateAll(this.kP_2024_SuslovDataSet1);
-
         }
     }
 }

@@ -55,6 +55,11 @@ namespace KursProject
             this.buttonUpdateHistory = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonListCitizen = new System.Windows.Forms.Button();
+            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.главнаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.отчётToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.kP_2024_SuslovDataSet1 = new KursProject.KP_2024_SuslovDataSet();
             this.гражданинBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.гражданинTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.ГражданинTableAdapter();
@@ -73,13 +78,10 @@ namespace KursProject
             this.мера_ПоддержкиBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.сотрудникBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.статусBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.главнаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.отчётToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBoxFilters.SuspendLayout();
             this.groupBoxAdmin.SuspendLayout();
+            this.contextMenuStrip1.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.гражданинBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.документBindingSource)).BeginInit();
@@ -89,8 +91,6 @@ namespace KursProject
             ((System.ComponentModel.ISupportInitialize)(this.мера_ПоддержкиBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.статусBindingSource)).BeginInit();
-            this.contextMenuStrip1.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // MainlistView
@@ -336,6 +336,43 @@ namespace KursProject
             this.buttonListCitizen.Text = "Список граждан";
             this.buttonListCitizen.UseVisualStyleBackColor = true;
             // 
+            // contextMenuStrip1
+            // 
+            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.изменитьToolStripMenuItem});
+            this.contextMenuStrip1.Name = "contextMenuStrip1";
+            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 26);
+            // 
+            // изменитьToolStripMenuItem
+            // 
+            this.изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
+            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.изменитьToolStripMenuItem.Text = "Изменить";
+            this.изменитьToolStripMenuItem.Click += new System.EventHandler(this.изменитьToolStripMenuItem_Click_1);
+            // 
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.главнаяToolStripMenuItem,
+            this.отчётToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(1182, 24);
+            this.menuStrip1.TabIndex = 7;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // главнаяToolStripMenuItem
+            // 
+            this.главнаяToolStripMenuItem.Name = "главнаяToolStripMenuItem";
+            this.главнаяToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
+            this.главнаяToolStripMenuItem.Text = "Главная";
+            // 
+            // отчётToolStripMenuItem
+            // 
+            this.отчётToolStripMenuItem.Name = "отчётToolStripMenuItem";
+            this.отчётToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
+            this.отчётToolStripMenuItem.Text = "Отчёт";
+            // 
             // kP_2024_SuslovDataSet1
             // 
             this.kP_2024_SuslovDataSet1.DataSetName = "KP_2024_SuslovDataSet";
@@ -426,47 +463,11 @@ namespace KursProject
             this.статусBindingSource.DataMember = "Статус";
             this.статусBindingSource.DataSource = this.kP_2024_SuslovDataSet1;
             // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.изменитьToolStripMenuItem});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 26);
-            // 
-            // изменитьToolStripMenuItem
-            // 
-            this.изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
-            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
-            this.изменитьToolStripMenuItem.Text = "Изменить";
-            // 
-            // menuStrip1
-            // 
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.главнаяToolStripMenuItem,
-            this.отчётToolStripMenuItem});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(1182, 24);
-            this.menuStrip1.TabIndex = 7;
-            this.menuStrip1.Text = "menuStrip1";
-            // 
-            // главнаяToolStripMenuItem
-            // 
-            this.главнаяToolStripMenuItem.Name = "главнаяToolStripMenuItem";
-            this.главнаяToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
-            this.главнаяToolStripMenuItem.Text = "Главная";
-            // 
-            // отчётToolStripMenuItem
-            // 
-            this.отчётToolStripMenuItem.Name = "отчётToolStripMenuItem";
-            this.отчётToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
-            this.отчётToolStripMenuItem.Text = "Отчёт";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1182, 582);
+            this.ClientSize = new System.Drawing.Size(1182, 578);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.buttonListCitizen);
             this.Controls.Add(this.groupBoxAdmin);
@@ -484,6 +485,9 @@ namespace KursProject
             this.groupBoxFilters.PerformLayout();
             this.groupBoxAdmin.ResumeLayout(false);
             this.groupBoxAdmin.PerformLayout();
+            this.contextMenuStrip1.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.гражданинBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.документBindingSource)).EndInit();
@@ -493,9 +497,6 @@ namespace KursProject
             ((System.ComponentModel.ISupportInitialize)(this.мера_ПоддержкиBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.статусBindingSource)).EndInit();
-            this.contextMenuStrip1.ResumeLayout(false);
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 

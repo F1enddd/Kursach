@@ -35,7 +35,7 @@ namespace KursProject
             {
                 Rows = kP_2024_SuslovDataSet.Сотрудник.Select("Логин = '" + login + "'");
                 string Name = Convert.ToString(Rows[0][1]);
-                lvlAccess = Convert.ToString(Rows[0][2]);
+                lvlAccess = Convert.ToString(Rows[0][3]);
 
                 string[] partsName = Name.Split(' ');
 
