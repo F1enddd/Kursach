@@ -43,6 +43,7 @@ namespace KursProject
             this.textBoxAddresAOC = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxRequestAOC = new System.Windows.Forms.GroupBox();
+            this.label8 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
             this.buttonAddDoc = new System.Windows.Forms.Button();
             this.labelDocCounter = new System.Windows.Forms.Label();
@@ -75,7 +76,6 @@ namespace KursProject
             this.мера_ПоддержкиBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.сотрудникBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.статусBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.label8 = new System.Windows.Forms.Label();
             this.groupBoxEmployee.SuspendLayout();
             this.groupBoxRequestAOC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDoc)).BeginInit();
@@ -228,6 +228,16 @@ namespace KursProject
             this.groupBoxRequestAOC.TabIndex = 9;
             this.groupBoxRequestAOC.TabStop = false;
             this.groupBoxRequestAOC.Text = "Заявка*";
+            this.groupBoxRequestAOC.Enter += new System.EventHandler(this.groupBoxRequestAOC_Enter);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(516, 187);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(169, 26);
+            this.label8.TabIndex = 16;
+            this.label8.Text = "Нажмите \"Добавить фото\" или \r\nперенесите фото в эту область";
             // 
             // button4
             // 
@@ -458,15 +468,6 @@ namespace KursProject
             // 
             this.статусBindingSource.DataMember = "Статус";
             this.статусBindingSource.DataSource = this.kP_2024_SuslovDataSet;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(516, 187);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(169, 26);
-            this.label8.TabIndex = 16;
-            this.label8.Text = "Нажмите \"Добавить фото\" или \r\nперенесите фото в эту область";
             // 
             // FormAddOrChange
             // 

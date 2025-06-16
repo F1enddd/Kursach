@@ -53,6 +53,9 @@ namespace KursProject
             pictureBoxDoc.AllowDrop = true;
             pictureBoxDoc.DragEnter += pictureBoxDoc_DragEnter;
             pictureBoxDoc.DragDrop += pictureBoxDoc_DragDrop;
+            label8.AllowDrop = true;
+            label8.DragEnter += pictureBoxDoc_DragEnter;
+            label8.DragDrop += pictureBoxDoc_DragDrop;
         }
 
         public void ChangeSelectedCitizen()
@@ -279,6 +282,7 @@ namespace KursProject
             }
 
             labelDocCounter.Text = $"{currentDocIndex + 1}/{TemporaryDocumentsList.Count}";
+            label8.Visible = TemporaryDocumentsList.Count == 0;
         }
 
 
@@ -375,6 +379,9 @@ namespace KursProject
                         Название = Path.GetFileName(filePath),
                         Скан = imgBytes
                     });
+
+                    currentDocIndex = TemporaryDocumentsList.Count - 1;
+                    UpdatePictureBox();
                 }
             }
         }
@@ -387,7 +394,6 @@ namespace KursProject
 
         public void LoadDocumentsByZayavkaId(int zayavkaId)
         {
-
             TemporaryDocumentsList.Clear();
 
             var docs = документTableAdapter.GetData().Where(doc => doc.ID_Заявления == zayavkaId);
@@ -397,22 +403,24 @@ namespace KursProject
                 if (row["Скан"] != DBNull.Value)
                 {
                     byte[] imageBytes = (byte[])row["Скан"];
-                    using (MemoryStream ms = new MemoryStream(imageBytes))
+
+                    TemporaryDocumentsList.Add(new DocumentModel
                     {
-                        Image image = Image.FromStream(ms);
-
-                        TemporaryDocumentsList.Add(image);
-
-                    }
+                        Название = row["Название"].ToString(),
+                        Скан = imageBytes
+                    });
                 }
             }
 
-
             currentDocIndex = 0;
-
             UpdatePictureBox();
         }
 
+
+        private void groupBoxRequestAOC_Enter(object sender, EventArgs e)
+        {
+
+        }
     }
 
 }
