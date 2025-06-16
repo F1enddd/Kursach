@@ -72,5 +72,16 @@ namespace KursProject
         {
             MessageBox.Show("Уровни доступа:\n\nА: Высший уровень доступа, пользователь может добавлять новых сотрудников, которые в последствии будут иметь доступ к приложению.\n\nB: Средний уровень доступа, пользователь может обрабатывать заявки.\n\nC: Низший уровень доступа, пользователь может просматривать список заявок и информацию о них, но не имеет доступа к их обработке", "Справка об уровнях доступа", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
+
+        private void buttonGuest_Click(object sender, EventArgs e)
+        {
+            FormAddOrChange FAOC = new FormAddOrChange();
+            FAOC.guestMode = true;
+            FAOC.Text = "Добавление заявки в гостевом режиме";
+            FAOC.textBoxPhoneAOC.Text = "+7";
+            FAOC.textBoxPhoneAOC.SelectionStart = FAOC.textBoxPhoneAOC.Text.Length;
+            FAOC.Show();
+            this.Hide();
+        }
     }
 }

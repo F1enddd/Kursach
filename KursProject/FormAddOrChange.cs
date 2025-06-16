@@ -23,6 +23,7 @@ namespace KursProject
         private List<DataRow> currentDocs = new List<DataRow>();
         private int currentDocIndex = 0;
         private int currentZayavkaID = -1;
+        public bool guestMode;
 
         public ComboBox MeraGet() { return comboBoxMeraAOC; }
         public TextBox TBFIO() { return textBoxFIOAOC; }
@@ -56,6 +57,13 @@ namespace KursProject
             label8.AllowDrop = true;
             label8.DragEnter += pictureBoxDoc_DragEnter;
             label8.DragDrop += pictureBoxDoc_DragDrop;
+            if(guestMode == true)
+            {
+                buttonListCitizen.Visible = false;
+                labelSelectedCitizen.Visible = false;
+            }
+            foreach (DataRow Row in kP_2024_SuslovDataSet.Мера_Поддержки.Rows)
+                MeraGet().Items.Add(Row["Название"].ToString());
         }
 
         public void ChangeSelectedCitizen()
@@ -80,137 +88,184 @@ namespace KursProject
 
         private void ButtonSaveAOC_Click(object sender, EventArgs e)
         {
-            // Обновляем данные из БД
-            newDataSet = new KP_2024_SuslovDataSet();
-            мера_ПоддержкиTableAdapter.Fill(newDataSet.Мера_Поддержки);
-            статусTableAdapter.Fill(newDataSet.Статус);
-            гражданинTableAdapter.Fill(newDataSet.Гражданин);
-            заявлениеTableAdapter.Fill(newDataSet.Заявление);
-            документTableAdapter.Fill(newDataSet.Документ);
-
-            // Получаем ID меры и статуса
-            var мера = newDataSet.Мера_Поддержки.FirstOrDefault(m => m.Название == comboBoxMeraAOC.Text);
-            var статус = newDataSet.Статус.FirstOrDefault(s => s.Название == "Ожидает рассмотрения");
-
-            if (мера == null || статус == null)
+            try
             {
-                MessageBox.Show("Ошибка: не удалось найти меру поддержки или статус.");
-                return;
-            }
-
-            int мераID = мера.ID_Меры;
-            int статусID = статус.ID_Статус;
-
-            int zayavlenieId = 0;
-
-            if (!AddOrChange && !CitizenSelected)
-            {
-                // 1. Добавление нового гражданина и заявки
-                var newCitizen = newDataSet.Гражданин.NewГражданинRow();
-                newCitizen.ФИО = textBoxFIOAOC.Text;
-                newCitizen.Дата_Рождения = dateTimePickerBirthdayAOC.Value.Date;
-                newCitizen.Адрес = textBoxAddresAOC.Text;
-                newCitizen.Телефон = textBoxPhoneAOC.Text;
-                newCitizen.Социальный_Статус = textBoxSocStatusAOC.Text;
-
-                newDataSet.Гражданин.AddГражданинRow(newCitizen);
-                гражданинTableAdapter.Update(newDataSet.Гражданин);
+                // Обновляем данные из БД
+                newDataSet = new KP_2024_SuslovDataSet();
+                мера_ПоддержкиTableAdapter.Fill(newDataSet.Мера_Поддержки);
+                статусTableAdapter.Fill(newDataSet.Статус);
                 гражданинTableAdapter.Fill(newDataSet.Гражданин);
+                заявлениеTableAdapter.Fill(newDataSet.Заявление);
+                документTableAdapter.Fill(newDataSet.Документ);
 
-                int newCitizenID = newDataSet.Гражданин.Max(r => r.ID_Гражданина);
+                var мера = newDataSet.Мера_Поддержки.FirstOrDefault(m => m.Название == comboBoxMeraAOC.Text);
+                var статус = newDataSet.Статус.FirstOrDefault(s => s.Название == "Ожидает рассмотрения");
 
-                заявлениеTableAdapter.Insert(
-                    newCitizenID,
-                    мераID,
-                    DateTime.Today,
-                    статусID,
-                    textBoxCommentAOC.Text
-                );
+                if (мера == null || статус == null)
+                {
+                    MessageBox.Show("Ошибка: не удалось найти меру поддержки или статус.");
+                    return;
+                }
+
+                int мераID = мера.ID_Меры;
+                int статусID = статус.ID_Статус;
+                int zayavlenieId = 0;
+
+                // Попытка найти существующего гражданина по ФИО и телефону
+                var existingCitizen = newDataSet.Гражданин
+                    .FirstOrDefault(c =>
+                        c.ФИО.Trim().Equals(textBoxFIOAOC.Text.Trim(), StringComparison.OrdinalIgnoreCase) &&
+                        c.Телефон.Trim().Equals(textBoxPhoneAOC.Text.Trim(), StringComparison.OrdinalIgnoreCase));
+
+                if (!AddOrChange && !CitizenSelected)
+                {
+                    int citizenId;
+
+                    if (existingCitizen != null)
+                    {
+                        // Используем существующего гражданина
+                        citizenId = existingCitizen.ID_Гражданина;
+                    }
+                    else
+                    {
+                        // Добавляем нового
+                        var newCitizen = newDataSet.Гражданин.NewГражданинRow();
+                        newCitizen.ФИО = textBoxFIOAOC.Text;
+                        newCitizen.Дата_Рождения = dateTimePickerBirthdayAOC.Value.Date;
+                        newCitizen.Адрес = textBoxAddresAOC.Text;
+                        newCitizen.Телефон = textBoxPhoneAOC.Text;
+                        newCitizen.Социальный_Статус = textBoxSocStatusAOC.Text;
+
+                        newDataSet.Гражданин.AddГражданинRow(newCitizen);
+                        гражданинTableAdapter.Update(newDataSet.Гражданин);
+                        гражданинTableAdapter.Fill(newDataSet.Гражданин);
+
+                        citizenId = newDataSet.Гражданин.Max(r => r.ID_Гражданина);
+                    }
+
+                    заявлениеTableAdapter.Insert(
+                        citizenId,
+                        мераID,
+                        DateTime.Today,
+                        статусID,
+                        textBoxCommentAOC.Text
+                    );
+
+                    заявлениеTableAdapter.Fill(newDataSet.Заявление);
+                    zayavlenieId = newDataSet.Заявление.Max(z => z.ID_Заявления);
+                }
+                else if (!AddOrChange && CitizenSelected)
+                {
+                    заявлениеTableAdapter.Insert(
+                        LastSelectedCitizen,
+                        мераID,
+                        DateTime.Today,
+                        статусID,
+                        textBoxCommentAOC.Text
+                    );
+
+                    заявлениеTableAdapter.Fill(newDataSet.Заявление);
+                    zayavlenieId = newDataSet.Заявление.Max(z => z.ID_Заявления);
+                }
+                else if (AddOrChange && CitizenSelected)
+                {
+                    var заявлениеRow = newDataSet.Заявление.FindByID_Заявления(Convert.ToInt32(OldRowID));
+                    if (заявлениеRow == null)
+                    {
+                        MessageBox.Show("Ошибка: Заявка не найдена.");
+                        return;
+                    }
+
+                    заявлениеRow.ID_Гражданина = LastSelectedCitizen;
+                    заявлениеRow.ID_Меры = мераID;
+                    заявлениеRow.Дата_Подачи = DateTime.Today;
+                    заявлениеRow.ID_Статус = статусID;
+                    заявлениеRow.Комментарий = textBoxCommentAOC.Text;
+
+                    заявлениеTableAdapter.Update(newDataSet.Заявление);
+                    zayavlenieId = заявлениеRow.ID_Заявления;
+                }
+                else if (AddOrChange && !CitizenSelected)
+                {
+                    var заявлениеRow = newDataSet.Заявление.FindByID_Заявления(Convert.ToInt32(OldRowID));
+                    if (заявлениеRow == null)
+                    {
+                        MessageBox.Show("Ошибка: Заявка не найдена.");
+                        return;
+                    }
+
+                    var гражданинRow = newDataSet.Гражданин.FindByID_Гражданина(заявлениеRow.ID_Гражданина);
+                    if (гражданинRow == null)
+                    {
+                        MessageBox.Show("Ошибка: Гражданин не найден.");
+                        return;
+                    }
+
+                    гражданинRow.ФИО = textBoxFIOAOC.Text;
+                    гражданинRow.Дата_Рождения = dateTimePickerBirthdayAOC.Value.Date;
+                    гражданинRow.Адрес = textBoxAddresAOC.Text;
+                    гражданинRow.Телефон = textBoxPhoneAOC.Text;
+                    гражданинRow.Социальный_Статус = textBoxSocStatusAOC.Text;
+
+                    заявлениеRow.ID_Меры = мераID;
+                    заявлениеRow.Дата_Подачи = DateTime.Today;
+                    заявлениеRow.ID_Статус = статусID;
+                    заявлениеRow.Комментарий = textBoxCommentAOC.Text;
+
+                    гражданинTableAdapter.Update(newDataSet.Гражданин);
+                    заявлениеTableAdapter.Update(newDataSet.Заявление);
+                    zayavlenieId = заявлениеRow.ID_Заявления;
+                }
+
+                // Сохраняем документы
+                if (zayavlenieId != 0)
+                {
+                    SaveDocumentsForZayavlenie(zayavlenieId);
+                }
 
                 заявлениеTableAdapter.Fill(newDataSet.Заявление);
-                zayavlenieId = newDataSet.Заявление.Max(z => z.ID_Заявления);
-            }
-            else if (!AddOrChange && CitizenSelected)
-            {
-                // 2. Добавление заявки существующему гражданину
-                заявлениеTableAdapter.Insert(
-                    LastSelectedCitizen,
-                    мераID,
-                    DateTime.Today,
-                    статусID,
-                    textBoxCommentAOC.Text
-                );
 
-                заявлениеTableAdapter.Fill(newDataSet.Заявление);
-                zayavlenieId = newDataSet.Заявление.Max(z => z.ID_Заявления);
-            }
-            else if (AddOrChange && CitizenSelected)
-            {
-                // 4. Изменение на другого гражданина у существующей заявки
-                var заявлениеRow = newDataSet.Заявление.FindByID_Заявления(Convert.ToInt32(OldRowID));
-                if (заявлениеRow == null)
+                // Если режим гостя — показываем сообщение
+                if (guestMode)
                 {
-                    MessageBox.Show("Ошибка: Заявка не найдена.");
-                    return;
+                    MessageBox.Show("Вы добавили заявку, ожидайте звонка.", "Информация", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    FormLoggining FL = new FormLoggining();
+                    FL.Show();
                 }
 
-                заявлениеRow.ID_Гражданина = LastSelectedCitizen;
-                заявлениеRow.ID_Меры = мераID;
-                заявлениеRow.Дата_Подачи = DateTime.Today;
-                заявлениеRow.ID_Статус = статусID;
-                заявлениеRow.Комментарий = textBoxCommentAOC.Text;
-
-                заявлениеTableAdapter.Update(newDataSet.Заявление);
-                zayavlenieId = заявлениеRow.ID_Заявления;
+                MF?.FillListView();
+                this.DialogResult = DialogResult.OK;
+                this.Close();
             }
-            else if (AddOrChange && !CitizenSelected)
+            catch (SqlException ex)
             {
-                // 3. Изменение данных гражданина и заявки
-                var заявлениеRow = newDataSet.Заявление.FindByID_Заявления(Convert.ToInt32(OldRowID));
-                if (заявлениеRow == null)
+                string userMessage = "Ошибка при сохранении данных.";
+
+                switch (ex.Number)
                 {
-                    MessageBox.Show("Ошибка: Заявка не найдена.");
-                    return;
+                    case 2627:
+                    case 2601:
+                        userMessage = "Такая запись уже существует.";
+                        break;
+                    case 515:
+                        userMessage = "Некоторые обязательные поля не заполнены.";
+                        break;
+                    case 547:
+                        userMessage = "Ошибка связей: проверьте, все ли связанные данные указаны корректно." +
+                            "\nПроверьте данные в формате ФИО: Имя Фамилия Отчество" +
+                            "\nДата рождения: не позже сегодняшнего дня" +
+                            "\nНомер телефона: +79999999999";
+                        break;
                 }
 
-                var гражданинRow = newDataSet.Гражданин.FindByID_Гражданина(заявлениеRow.ID_Гражданина);
-                if (гражданинRow == null)
-                {
-                    MessageBox.Show("Ошибка: Гражданин не найден.");
-                    return;
-                }
-
-                // Обновляем гражданина
-                гражданинRow.ФИО = textBoxFIOAOC.Text;
-                гражданинRow.Дата_Рождения = dateTimePickerBirthdayAOC.Value.Date;
-                гражданинRow.Адрес = textBoxAddresAOC.Text;
-                гражданинRow.Телефон = textBoxPhoneAOC.Text;
-                гражданинRow.Социальный_Статус = textBoxSocStatusAOC.Text;
-
-                // Обновляем заявку
-                заявлениеRow.ID_Меры = мераID;
-                заявлениеRow.Дата_Подачи = DateTime.Today;
-                заявлениеRow.ID_Статус = статусID;
-                заявлениеRow.Комментарий = textBoxCommentAOC.Text;
-
-                гражданинTableAdapter.Update(newDataSet.Гражданин);
-                заявлениеTableAdapter.Update(newDataSet.Заявление);
-                zayavlenieId = заявлениеRow.ID_Заявления;
+                MessageBox.Show(userMessage, "Ошибка БД", MessageBoxButtons.OK, MessageBoxIcon.Warning);
             }
-
-            // Сохраняем документы, привязанные к заявке
-            if (zayavlenieId != 0)
+            catch (Exception ex)
             {
-                SaveDocumentsForZayavlenie(zayavlenieId);
+                MessageBox.Show("Произошла непредвиденная ошибка:\n" + ex.Message,
+                    "Критическая ошибка", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-
-            // Обновляем данные и закрываем форму
-            заявлениеTableAdapter.Fill(newDataSet.Заявление);
-            MF?.FillListView();
-            this.DialogResult = DialogResult.OK;
-            this.Close();
         }
-
 
 
         private void comboBoxMeraAOC_SelectedIndexChanged(object sender, EventArgs e)
@@ -418,6 +473,11 @@ namespace KursProject
 
 
         private void groupBoxRequestAOC_Enter(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button4_Click(object sender, EventArgs e)
         {
 
         }

@@ -44,7 +44,6 @@ namespace KursProject
             this.label1 = new System.Windows.Forms.Label();
             this.groupBoxRequestAOC = new System.Windows.Forms.GroupBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.button4 = new System.Windows.Forms.Button();
             this.buttonAddDoc = new System.Windows.Forms.Button();
             this.labelDocCounter = new System.Windows.Forms.Label();
             this.buttonNextDoc = new System.Windows.Forms.Button();
@@ -208,7 +207,6 @@ namespace KursProject
             // groupBoxRequestAOC
             // 
             this.groupBoxRequestAOC.Controls.Add(this.label8);
-            this.groupBoxRequestAOC.Controls.Add(this.button4);
             this.groupBoxRequestAOC.Controls.Add(this.buttonAddDoc);
             this.groupBoxRequestAOC.Controls.Add(this.labelDocCounter);
             this.groupBoxRequestAOC.Controls.Add(this.buttonNextDoc);
@@ -239,20 +237,10 @@ namespace KursProject
             this.label8.TabIndex = 16;
             this.label8.Text = "Нажмите \"Добавить фото\" или \r\nперенесите фото в эту область";
             // 
-            // button4
-            // 
-            this.button4.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button4.Location = new System.Drawing.Point(490, 362);
-            this.button4.Name = "button4";
-            this.button4.Size = new System.Drawing.Size(227, 51);
-            this.button4.TabIndex = 15;
-            this.button4.Text = "Просмотр";
-            this.button4.UseVisualStyleBackColor = true;
-            // 
             // buttonAddDoc
             // 
             this.buttonAddDoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddDoc.Location = new System.Drawing.Point(257, 362);
+            this.buttonAddDoc.Location = new System.Drawing.Point(490, 361);
             this.buttonAddDoc.Name = "buttonAddDoc";
             this.buttonAddDoc.Size = new System.Drawing.Size(227, 51);
             this.buttonAddDoc.TabIndex = 15;
@@ -521,7 +509,6 @@ namespace KursProject
         private System.Windows.Forms.Label label6;
         public System.Windows.Forms.Label labelSelectedCitizen;
         public System.Windows.Forms.TextBox textBoxPhoneAOC;
-        private System.Windows.Forms.Button button4;
         private System.Windows.Forms.Button buttonAddDoc;
         private System.Windows.Forms.Label labelDocCounter;
         private System.Windows.Forms.Button buttonNextDoc;

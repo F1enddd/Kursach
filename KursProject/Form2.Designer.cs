@@ -44,6 +44,7 @@ namespace KursProject
             this.tableAdapterManager = new KursProject.KP_2024_SuslovDataSetTableAdapters.TableAdapterManager();
             this.buttonLVLAccess = new System.Windows.Forms.Button();
             this.labellvlAccess = new System.Windows.Forms.Label();
+            this.buttonGuest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникBindingSource)).BeginInit();
             this.SuspendLayout();
@@ -167,6 +168,16 @@ namespace KursProject
             this.labellvlAccess.TabIndex = 6;
             this.labellvlAccess.Text = "Уровни доступа";
             // 
+            // buttonGuest
+            // 
+            this.buttonGuest.Location = new System.Drawing.Point(140, 265);
+            this.buttonGuest.Name = "buttonGuest";
+            this.buttonGuest.Size = new System.Drawing.Size(174, 23);
+            this.buttonGuest.TabIndex = 0;
+            this.buttonGuest.Text = "Войти как гость";
+            this.buttonGuest.UseVisualStyleBackColor = true;
+            this.buttonGuest.Click += new System.EventHandler(this.buttonGuest_Click);
+            // 
             // FormLoggining
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -180,6 +191,7 @@ namespace KursProject
             this.Controls.Add(this.LoginLabel);
             this.Controls.Add(this.textBoxPassword);
             this.Controls.Add(this.textBoxLogin);
+            this.Controls.Add(this.buttonGuest);
             this.Controls.Add(this.buttonEntry);
             this.Controls.Add(this.buttonExit);
             this.Name = "FormLoggining";
@@ -209,5 +221,6 @@ namespace KursProject
         private KP_2024_SuslovDataSetTableAdapters.TableAdapterManager tableAdapterManager;
         private System.Windows.Forms.Button buttonLVLAccess;
         private System.Windows.Forms.Label labellvlAccess;
+        private System.Windows.Forms.Button buttonGuest;
     }
 }

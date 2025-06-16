@@ -210,8 +210,6 @@ namespace KursProject
             FormAddOrChange FAOC = new FormAddOrChange();
             FAOC.MF = this;
             FAOC.AddOrChange = false;
-            foreach (DataRow Row in kP_2024_SuslovDataSet1.Мера_Поддержки.Rows)
-                FAOC.MeraGet().Items.Add(Row["Название"].ToString());
             FAOC.textBoxPhoneAOC.Text = "+7";
             FAOC.labelSelectedCitizen.Text = "Не выбран существующий гражданин, будет создан новый";
             FAOC.textBoxPhoneAOC.SelectionStart = FAOC.textBoxPhoneAOC.Text.Length;
@@ -223,7 +221,7 @@ namespace KursProject
 
         private void buttonLVLAccesInfo_Click(object sender, EventArgs e)
         {
-            MessageBox.Show("Уровни доступа:\n\nА: Высший уровень доступа, пользователь может добавлять новых сотрудников, которые в последствии будут иметь доступ к приложению.\n\nB: Средний уровень доступа, пользователь может обрабатывать заявки.\n\nC: Низший уровень доступа, пользователь может просматривать список заявок и информацию о них, но не имеет доступа к их обработке", "Справка об уровнях доступа", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show("Уровни доступа:\n\nА: Высший уровень доступа, пользователь может добавлять новых сотрудников, которые в последствии будут иметь доступ к приложению.\n\nB: Средний уровень доступа, пользователь может обрабатывать заявки.\n\nC: Низший уровень доступа, позволяет просматривать информацию, но не изменять", "Справка об уровнях доступа", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void MainlistView_SelectedIndexChanged(object sender, EventArgs e)
@@ -368,8 +366,6 @@ namespace KursProject
         {
             FormAddOrChange FAOC = new FormAddOrChange();
             FAOC.AddOrChange = true;
-            foreach (DataRow Row in kP_2024_SuslovDataSet1.Мера_Поддержки.Rows)
-                FAOC.MeraGet().Items.Add(Row["Название"].ToString());
             DataRow[] changeRows = kP_2024_SuslovDataSet1.Заявление.Select($"ID_Заявления = {selectedItemId}");
             if (changeRows.Length > 0)
             {
