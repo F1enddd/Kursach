@@ -42,7 +42,7 @@ namespace KursProject
             this.buttonPrevDoc = new System.Windows.Forms.Button();
             this.pictureBoxDoc = new System.Windows.Forms.PictureBox();
             this.label9 = new System.Windows.Forms.Label();
-            this.buttonDelete = new System.Windows.Forms.Button();
+            this.buttonDeleteImage = new System.Windows.Forms.Button();
             this.labelAdress = new System.Windows.Forms.Label();
             this.labelBirthDay = new System.Windows.Forms.Label();
             this.labelSocStatus = new System.Windows.Forms.Label();
@@ -188,7 +188,7 @@ namespace KursProject
             // pictureBoxDoc
             // 
             this.pictureBoxDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxDoc.Location = new System.Drawing.Point(873, 233);
+            this.pictureBoxDoc.Location = new System.Drawing.Point(873, 232);
             this.pictureBoxDoc.Name = "pictureBoxDoc";
             this.pictureBoxDoc.Size = new System.Drawing.Size(227, 270);
             this.pictureBoxDoc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
@@ -205,17 +205,18 @@ namespace KursProject
             this.label9.TabIndex = 23;
             this.label9.Text = "Документы";
             // 
-            // buttonDelete
+            // buttonDeleteImage
             // 
-            this.buttonDelete.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDelete.ForeColor = System.Drawing.SystemColors.ControlText;
-            this.buttonDelete.Location = new System.Drawing.Point(12, 539);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(144, 54);
-            this.buttonDelete.TabIndex = 0;
-            this.buttonDelete.Text = "Удалить";
-            this.buttonDelete.UseVisualStyleBackColor = true;
+            this.buttonDeleteImage.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.buttonDeleteImage.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteImage.ForeColor = System.Drawing.Color.Firebrick;
+            this.buttonDeleteImage.Location = new System.Drawing.Point(1067, 199);
+            this.buttonDeleteImage.Name = "buttonDeleteImage";
+            this.buttonDeleteImage.Size = new System.Drawing.Size(33, 28);
+            this.buttonDeleteImage.TabIndex = 0;
+            this.buttonDeleteImage.Text = "X";
+            this.buttonDeleteImage.UseVisualStyleBackColor = true;
+            this.buttonDeleteImage.Click += new System.EventHandler(this.buttonDeleteImage_Click);
             // 
             // labelAdress
             // 
@@ -431,10 +432,11 @@ namespace KursProject
             this.Controls.Add(this.label2);
             this.Controls.Add(this.comboBoxStatus);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.buttonDelete);
+            this.Controls.Add(this.buttonDeleteImage);
             this.Controls.Add(this.buttonProcess);
             this.Name = "FormRequestProcessing";
             this.Text = "Обработка заявок";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRequestProcessing_FormClosing);
             this.Load += new System.EventHandler(this.FormRequestProcessing_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDoc)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet)).EndInit();
@@ -465,7 +467,7 @@ namespace KursProject
         private System.Windows.Forms.Button buttonPrevDoc;
         private System.Windows.Forms.PictureBox pictureBoxDoc;
         private System.Windows.Forms.Label label9;
-        private System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Button buttonDeleteImage;
         private KP_2024_SuslovDataSet kP_2024_SuslovDataSet;
         private System.Windows.Forms.BindingSource гражданинBindingSource;
         private KP_2024_SuslovDataSetTableAdapters.ГражданинTableAdapter гражданинTableAdapter;

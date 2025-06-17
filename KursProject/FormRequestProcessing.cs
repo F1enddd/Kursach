@@ -216,8 +216,12 @@ namespace KursProject
             string birthDate = Convert.ToDateTime(citizenRow["Дата_Рождения"]).ToString("dd.MM.yyyy");
             string socStatus = citizenRow["Социальный_Статус"].ToString();
 
+            DataRow statusRow = row.GetParentRow("FK_Заявление_Статус");
+
+            string status = statusRow["Название"].ToString();
+
             // Обновляем UI
-            UpdateLabels(address, commentary, socStatus, birthDate);
+            UpdateLabels(address, commentary, socStatus, birthDate, status);
 
             OldRowID = selectedItemId;
 
@@ -226,12 +230,13 @@ namespace KursProject
         }
 
 
-        private void UpdateLabels(string address, string commentary, string socStatus, string birthDate)
+        private void UpdateLabels(string address, string commentary, string socStatus, string birthDate, string Status)
         {
             labelAdress.Text = address;
             labelCommentary.Text = commentary;
             labelSocStatus.Text = socStatus;
             labelBirthDay.Text = birthDate;
+            comboBoxStatus.Text = Status;
         }
 
         private void buttonNextDoc_Click(object sender, EventArgs e)
@@ -262,7 +267,7 @@ namespace KursProject
                 return;
             }
 
-            int newStatusId = comboBoxStatus.SelectedIndex + 1; // индекс + 1 — ID_Статуса
+            string newStatusId = comboBoxStatus.SelectedItem.ToString();
             string selectedZayavkaId = MainlistView.SelectedItems[0].SubItems[0].Text;
 
             // Находим строку с заявкой
@@ -275,8 +280,6 @@ namespace KursProject
 
             var row = rows[0];
 
-            // Обновляем статус
-            row["ID_Статус"] = newStatusId;
 
             // Добавляем запись в Историю_Обработки
             DataRow newHistoryRow = kP_2024_SuslovDataSet.История_Обработки.NewRow();
@@ -306,5 +309,65 @@ namespace KursProject
             FillListView();
         }
 
+        private void FormRequestProcessing_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            
+        }
+
+        private void buttonDeleteImage_Click(object sender, EventArgs e)
+        {
+            if (TemporaryDocumentsList.Count == 0)
+            {
+                MessageBox.Show("Нет документов для удаления.");
+                return;
+            }
+
+            var confirmResult = MessageBox.Show("Удалить текущий документ?", "Подтверждение удаления", MessageBoxButtons.YesNo);
+            if (confirmResult != DialogResult.Yes)
+                return;
+
+            // Получаем ID текущей заявки
+            if (!int.TryParse(selectedItemId, out int zayavkaId))
+            {
+                MessageBox.Show("Ошибка: невозможно определить ID заявки.");
+                return;
+            }
+
+            // Получаем текущий документ
+            var docToDelete = TemporaryDocumentsList[currentDocIndex];
+
+            // Удаляем из базы (если документ есть там)
+            var allDocs = kP_2024_SuslovDataSet.Документ;
+            var docRow = allDocs
+                .Where(r => r.ID_Заявления == zayavkaId && r["Название"].ToString() == docToDelete.Название)
+                .FirstOrDefault();
+
+            if (docRow != null)
+            {
+                docRow.Delete();
+                try
+                {
+                    документTableAdapter.Update(kP_2024_SuslovDataSet.Документ);
+                    kP_2024_SuslovDataSet.Документ.AcceptChanges();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Ошибка при удалении из базы: " + ex.Message);
+                    return;
+                }
+            }
+
+            // Удаляем из списка
+            TemporaryDocumentsList.RemoveAt(currentDocIndex);
+
+            // Корректируем индекс
+            if (currentDocIndex >= TemporaryDocumentsList.Count)
+                currentDocIndex = TemporaryDocumentsList.Count - 1;
+
+            // Обновляем отображение
+            UpdatePictureBox();
+
+            MessageBox.Show("Документ успешно удалён.");
+        }
     }
 }

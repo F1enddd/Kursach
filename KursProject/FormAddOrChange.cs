@@ -61,6 +61,7 @@ namespace KursProject
             {
                 buttonListCitizen.Visible = false;
                 labelSelectedCitizen.Visible = false;
+                buttonAddMeraAOC.Enabled = false;
             }
             foreach (DataRow Row in kP_2024_SuslovDataSet.Мера_Поддержки.Rows)
                 MeraGet().Items.Add(Row["Название"].ToString());
@@ -277,9 +278,12 @@ namespace KursProject
         {
             if(CitizenSelected == false)
             {
-                FormListCitizen FLC = new FormListCitizen();
+                FormListCitizen FLC = new FormListCitizen(this);
                 FLC.ShowDialog();
                 buttonListCitizen.Text = "Отменить выбор";
+                CitizenSelected = true;
+                ChangeSelectedCitizen();
+
             }
             else
             {
@@ -480,6 +484,12 @@ namespace KursProject
         private void button4_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void buttonAddMeraAOC_Click(object sender, EventArgs e)
+        {
+            FormAddMera FAM = new FormAddMera();
+            FAM.ShowDialog();
         }
     }
 

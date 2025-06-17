@@ -31,7 +31,7 @@ namespace KursProject
         {
             this.components = new System.ComponentModel.Container();
             this.buttonExit = new System.Windows.Forms.Button();
-            this.buttonEntry = new System.Windows.Forms.Button();
+            this.buttonReg = new System.Windows.Forms.Button();
             this.textBoxLogin = new System.Windows.Forms.TextBox();
             this.textBoxPassword = new System.Windows.Forms.TextBox();
             this.LoginLabel = new System.Windows.Forms.Label();
@@ -45,29 +45,32 @@ namespace KursProject
             this.buttonLVLAccess = new System.Windows.Forms.Button();
             this.labellvlAccess = new System.Windows.Forms.Label();
             this.buttonGuest = new System.Windows.Forms.Button();
+            this.buttonEntry = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonExit
             // 
+            this.buttonExit.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonExit.Location = new System.Drawing.Point(140, 221);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(75, 23);
-            this.buttonExit.TabIndex = 4;
+            this.buttonExit.TabIndex = 5;
             this.buttonExit.Text = "Выйти";
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
             // 
-            // buttonEntry
+            // buttonReg
             // 
-            this.buttonEntry.Location = new System.Drawing.Point(113, 192);
-            this.buttonEntry.Name = "buttonEntry";
-            this.buttonEntry.Size = new System.Drawing.Size(129, 23);
-            this.buttonEntry.TabIndex = 3;
-            this.buttonEntry.Text = "Войти";
-            this.buttonEntry.UseVisualStyleBackColor = true;
-            this.buttonEntry.Click += new System.EventHandler(this.buttonEntry_Click);
+            this.buttonReg.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReg.Location = new System.Drawing.Point(92, 192);
+            this.buttonReg.Name = "buttonReg";
+            this.buttonReg.Size = new System.Drawing.Size(169, 23);
+            this.buttonReg.TabIndex = 4;
+            this.buttonReg.Text = "Регистрация";
+            this.buttonReg.UseVisualStyleBackColor = true;
+            this.buttonReg.Click += new System.EventHandler(this.buttonReg_Click);
             // 
             // textBoxLogin
             // 
@@ -82,7 +85,7 @@ namespace KursProject
             this.textBoxPassword.Name = "textBoxPassword";
             this.textBoxPassword.PasswordChar = '*';
             this.textBoxPassword.Size = new System.Drawing.Size(194, 20);
-            this.textBoxPassword.TabIndex = 1;
+            this.textBoxPassword.TabIndex = 2;
             // 
             // LoginLabel
             // 
@@ -154,7 +157,7 @@ namespace KursProject
             this.buttonLVLAccess.Location = new System.Drawing.Point(99, 263);
             this.buttonLVLAccess.Name = "buttonLVLAccess";
             this.buttonLVLAccess.Size = new System.Drawing.Size(25, 26);
-            this.buttonLVLAccess.TabIndex = 6;
+            this.buttonLVLAccess.TabIndex = 7;
             this.buttonLVLAccess.Text = "?";
             this.buttonLVLAccess.UseVisualStyleBackColor = true;
             this.buttonLVLAccess.Click += new System.EventHandler(this.buttonLVLAccess_Click);
@@ -170,13 +173,25 @@ namespace KursProject
             // 
             // buttonGuest
             // 
+            this.buttonGuest.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.buttonGuest.Location = new System.Drawing.Point(140, 265);
             this.buttonGuest.Name = "buttonGuest";
             this.buttonGuest.Size = new System.Drawing.Size(174, 23);
-            this.buttonGuest.TabIndex = 5;
+            this.buttonGuest.TabIndex = 6;
             this.buttonGuest.Text = "Войти как гость";
             this.buttonGuest.UseVisualStyleBackColor = true;
             this.buttonGuest.Click += new System.EventHandler(this.buttonGuest_Click);
+            // 
+            // buttonEntry
+            // 
+            this.buttonEntry.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonEntry.Location = new System.Drawing.Point(113, 163);
+            this.buttonEntry.Name = "buttonEntry";
+            this.buttonEntry.Size = new System.Drawing.Size(129, 23);
+            this.buttonEntry.TabIndex = 3;
+            this.buttonEntry.Text = "Войти";
+            this.buttonEntry.UseVisualStyleBackColor = true;
+            this.buttonEntry.Click += new System.EventHandler(this.buttonEntry_Click);
             // 
             // FormLoggining
             // 
@@ -193,6 +208,7 @@ namespace KursProject
             this.Controls.Add(this.textBoxLogin);
             this.Controls.Add(this.buttonGuest);
             this.Controls.Add(this.buttonEntry);
+            this.Controls.Add(this.buttonReg);
             this.Controls.Add(this.buttonExit);
             this.Name = "FormLoggining";
             this.Text = "Войдите в аккаунт";
@@ -208,7 +224,7 @@ namespace KursProject
         #endregion
 
         private System.Windows.Forms.Button buttonExit;
-        private System.Windows.Forms.Button buttonEntry;
+        private System.Windows.Forms.Button buttonReg;
         private System.Windows.Forms.TextBox textBoxLogin;
         private System.Windows.Forms.TextBox textBoxPassword;
         private System.Windows.Forms.Label LoginLabel;
@@ -222,5 +238,6 @@ namespace KursProject
         private System.Windows.Forms.Button buttonLVLAccess;
         private System.Windows.Forms.Label labellvlAccess;
         private System.Windows.Forms.Button buttonGuest;
+        private System.Windows.Forms.Button buttonEntry;
     }
 }

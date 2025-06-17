@@ -1,7 +1,6 @@
-﻿
-namespace KursProject
+﻿namespace KursProject
 {
-    partial class FormListCitizen
+    partial class FormEmployers
     {
         /// <summary>
         /// Required designer variable.
@@ -30,14 +29,13 @@ namespace KursProject
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.listViewCitizens = new System.Windows.Forms.ListView();
+            this.listViewEmployers = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FIO = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Date_birth = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Address = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Phone = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Status = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.ButtonSelectCitizen = new System.Windows.Forms.Button();
+            this.Post = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.LvlAccess = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Contact = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Login = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.kP_2024_SuslovDataSet = new KursProject.KP_2024_SuslovDataSet();
             this.гражданинBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.гражданинTableAdapter = new KursProject.KP_2024_SuslovDataSetTableAdapters.ГражданинTableAdapter();
@@ -56,15 +54,17 @@ namespace KursProject
             this.мера_ПоддержкиBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.сотрудникBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.статусBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.buttonAdd = new System.Windows.Forms.Button();
-            this.buttonDelete = new System.Windows.Forms.Button();
+            this.labelCountOfReq = new System.Windows.Forms.Label();
+            this.buttonAddEmployee = new System.Windows.Forms.Button();
+            this.buttonDeleteEmployee = new System.Windows.Forms.Button();
             this.groupBoxFilters = new System.Windows.Forms.GroupBox();
+            this.labelPostFilter = new System.Windows.Forms.Label();
             this.labelPhoneFilter = new System.Windows.Forms.Label();
             this.labelFIOFilter = new System.Windows.Forms.Label();
-            this.textBoxPhoneFilter = new System.Windows.Forms.TextBox();
+            this.comboBoxPostFilter = new System.Windows.Forms.ComboBox();
+            this.textBoxContactFilter = new System.Windows.Forms.TextBox();
             this.textBoxFIOFilter = new System.Windows.Forms.TextBox();
             this.buttonClearFilters = new System.Windows.Forms.Button();
-            this.labelCountOfReq = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.гражданинBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.документBindingSource)).BeginInit();
@@ -77,27 +77,26 @@ namespace KursProject
             this.groupBoxFilters.SuspendLayout();
             this.SuspendLayout();
             // 
-            // listViewCitizens
+            // listViewEmployers
             // 
-            this.listViewCitizens.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.listViewCitizens.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.listViewEmployers.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.listViewEmployers.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
             this.ID,
             this.FIO,
-            this.Date_birth,
-            this.Address,
-            this.Phone,
-            this.Status});
-            this.listViewCitizens.FullRowSelect = true;
-            this.listViewCitizens.GridLines = true;
-            this.listViewCitizens.HideSelection = false;
-            this.listViewCitizens.Location = new System.Drawing.Point(6, 104);
-            this.listViewCitizens.MultiSelect = false;
-            this.listViewCitizens.Name = "listViewCitizens";
-            this.listViewCitizens.Size = new System.Drawing.Size(859, 345);
-            this.listViewCitizens.TabIndex = 1;
-            this.listViewCitizens.UseCompatibleStateImageBehavior = false;
-            this.listViewCitizens.View = System.Windows.Forms.View.Details;
-            this.listViewCitizens.SelectedIndexChanged += new System.EventHandler(this.MainlistView_SelectedIndexChanged);
+            this.Post,
+            this.LvlAccess,
+            this.Contact,
+            this.Login});
+            this.listViewEmployers.FullRowSelect = true;
+            this.listViewEmployers.GridLines = true;
+            this.listViewEmployers.HideSelection = false;
+            this.listViewEmployers.Location = new System.Drawing.Point(12, 153);
+            this.listViewEmployers.MultiSelect = false;
+            this.listViewEmployers.Name = "listViewEmployers";
+            this.listViewEmployers.Size = new System.Drawing.Size(859, 345);
+            this.listViewEmployers.TabIndex = 2;
+            this.listViewEmployers.UseCompatibleStateImageBehavior = false;
+            this.listViewEmployers.View = System.Windows.Forms.View.Details;
             // 
             // ID
             // 
@@ -109,39 +108,28 @@ namespace KursProject
             this.FIO.Text = "ФИО";
             this.FIO.Width = 251;
             // 
-            // Date_birth
+            // Post
             // 
-            this.Date_birth.DisplayIndex = 3;
-            this.Date_birth.Text = "Дата рождения";
-            this.Date_birth.Width = 150;
+            this.Post.DisplayIndex = 3;
+            this.Post.Text = "Должность";
+            this.Post.Width = 150;
             // 
-            // Address
+            // LvlAccess
             // 
-            this.Address.DisplayIndex = 4;
-            this.Address.Text = "Адрес";
-            this.Address.Width = 159;
+            this.LvlAccess.DisplayIndex = 4;
+            this.LvlAccess.Text = "Ур. Доступа";
+            this.LvlAccess.Width = 159;
             // 
-            // Phone
+            // Contact
             // 
-            this.Phone.DisplayIndex = 2;
-            this.Phone.Text = "Номер телефона";
-            this.Phone.Width = 100;
+            this.Contact.DisplayIndex = 2;
+            this.Contact.Text = "Контакт";
+            this.Contact.Width = 100;
             // 
-            // Status
+            // Login
             // 
-            this.Status.Text = "Соц. Статус";
-            this.Status.Width = 141;
-            // 
-            // ButtonSelectCitizen
-            // 
-            this.ButtonSelectCitizen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.ButtonSelectCitizen.Location = new System.Drawing.Point(689, 455);
-            this.ButtonSelectCitizen.Name = "ButtonSelectCitizen";
-            this.ButtonSelectCitizen.Size = new System.Drawing.Size(176, 48);
-            this.ButtonSelectCitizen.TabIndex = 11;
-            this.ButtonSelectCitizen.Text = "Выбрать";
-            this.ButtonSelectCitizen.UseVisualStyleBackColor = true;
-            this.ButtonSelectCitizen.Click += new System.EventHandler(this.ButtonSelectCitizen_Click);
+            this.Login.Text = "Логин";
+            this.Login.Width = 141;
             // 
             // kP_2024_SuslovDataSet
             // 
@@ -233,54 +221,74 @@ namespace KursProject
             this.статусBindingSource.DataMember = "Статус";
             this.статусBindingSource.DataSource = this.kP_2024_SuslovDataSet;
             // 
-            // buttonAdd
+            // labelCountOfReq
             // 
-            this.buttonAdd.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
-            this.buttonAdd.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAdd.Location = new System.Drawing.Point(12, 455);
-            this.buttonAdd.Name = "buttonAdd";
-            this.buttonAdd.Size = new System.Drawing.Size(176, 64);
-            this.buttonAdd.TabIndex = 11;
-            this.buttonAdd.Text = "Добавить";
-            this.buttonAdd.UseVisualStyleBackColor = true;
-            this.buttonAdd.Click += new System.EventHandler(this.buttonAdd_Click);
+            this.labelCountOfReq.AutoSize = true;
+            this.labelCountOfReq.Location = new System.Drawing.Point(416, 504);
+            this.labelCountOfReq.Name = "labelCountOfReq";
+            this.labelCountOfReq.Size = new System.Drawing.Size(105, 13);
+            this.labelCountOfReq.TabIndex = 10;
+            this.labelCountOfReq.Text = "Найденно записей:";
             // 
-            // buttonDelete
+            // buttonAddEmployee
             // 
-            this.buttonDelete.FlatAppearance.BorderColor = System.Drawing.Color.Red;
-            this.buttonDelete.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonDelete.Location = new System.Drawing.Point(194, 455);
-            this.buttonDelete.Name = "buttonDelete";
-            this.buttonDelete.Size = new System.Drawing.Size(176, 64);
-            this.buttonDelete.TabIndex = 11;
-            this.buttonDelete.Text = "Удалить";
-            this.buttonDelete.UseVisualStyleBackColor = true;
-            this.buttonDelete.Click += new System.EventHandler(this.buttonDelete_Click);
+            this.buttonAddEmployee.FlatAppearance.BorderColor = System.Drawing.Color.Lime;
+            this.buttonAddEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonAddEmployee.Location = new System.Drawing.Point(12, 504);
+            this.buttonAddEmployee.Name = "buttonAddEmployee";
+            this.buttonAddEmployee.Size = new System.Drawing.Size(184, 66);
+            this.buttonAddEmployee.TabIndex = 12;
+            this.buttonAddEmployee.Text = "Добавить";
+            this.buttonAddEmployee.UseVisualStyleBackColor = true;
+            this.buttonAddEmployee.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // buttonDeleteEmployee
+            // 
+            this.buttonDeleteEmployee.FlatAppearance.BorderColor = System.Drawing.Color.Red;
+            this.buttonDeleteEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonDeleteEmployee.Location = new System.Drawing.Point(202, 504);
+            this.buttonDeleteEmployee.Name = "buttonDeleteEmployee";
+            this.buttonDeleteEmployee.Size = new System.Drawing.Size(184, 66);
+            this.buttonDeleteEmployee.TabIndex = 12;
+            this.buttonDeleteEmployee.Text = "Удалить";
+            this.buttonDeleteEmployee.UseVisualStyleBackColor = true;
+            this.buttonDeleteEmployee.Click += new System.EventHandler(this.button3_Click);
             // 
             // groupBoxFilters
             // 
+            this.groupBoxFilters.Controls.Add(this.labelPostFilter);
             this.groupBoxFilters.Controls.Add(this.labelPhoneFilter);
             this.groupBoxFilters.Controls.Add(this.labelFIOFilter);
-            this.groupBoxFilters.Controls.Add(this.textBoxPhoneFilter);
+            this.groupBoxFilters.Controls.Add(this.comboBoxPostFilter);
+            this.groupBoxFilters.Controls.Add(this.textBoxContactFilter);
             this.groupBoxFilters.Controls.Add(this.textBoxFIOFilter);
             this.groupBoxFilters.Controls.Add(this.buttonClearFilters);
             this.groupBoxFilters.Location = new System.Drawing.Point(12, 12);
             this.groupBoxFilters.Name = "groupBoxFilters";
-            this.groupBoxFilters.Size = new System.Drawing.Size(853, 86);
-            this.groupBoxFilters.TabIndex = 12;
+            this.groupBoxFilters.Size = new System.Drawing.Size(535, 135);
+            this.groupBoxFilters.TabIndex = 13;
             this.groupBoxFilters.TabStop = false;
             this.groupBoxFilters.Text = "Фильтрация";
-            this.groupBoxFilters.Enter += new System.EventHandler(this.groupBoxFilters_Enter);
+            // 
+            // labelPostFilter
+            // 
+            this.labelPostFilter.AutoSize = true;
+            this.labelPostFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelPostFilter.Location = new System.Drawing.Point(4, 71);
+            this.labelPostFilter.Name = "labelPostFilter";
+            this.labelPostFilter.Size = new System.Drawing.Size(74, 13);
+            this.labelPostFilter.TabIndex = 3;
+            this.labelPostFilter.Text = "Должность";
             // 
             // labelPhoneFilter
             // 
             this.labelPhoneFilter.AutoSize = true;
             this.labelPhoneFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.labelPhoneFilter.Location = new System.Drawing.Point(299, 22);
+            this.labelPhoneFilter.Location = new System.Drawing.Point(179, 22);
             this.labelPhoneFilter.Name = "labelPhoneFilter";
-            this.labelPhoneFilter.Size = new System.Drawing.Size(111, 13);
+            this.labelPhoneFilter.Size = new System.Drawing.Size(55, 13);
             this.labelPhoneFilter.TabIndex = 3;
-            this.labelPhoneFilter.Text = "Номер телефона ";
+            this.labelPhoneFilter.Text = "Контакт";
             // 
             // labelFIOFilter
             // 
@@ -292,57 +300,55 @@ namespace KursProject
             this.labelFIOFilter.TabIndex = 3;
             this.labelFIOFilter.Text = "ФИО";
             // 
-            // textBoxPhoneFilter
+            // comboBoxPostFilter
             // 
-            this.textBoxPhoneFilter.Location = new System.Drawing.Point(302, 41);
-            this.textBoxPhoneFilter.Name = "textBoxPhoneFilter";
-            this.textBoxPhoneFilter.Size = new System.Drawing.Size(150, 20);
-            this.textBoxPhoneFilter.TabIndex = 1;
-            this.textBoxPhoneFilter.Text = "+7";
-            this.textBoxPhoneFilter.TextChanged += new System.EventHandler(this.textBoxPhoneFilter_TextChanged);
-            this.textBoxPhoneFilter.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBoxPhoneFilter_KeyPress);
+            this.comboBoxPostFilter.FormattingEnabled = true;
+            this.comboBoxPostFilter.Location = new System.Drawing.Point(7, 87);
+            this.comboBoxPostFilter.Name = "comboBoxPostFilter";
+            this.comboBoxPostFilter.Size = new System.Drawing.Size(149, 21);
+            this.comboBoxPostFilter.TabIndex = 2;
+            this.comboBoxPostFilter.SelectedIndexChanged += new System.EventHandler(this.comboBoxPostFilter_SelectedIndexChanged);
+            // 
+            // textBoxContactFilter
+            // 
+            this.textBoxContactFilter.Location = new System.Drawing.Point(182, 41);
+            this.textBoxContactFilter.Name = "textBoxContactFilter";
+            this.textBoxContactFilter.Size = new System.Drawing.Size(150, 20);
+            this.textBoxContactFilter.TabIndex = 1;
+            this.textBoxContactFilter.TextChanged += new System.EventHandler(this.textBoxContactFilter_TextChanged);
             // 
             // textBoxFIOFilter
             // 
             this.textBoxFIOFilter.Location = new System.Drawing.Point(6, 41);
             this.textBoxFIOFilter.Name = "textBoxFIOFilter";
-            this.textBoxFIOFilter.Size = new System.Drawing.Size(290, 20);
+            this.textBoxFIOFilter.Size = new System.Drawing.Size(150, 20);
             this.textBoxFIOFilter.TabIndex = 1;
             this.textBoxFIOFilter.TextChanged += new System.EventHandler(this.textBoxFIOFilter_TextChanged);
             // 
             // buttonClearFilters
             // 
             this.buttonClearFilters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClearFilters.Location = new System.Drawing.Point(677, 9);
+            this.buttonClearFilters.Location = new System.Drawing.Point(363, 12);
             this.buttonClearFilters.Name = "buttonClearFilters";
-            this.buttonClearFilters.Size = new System.Drawing.Size(166, 52);
+            this.buttonClearFilters.Size = new System.Drawing.Size(166, 117);
             this.buttonClearFilters.TabIndex = 0;
             this.buttonClearFilters.Text = "Отчистить фильтры";
             this.buttonClearFilters.UseVisualStyleBackColor = true;
+            this.buttonClearFilters.Click += new System.EventHandler(this.buttonClearFilters_Click);
             // 
-            // labelCountOfReq
-            // 
-            this.labelCountOfReq.AutoSize = true;
-            this.labelCountOfReq.Location = new System.Drawing.Point(376, 455);
-            this.labelCountOfReq.Name = "labelCountOfReq";
-            this.labelCountOfReq.Size = new System.Drawing.Size(105, 13);
-            this.labelCountOfReq.TabIndex = 10;
-            this.labelCountOfReq.Text = "Найденно записей:";
-            // 
-            // FormListCitizen
+            // FormEmployers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(877, 528);
-            this.Controls.Add(this.labelCountOfReq);
+            this.ClientSize = new System.Drawing.Size(875, 579);
             this.Controls.Add(this.groupBoxFilters);
-            this.Controls.Add(this.buttonDelete);
-            this.Controls.Add(this.buttonAdd);
-            this.Controls.Add(this.ButtonSelectCitizen);
-            this.Controls.Add(this.listViewCitizens);
-            this.Name = "FormListCitizen";
-            this.Text = "Список граждан";
-            this.Load += new System.EventHandler(this.Form3_Load);
+            this.Controls.Add(this.buttonDeleteEmployee);
+            this.Controls.Add(this.buttonAddEmployee);
+            this.Controls.Add(this.labelCountOfReq);
+            this.Controls.Add(this.listViewEmployers);
+            this.Name = "FormEmployers";
+            this.Text = "Просмотр сотрудников";
+            this.Load += new System.EventHandler(this.FormEmployers_Load);
             ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.гражданинBindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.документBindingSource)).EndInit();
@@ -361,13 +367,13 @@ namespace KursProject
 
         #endregion
 
-        private System.Windows.Forms.ListView listViewCitizens;
+        private System.Windows.Forms.ListView listViewEmployers;
         private System.Windows.Forms.ColumnHeader ID;
         private System.Windows.Forms.ColumnHeader FIO;
-        private System.Windows.Forms.ColumnHeader Phone;
-        private System.Windows.Forms.ColumnHeader Date_birth;
-        private System.Windows.Forms.ColumnHeader Address;
-        private System.Windows.Forms.ColumnHeader Status;
+        private System.Windows.Forms.ColumnHeader Post;
+        private System.Windows.Forms.ColumnHeader LvlAccess;
+        private System.Windows.Forms.ColumnHeader Contact;
+        private System.Windows.Forms.ColumnHeader Login;
         private KP_2024_SuslovDataSet kP_2024_SuslovDataSet;
         private System.Windows.Forms.BindingSource гражданинBindingSource;
         private KP_2024_SuslovDataSetTableAdapters.ГражданинTableAdapter гражданинTableAdapter;
@@ -386,15 +392,16 @@ namespace KursProject
         private System.Windows.Forms.BindingSource сотрудникBindingSource;
         private KP_2024_SuslovDataSetTableAdapters.СтатусTableAdapter статусTableAdapter;
         private System.Windows.Forms.BindingSource статусBindingSource;
-        public System.Windows.Forms.Button ButtonSelectCitizen;
-        public System.Windows.Forms.Button buttonAdd;
-        public System.Windows.Forms.Button buttonDelete;
+        private System.Windows.Forms.Label labelCountOfReq;
+        private System.Windows.Forms.Button buttonAddEmployee;
+        private System.Windows.Forms.Button buttonDeleteEmployee;
         private System.Windows.Forms.GroupBox groupBoxFilters;
+        private System.Windows.Forms.Label labelPostFilter;
         private System.Windows.Forms.Label labelPhoneFilter;
         private System.Windows.Forms.Label labelFIOFilter;
-        private System.Windows.Forms.TextBox textBoxPhoneFilter;
+        private System.Windows.Forms.ComboBox comboBoxPostFilter;
+        private System.Windows.Forms.TextBox textBoxContactFilter;
         private System.Windows.Forms.TextBox textBoxFIOFilter;
         private System.Windows.Forms.Button buttonClearFilters;
-        private System.Windows.Forms.Label labelCountOfReq;
     }
 }

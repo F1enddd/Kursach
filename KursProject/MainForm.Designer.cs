@@ -48,11 +48,11 @@ namespace KursProject
             this.textBoxPhoneFilter = new System.Windows.Forms.TextBox();
             this.textBoxFIOFilter = new System.Windows.Forms.TextBox();
             this.buttonClearFilters = new System.Windows.Forms.Button();
+            this.buttonReload = new System.Windows.Forms.Button();
             this.groupBoxAdmin = new System.Windows.Forms.GroupBox();
             this.buttonViewWorkers = new System.Windows.Forms.Button();
             this.labelFIO = new System.Windows.Forms.Label();
             this.buttonLVLAccesInfo = new System.Windows.Forms.Button();
-            this.buttonAddWorker = new System.Windows.Forms.Button();
             this.buttonUpdateHistory = new System.Windows.Forms.Button();
             this.buttonUpdate = new System.Windows.Forms.Button();
             this.buttonListCitizen = new System.Windows.Forms.Button();
@@ -62,6 +62,7 @@ namespace KursProject
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.главнаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчётToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.labelCountOfReq = new System.Windows.Forms.Label();
             this.kP_2024_SuslovDataSet1 = new KursProject.KP_2024_SuslovDataSet();
             this.гражданинBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.гражданинTableAdapter1 = new KursProject.KP_2024_SuslovDataSetTableAdapters.ГражданинTableAdapter();
@@ -80,7 +81,6 @@ namespace KursProject
             this.мера_ПоддержкиBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.сотрудникBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.статусBindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.labelCountOfReq = new System.Windows.Forms.Label();
             this.groupBoxFilters.SuspendLayout();
             this.groupBoxAdmin.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -202,27 +202,30 @@ namespace KursProject
             // labelSupportFilter
             // 
             this.labelSupportFilter.AutoSize = true;
+            this.labelSupportFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelSupportFilter.Location = new System.Drawing.Point(4, 71);
             this.labelSupportFilter.Name = "labelSupportFilter";
-            this.labelSupportFilter.Size = new System.Drawing.Size(93, 13);
+            this.labelSupportFilter.Size = new System.Drawing.Size(107, 13);
             this.labelSupportFilter.TabIndex = 3;
             this.labelSupportFilter.Text = "Мера поддержки";
             // 
             // labelPhoneFilter
             // 
             this.labelPhoneFilter.AutoSize = true;
+            this.labelPhoneFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelPhoneFilter.Location = new System.Drawing.Point(179, 22);
             this.labelPhoneFilter.Name = "labelPhoneFilter";
-            this.labelPhoneFilter.Size = new System.Drawing.Size(96, 13);
+            this.labelPhoneFilter.Size = new System.Drawing.Size(111, 13);
             this.labelPhoneFilter.TabIndex = 3;
             this.labelPhoneFilter.Text = "Номер телефона ";
             // 
             // labelFIOFilter
             // 
             this.labelFIOFilter.AutoSize = true;
+            this.labelFIOFilter.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelFIOFilter.Location = new System.Drawing.Point(6, 22);
             this.labelFIOFilter.Name = "labelFIOFilter";
-            this.labelFIOFilter.Size = new System.Drawing.Size(34, 13);
+            this.labelFIOFilter.Size = new System.Drawing.Size(37, 13);
             this.labelFIOFilter.TabIndex = 3;
             this.labelFIOFilter.Text = "ФИО";
             // 
@@ -255,13 +258,24 @@ namespace KursProject
             // buttonClearFilters
             // 
             this.buttonClearFilters.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonClearFilters.Location = new System.Drawing.Point(378, 41);
+            this.buttonClearFilters.Location = new System.Drawing.Point(363, 12);
             this.buttonClearFilters.Name = "buttonClearFilters";
-            this.buttonClearFilters.Size = new System.Drawing.Size(151, 62);
+            this.buttonClearFilters.Size = new System.Drawing.Size(166, 117);
             this.buttonClearFilters.TabIndex = 0;
             this.buttonClearFilters.Text = "Отчистить фильтры";
             this.buttonClearFilters.UseVisualStyleBackColor = true;
             this.buttonClearFilters.Click += new System.EventHandler(this.buttonClearFilters_Click);
+            // 
+            // buttonReload
+            // 
+            this.buttonReload.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonReload.Location = new System.Drawing.Point(623, 519);
+            this.buttonReload.Name = "buttonReload";
+            this.buttonReload.Size = new System.Drawing.Size(103, 54);
+            this.buttonReload.TabIndex = 0;
+            this.buttonReload.Text = "Обновить";
+            this.buttonReload.UseVisualStyleBackColor = true;
+            this.buttonReload.Click += new System.EventHandler(this.buttonReload_Click);
             // 
             // groupBoxAdmin
             // 
@@ -269,10 +283,9 @@ namespace KursProject
             this.groupBoxAdmin.Controls.Add(this.labelFIO);
             this.groupBoxAdmin.Controls.Add(this.labelLvlAccess);
             this.groupBoxAdmin.Controls.Add(this.buttonLVLAccesInfo);
-            this.groupBoxAdmin.Controls.Add(this.buttonAddWorker);
             this.groupBoxAdmin.Location = new System.Drawing.Point(553, 27);
             this.groupBoxAdmin.Name = "groupBoxAdmin";
-            this.groupBoxAdmin.Size = new System.Drawing.Size(622, 135);
+            this.groupBoxAdmin.Size = new System.Drawing.Size(617, 135);
             this.groupBoxAdmin.TabIndex = 4;
             this.groupBoxAdmin.TabStop = false;
             this.groupBoxAdmin.Text = "Административный доступ";
@@ -281,12 +294,13 @@ namespace KursProject
             // buttonViewWorkers
             // 
             this.buttonViewWorkers.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonViewWorkers.Location = new System.Drawing.Point(314, 65);
+            this.buttonViewWorkers.Location = new System.Drawing.Point(9, 65);
             this.buttonViewWorkers.Name = "buttonViewWorkers";
-            this.buttonViewWorkers.Size = new System.Drawing.Size(302, 62);
+            this.buttonViewWorkers.Size = new System.Drawing.Size(602, 62);
             this.buttonViewWorkers.TabIndex = 4;
             this.buttonViewWorkers.Text = "Просмотр сотрудников";
             this.buttonViewWorkers.UseVisualStyleBackColor = true;
+            this.buttonViewWorkers.Click += new System.EventHandler(this.buttonViewWorkers_Click);
             // 
             // labelFIO
             // 
@@ -309,16 +323,6 @@ namespace KursProject
             this.buttonLVLAccesInfo.UseVisualStyleBackColor = true;
             this.buttonLVLAccesInfo.Click += new System.EventHandler(this.buttonLVLAccesInfo_Click);
             // 
-            // buttonAddWorker
-            // 
-            this.buttonAddWorker.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonAddWorker.Location = new System.Drawing.Point(9, 65);
-            this.buttonAddWorker.Name = "buttonAddWorker";
-            this.buttonAddWorker.Size = new System.Drawing.Size(302, 62);
-            this.buttonAddWorker.TabIndex = 0;
-            this.buttonAddWorker.Text = "Добавить сотрудника";
-            this.buttonAddWorker.UseVisualStyleBackColor = true;
-            // 
             // buttonUpdateHistory
             // 
             this.buttonUpdateHistory.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
@@ -328,6 +332,7 @@ namespace KursProject
             this.buttonUpdateHistory.TabIndex = 0;
             this.buttonUpdateHistory.Text = "История обработки";
             this.buttonUpdateHistory.UseVisualStyleBackColor = true;
+            this.buttonUpdateHistory.Click += new System.EventHandler(this.buttonUpdateHistory_Click);
             // 
             // buttonUpdate
             // 
@@ -396,6 +401,15 @@ namespace KursProject
             this.отчётToolStripMenuItem.Name = "отчётToolStripMenuItem";
             this.отчётToolStripMenuItem.Size = new System.Drawing.Size(51, 20);
             this.отчётToolStripMenuItem.Text = "Отчёт";
+            // 
+            // labelCountOfReq
+            // 
+            this.labelCountOfReq.AutoSize = true;
+            this.labelCountOfReq.Location = new System.Drawing.Point(732, 519);
+            this.labelCountOfReq.Name = "labelCountOfReq";
+            this.labelCountOfReq.Size = new System.Drawing.Size(105, 13);
+            this.labelCountOfReq.TabIndex = 9;
+            this.labelCountOfReq.Text = "Найденно записей:";
             // 
             // kP_2024_SuslovDataSet1
             // 
@@ -487,15 +501,6 @@ namespace KursProject
             this.статусBindingSource.DataMember = "Статус";
             this.статусBindingSource.DataSource = this.kP_2024_SuslovDataSet1;
             // 
-            // labelCountOfReq
-            // 
-            this.labelCountOfReq.AutoSize = true;
-            this.labelCountOfReq.Location = new System.Drawing.Point(732, 519);
-            this.labelCountOfReq.Name = "labelCountOfReq";
-            this.labelCountOfReq.Size = new System.Drawing.Size(105, 13);
-            this.labelCountOfReq.TabIndex = 9;
-            this.labelCountOfReq.Text = "Найденно записей:";
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -506,6 +511,7 @@ namespace KursProject
             this.Controls.Add(this.buttonListCitizen);
             this.Controls.Add(this.groupBoxAdmin);
             this.Controls.Add(this.buttonUpdate);
+            this.Controls.Add(this.buttonReload);
             this.Controls.Add(this.buttonUpdateHistory);
             this.Controls.Add(this.groupBoxFilters);
             this.Controls.Add(this.buttonDelete);
@@ -559,12 +565,11 @@ namespace KursProject
         private System.Windows.Forms.ComboBox comboBoxSupportFilter;
         private System.Windows.Forms.TextBox textBoxPhoneFilter;
         private System.Windows.Forms.TextBox textBoxFIOFilter;
-        private System.Windows.Forms.Button buttonClearFilters;
+        private System.Windows.Forms.Button buttonReload;
         private System.Windows.Forms.Label labelSupportFilter;
         private System.Windows.Forms.Label labelPhoneFilter;
         private System.Windows.Forms.Label labelFIOFilter;
         private System.Windows.Forms.GroupBox groupBoxAdmin;
-        private System.Windows.Forms.Button buttonAddWorker;
         private System.Windows.Forms.Button buttonUpdateHistory;
         private System.Windows.Forms.Button buttonUpdate;
         private System.Windows.Forms.Button buttonLVLAccesInfo;
@@ -598,6 +603,7 @@ namespace KursProject
         private System.Windows.Forms.Label labelCountOfReq;
         private System.Windows.Forms.ToolStripMenuItem просмотрToolStripMenuItem;
         public System.Windows.Forms.Label labelFIO;
+        private System.Windows.Forms.Button buttonClearFilters;
     }
 }
 

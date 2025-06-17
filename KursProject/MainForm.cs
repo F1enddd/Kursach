@@ -36,12 +36,11 @@ namespace KursProject
             
             if (lvlAccess == "B")
             {
-                buttonAddWorker.Enabled = false;
+                buttonViewWorkers.Enabled = false;
                 buttonDelete.Enabled = false;
             }
             if (lvlAccess == "C")
             {
-                buttonAddWorker.Enabled = false;
                 buttonDelete.Enabled = false;
                 buttonAdd.Enabled = false;
                 buttonDelete.Enabled = false;
@@ -94,8 +93,9 @@ namespace KursProject
                 MainlistView.Items[0].Selected = true;
                 MainlistView.Focus();
                 CountOfRequests += 1;
-                labelCountOfReq.Text = "Найденно записей: " + CountOfRequests;
+                
             }
+            labelCountOfReq.Text = "Найденно записей: " + CountOfRequests;
         }
 
         public void FillListViewFilteredFio(string searchFio)
@@ -241,9 +241,7 @@ namespace KursProject
             FormAddOrChange FAOC = new FormAddOrChange();
             FAOC.MF = this;
             FAOC.AddOrChange = false;
-            FAOC.textBoxPhoneAOC.Text = "+7";
-            FAOC.labelSelectedCitizen.Text = "Не выбран существующий гражданин, будет создан новый";
-            FAOC.textBoxPhoneAOC.SelectionStart = FAOC.textBoxPhoneAOC.Text.Length;
+            FAOC.labelSelectedCitizen.Text = "Выбранный гражданин: ";
             FAOC.Text = "Добавление заявки";
             FAOC.ShowDialog();
            
@@ -455,8 +453,38 @@ namespace KursProject
 
         private void buttonListCitizen_Click(object sender, EventArgs e)
         {
+            
+
             FormListCitizen FLC = new FormListCitizen();
+            FLC.ButtonSelectCitizen.Enabled = false;
+            if (lvlAccess == "C")
+            {
+                FLC.buttonAdd.Enabled = false;
+                FLC.buttonDelete.Enabled = false;
+            }
+            if (lvlAccess == "B") 
+            {
+                FLC.buttonDelete.Enabled= false;
+            }
+
             FLC.ShowDialog();
+        }
+
+        private void buttonReload_Click(object sender, EventArgs e)
+        {
+            FillListView();
+        }
+
+        private void buttonUpdateHistory_Click(object sender, EventArgs e)
+        {
+            FormProcessHistory FPH = new FormProcessHistory();
+            FPH.ShowDialog();
+        }
+
+        private void buttonViewWorkers_Click(object sender, EventArgs e)
+        {
+            FormEmployers FE = new FormEmployers();
+            FE.ShowDialog();
         }
     }
 }

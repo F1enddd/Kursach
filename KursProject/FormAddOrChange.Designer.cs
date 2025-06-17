@@ -330,6 +330,7 @@ namespace KursProject
             this.buttonAddMeraAOC.TabIndex = 9;
             this.buttonAddMeraAOC.Text = "+";
             this.buttonAddMeraAOC.UseVisualStyleBackColor = true;
+            this.buttonAddMeraAOC.Click += new System.EventHandler(this.buttonAddMeraAOC_Click);
             // 
             // label6
             // 
@@ -503,7 +504,6 @@ namespace KursProject
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox textBoxCommentAOC;
         private System.Windows.Forms.ComboBox comboBoxMeraAOC;
-        private System.Windows.Forms.Button buttonAddMeraAOC;
         private System.Windows.Forms.Button ButtonSaveAOC;
         private System.Windows.Forms.Button buttonListCitizen;
         private System.Windows.Forms.Label label6;
@@ -534,5 +534,6 @@ namespace KursProject
         private KP_2024_SuslovDataSetTableAdapters.СтатусTableAdapter статусTableAdapter;
         private System.Windows.Forms.BindingSource статусBindingSource;
         private System.Windows.Forms.Label label8;
+        public System.Windows.Forms.Button buttonAddMeraAOC;
     }
 }

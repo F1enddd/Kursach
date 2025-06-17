@@ -64,7 +64,7 @@ namespace KursProject
             this.сотрудникTableAdapter.Fill(this.kP_2024_SuslovDataSet.Сотрудник);
             textBoxLogin.TabIndex = 0;
             textBoxPassword.TabIndex = 1;
-            buttonEntry.TabIndex = 2;
+            buttonReg.TabIndex = 2;
             buttonExit.TabIndex = 3;
             buttonLVLAccess.TabIndex = 4;
         }
@@ -92,6 +92,17 @@ namespace KursProject
                 this.Close();
             };
             this.Hide();
+        }
+
+        private void buttonReg_Click(object sender, EventArgs e)
+        {
+            FormRegistration FR = new FormRegistration();
+            
+            FR.ShowDialog();
+            if (FR.DialogResult == DialogResult.OK)
+            {
+                this.сотрудникTableAdapter.Fill(this.kP_2024_SuslovDataSet.Сотрудник);
+            }
         }
     }
 }

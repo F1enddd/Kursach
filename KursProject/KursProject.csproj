@@ -76,6 +76,36 @@
     <Reference Include="WindowsBase" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="FormAddCitizen.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddCitizen.Designer.cs">
+      <DependentUpon>FormAddCitizen.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormAddMera.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormAddMera.Designer.cs">
+      <DependentUpon>FormAddMera.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormEmployers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormEmployers.Designer.cs">
+      <DependentUpon>FormEmployers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormProcessHistory.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormProcessHistory.Designer.cs">
+      <DependentUpon>FormProcessHistory.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FormRegistration.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FormRegistration.Designer.cs">
+      <DependentUpon>FormRegistration.cs</DependentUpon>
+    </Compile>
     <Compile Include="KP_2024_SuslovDataSet.cs">
       <DependentUpon>KP_2024_SuslovDataSet.xsd</DependentUpon>
     </Compile>
@@ -116,6 +146,21 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="FormAddCitizen.resx">
+      <DependentUpon>FormAddCitizen.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormAddMera.resx">
+      <DependentUpon>FormAddMera.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormEmployers.resx">
+      <DependentUpon>FormEmployers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormProcessHistory.resx">
+      <DependentUpon>FormProcessHistory.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FormRegistration.resx">
+      <DependentUpon>FormRegistration.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
