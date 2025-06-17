@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Net.Http.Headers;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -13,23 +14,39 @@ namespace KursProject
 
     public partial class MainForm : Form
     {
+        private string lvlAccess;
+        public FormLoggining FL;
         Boolean ThemeWhite = true;
         private string selectedItemId;
+        private int CountOfRequests = 0;
+        private int ID_User;
 
-        public MainForm()
+        public MainForm(string lvlAccess, int ID_User)
         {
             InitializeComponent();
+            this.lvlAccess = lvlAccess;
+            this.ID_User = ID_User;
         }
 
         public Label LvlAccessText() { return labelLvlAccess; }
 
+
         private void Form1_Load(object sender, EventArgs e)
         {
             
-            if (labelLvlAccess.Text != "Уровень доступа: A")
+            if (lvlAccess == "B")
             {
                 buttonAddWorker.Enabled = false;
                 buttonDelete.Enabled = false;
+            }
+            if (lvlAccess == "C")
+            {
+                buttonAddWorker.Enabled = false;
+                buttonDelete.Enabled = false;
+                buttonAdd.Enabled = false;
+                buttonDelete.Enabled = false;
+                buttonUpdate.Enabled = false;
+                изменитьToolStripMenuItem.Enabled = false;
             }
             FillListView();
             MainlistView.ContextMenuStrip = contextMenuStrip1;
@@ -51,6 +68,7 @@ namespace KursProject
             this.должностьTableAdapter.Fill(this.kP_2024_SuslovDataSet1.Должность);
             this.документTableAdapter1.Fill(this.kP_2024_SuslovDataSet1.Документ);
             this.гражданинTableAdapter1.Fill(this.kP_2024_SuslovDataSet1.Гражданин);
+            CountOfRequests = 0;
             MainlistView.Items.Clear();
 
             string[] items = new string[6];
@@ -75,6 +93,8 @@ namespace KursProject
 
                 MainlistView.Items[0].Selected = true;
                 MainlistView.Focus();
+                CountOfRequests += 1;
+                labelCountOfReq.Text = "Найденно записей: " + CountOfRequests;
             }
         }
 
@@ -89,6 +109,8 @@ namespace KursProject
             this.документTableAdapter1.Fill(this.kP_2024_SuslovDataSet1.Документ);
             this.гражданинTableAdapter1.Fill(this.kP_2024_SuslovDataSet1.Гражданин);
 
+
+            CountOfRequests = 0;
             MainlistView.Items.Clear();
 
             string[] items = new string[6];
@@ -118,6 +140,8 @@ namespace KursProject
                 it.Text = Row["ID_Заявления"].ToString();
                 it.SubItems.AddRange(items);
                 MainlistView.Items.Add(it);
+                CountOfRequests += 1;
+                labelCountOfReq.Text = "Найденно записей: " + CountOfRequests;
             }
         }
 
@@ -131,6 +155,8 @@ namespace KursProject
             this.должностьTableAdapter.Fill(this.kP_2024_SuslovDataSet1.Должность);
             this.документTableAdapter1.Fill(this.kP_2024_SuslovDataSet1.Документ);
             this.гражданинTableAdapter1.Fill(this.kP_2024_SuslovDataSet1.Гражданин);
+
+            CountOfRequests = 0;
             MainlistView.Items.Clear();
 
             foreach (DataRow row in kP_2024_SuslovDataSet1.Заявление.Rows)
@@ -154,6 +180,8 @@ namespace KursProject
                     ListViewItem item = new ListViewItem(row["ID_Заявления"].ToString());
                     item.SubItems.AddRange(items);
                     MainlistView.Items.Add(item);
+                    CountOfRequests += 1;
+                    labelCountOfReq.Text = "Найденно записей: " + CountOfRequests;
                 }
             }
         }
@@ -169,6 +197,7 @@ namespace KursProject
             this.документTableAdapter1.Fill(this.kP_2024_SuslovDataSet1.Документ);
             this.гражданинTableAdapter1.Fill(this.kP_2024_SuslovDataSet1.Гражданин);
 
+            CountOfRequests = 0;
             MainlistView.Items.Clear();
 
             foreach (DataRow row in this.kP_2024_SuslovDataSet1.Заявление.Rows)
@@ -193,6 +222,8 @@ namespace KursProject
                 ListViewItem it = new ListViewItem(row[0].ToString()); // ID заявки
                 it.SubItems.AddRange(items);
                 MainlistView.Items.Add(it);
+                CountOfRequests += 1;
+                labelCountOfReq.Text = "Найденно записей: " + CountOfRequests;
             }
         }
 
@@ -318,7 +349,7 @@ namespace KursProject
 
         private void выйтиИзАккаунтаToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.Hide();
+            this.Close();
             FormLoggining FL = new FormLoggining();
         }
 
@@ -409,6 +440,23 @@ namespace KursProject
                     }
                 }
             }
+        }
+
+        private void menuStrip1_ItemClicked(object sender, ToolStripItemClickedEventArgs e)
+        {
+
+        }
+
+        private void buttonUpdate_Click(object sender, EventArgs e)
+        {
+            FormRequestProcessing FRP = new FormRequestProcessing(ID_User);
+            FRP.ShowDialog();
+        }
+
+        private void buttonListCitizen_Click(object sender, EventArgs e)
+        {
+            FormListCitizen FLC = new FormListCitizen();
+            FLC.ShowDialog();
         }
     }
 }

@@ -50,6 +50,7 @@ namespace KursProject
             this.buttonClearFilters = new System.Windows.Forms.Button();
             this.groupBoxAdmin = new System.Windows.Forms.GroupBox();
             this.buttonViewWorkers = new System.Windows.Forms.Button();
+            this.labelFIO = new System.Windows.Forms.Label();
             this.buttonLVLAccesInfo = new System.Windows.Forms.Button();
             this.buttonAddWorker = new System.Windows.Forms.Button();
             this.buttonUpdateHistory = new System.Windows.Forms.Button();
@@ -57,6 +58,7 @@ namespace KursProject
             this.buttonListCitizen = new System.Windows.Forms.Button();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.изменитьToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.просмотрToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.главнаяToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.отчётToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -78,6 +80,7 @@ namespace KursProject
             this.мера_ПоддержкиBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.сотрудникBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.статусBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            this.labelCountOfReq = new System.Windows.Forms.Label();
             this.groupBoxFilters.SuspendLayout();
             this.groupBoxAdmin.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -114,7 +117,6 @@ namespace KursProject
             this.MainlistView.TabIndex = 0;
             this.MainlistView.UseCompatibleStateImageBehavior = false;
             this.MainlistView.View = System.Windows.Forms.View.Details;
-            this.MainlistView.SelectedIndexChanged += new System.EventHandler(this.MainlistView_SelectedIndexChanged);
             this.MainlistView.MouseDown += new System.Windows.Forms.MouseEventHandler(this.MainlistView_MouseDown);
             // 
             // ID
@@ -177,7 +179,7 @@ namespace KursProject
             this.labelLvlAccess.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.labelLvlAccess.Location = new System.Drawing.Point(6, 17);
             this.labelLvlAccess.Name = "labelLvlAccess";
-            this.labelLvlAccess.Size = new System.Drawing.Size(140, 16);
+            this.labelLvlAccess.Size = new System.Drawing.Size(139, 16);
             this.labelLvlAccess.TabIndex = 3;
             this.labelLvlAccess.Text = "Уровень доступа:";
             // 
@@ -264,6 +266,7 @@ namespace KursProject
             // groupBoxAdmin
             // 
             this.groupBoxAdmin.Controls.Add(this.buttonViewWorkers);
+            this.groupBoxAdmin.Controls.Add(this.labelFIO);
             this.groupBoxAdmin.Controls.Add(this.labelLvlAccess);
             this.groupBoxAdmin.Controls.Add(this.buttonLVLAccesInfo);
             this.groupBoxAdmin.Controls.Add(this.buttonAddWorker);
@@ -284,6 +287,16 @@ namespace KursProject
             this.buttonViewWorkers.TabIndex = 4;
             this.buttonViewWorkers.Text = "Просмотр сотрудников";
             this.buttonViewWorkers.UseVisualStyleBackColor = true;
+            // 
+            // labelFIO
+            // 
+            this.labelFIO.AutoSize = true;
+            this.labelFIO.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.labelFIO.Location = new System.Drawing.Point(243, 17);
+            this.labelFIO.Name = "labelFIO";
+            this.labelFIO.Size = new System.Drawing.Size(41, 16);
+            this.labelFIO.TabIndex = 3;
+            this.labelFIO.Text = "ФИО";
             // 
             // buttonLVLAccesInfo
             // 
@@ -318,37 +331,47 @@ namespace KursProject
             // 
             // buttonUpdate
             // 
+            this.buttonUpdate.FlatAppearance.BorderColor = System.Drawing.Color.DeepSkyBlue;
             this.buttonUpdate.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonUpdate.Location = new System.Drawing.Point(870, 236);
+            this.buttonUpdate.Location = new System.Drawing.Point(870, 304);
             this.buttonUpdate.Name = "buttonUpdate";
             this.buttonUpdate.Size = new System.Drawing.Size(302, 62);
             this.buttonUpdate.TabIndex = 0;
             this.buttonUpdate.Text = "Обработать заявки";
             this.buttonUpdate.UseVisualStyleBackColor = true;
+            this.buttonUpdate.Click += new System.EventHandler(this.buttonUpdate_Click);
             // 
             // buttonListCitizen
             // 
             this.buttonListCitizen.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonListCitizen.Location = new System.Drawing.Point(870, 304);
+            this.buttonListCitizen.Location = new System.Drawing.Point(870, 236);
             this.buttonListCitizen.Name = "buttonListCitizen";
             this.buttonListCitizen.Size = new System.Drawing.Size(302, 62);
             this.buttonListCitizen.TabIndex = 5;
             this.buttonListCitizen.Text = "Список граждан";
             this.buttonListCitizen.UseVisualStyleBackColor = true;
+            this.buttonListCitizen.Click += new System.EventHandler(this.buttonListCitizen_Click);
             // 
             // contextMenuStrip1
             // 
             this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.изменитьToolStripMenuItem});
+            this.изменитьToolStripMenuItem,
+            this.просмотрToolStripMenuItem});
             this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(129, 26);
+            this.contextMenuStrip1.Size = new System.Drawing.Size(132, 48);
             // 
             // изменитьToolStripMenuItem
             // 
             this.изменитьToolStripMenuItem.Name = "изменитьToolStripMenuItem";
-            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
+            this.изменитьToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
             this.изменитьToolStripMenuItem.Text = "Изменить";
             this.изменитьToolStripMenuItem.Click += new System.EventHandler(this.изменитьToolStripMenuItem_Click_1);
+            // 
+            // просмотрToolStripMenuItem
+            // 
+            this.просмотрToolStripMenuItem.Name = "просмотрToolStripMenuItem";
+            this.просмотрToolStripMenuItem.Size = new System.Drawing.Size(131, 22);
+            this.просмотрToolStripMenuItem.Text = "Просмотр";
             // 
             // menuStrip1
             // 
@@ -360,6 +383,7 @@ namespace KursProject
             this.menuStrip1.Size = new System.Drawing.Size(1182, 24);
             this.menuStrip1.TabIndex = 7;
             this.menuStrip1.Text = "menuStrip1";
+            this.menuStrip1.ItemClicked += new System.Windows.Forms.ToolStripItemClickedEventHandler(this.menuStrip1_ItemClicked);
             // 
             // главнаяToolStripMenuItem
             // 
@@ -463,11 +487,21 @@ namespace KursProject
             this.статусBindingSource.DataMember = "Статус";
             this.статусBindingSource.DataSource = this.kP_2024_SuslovDataSet1;
             // 
+            // labelCountOfReq
+            // 
+            this.labelCountOfReq.AutoSize = true;
+            this.labelCountOfReq.Location = new System.Drawing.Point(732, 519);
+            this.labelCountOfReq.Name = "labelCountOfReq";
+            this.labelCountOfReq.Size = new System.Drawing.Size(105, 13);
+            this.labelCountOfReq.TabIndex = 9;
+            this.labelCountOfReq.Text = "Найденно записей:";
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1182, 578);
+            this.Controls.Add(this.labelCountOfReq);
             this.Controls.Add(this.menuStrip1);
             this.Controls.Add(this.buttonListCitizen);
             this.Controls.Add(this.groupBoxAdmin);
@@ -561,6 +595,9 @@ namespace KursProject
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem главнаяToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem отчётToolStripMenuItem;
+        private System.Windows.Forms.Label labelCountOfReq;
+        private System.Windows.Forms.ToolStripMenuItem просмотрToolStripMenuItem;
+        public System.Windows.Forms.Label labelFIO;
     }
 }
 

@@ -11,15 +11,14 @@ using System.Windows.Forms;
 
 namespace KursProject
 {
-    public partial class Form3 : Form
+    public partial class FormListCitizen : Form
     {
         private int LastSelectedItem;
         FormAddOrChange FAOC = new FormAddOrChange();
 
-        public Form3(FormAddOrChange parentForm)
+        public FormListCitizen()
         {
             InitializeComponent();
-            FAOC = parentForm;
         }
 
         private void MainlistView_SelectedIndexChanged(object sender, EventArgs e)
@@ -33,6 +32,22 @@ namespace KursProject
 
         private void Form3_Load(object sender, EventArgs e)
         {
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "kP_2024_SuslovDataSet.Статус". При необходимости она может быть перемещена или удалена.
+            this.статусTableAdapter.Fill(this.kP_2024_SuslovDataSet.Статус);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "kP_2024_SuslovDataSet.Сотрудник". При необходимости она может быть перемещена или удалена.
+            this.сотрудникTableAdapter.Fill(this.kP_2024_SuslovDataSet.Сотрудник);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "kP_2024_SuslovDataSet.Мера_Поддержки". При необходимости она может быть перемещена или удалена.
+            this.мера_ПоддержкиTableAdapter.Fill(this.kP_2024_SuslovDataSet.Мера_Поддержки);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "kP_2024_SuslovDataSet.История_Обработки". При необходимости она может быть перемещена или удалена.
+            this.история_ОбработкиTableAdapter.Fill(this.kP_2024_SuslovDataSet.История_Обработки);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "kP_2024_SuslovDataSet.Заявление". При необходимости она может быть перемещена или удалена.
+            this.заявлениеTableAdapter.Fill(this.kP_2024_SuslovDataSet.Заявление);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "kP_2024_SuslovDataSet.Должность". При необходимости она может быть перемещена или удалена.
+            this.должностьTableAdapter.Fill(this.kP_2024_SuslovDataSet.Должность);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "kP_2024_SuslovDataSet.Документ". При необходимости она может быть перемещена или удалена.
+            this.документTableAdapter.Fill(this.kP_2024_SuslovDataSet.Документ);
+            // TODO: данная строка кода позволяет загрузить данные в таблицу "kP_2024_SuslovDataSet.Гражданин". При необходимости она может быть перемещена или удалена.
+            this.гражданинTableAdapter.Fill(this.kP_2024_SuslovDataSet.Гражданин);
             FillListViewCitizen();
         }
 
@@ -92,6 +107,14 @@ namespace KursProject
             }
             FAOC.ChangeSelectedCitizen();
             this.Close();
+        }
+
+        private void гражданинBindingNavigatorSaveItem_Click(object sender, EventArgs e)
+        {
+            this.Validate();
+            this.гражданинBindingSource.EndEdit();
+            this.tableAdapterManager.UpdateAll(this.kP_2024_SuslovDataSet);
+
         }
     }
 }

@@ -43,8 +43,14 @@ namespace KursProject
                 MessageBox.Show($"Здравствуйте, {partsName[1]} {partsName[2]}! \nВаш уровень доступа: {lvlAccess}.", "Успешный вход!");
 
                 this.Hide();
-                MainForm MF = new MainForm();
+                MainForm MF = new MainForm(lvlAccess, Convert.ToInt32(Rows[0][0]));
+                MF.FL = this;
+                MF.FormClosed += (s, args) =>
+                {
+                    this.Close();
+                };
                 MF.LvlAccessText().Text = $"Уровень доступа: {lvlAccess}";
+                MF.labelFIO.Text = Name;
                 MF.ShowDialog();
             }
             else
@@ -81,6 +87,10 @@ namespace KursProject
             FAOC.textBoxPhoneAOC.Text = "+7";
             FAOC.textBoxPhoneAOC.SelectionStart = FAOC.textBoxPhoneAOC.Text.Length;
             FAOC.Show();
+            FAOC.FormClosed += (s, args) =>
+            {
+                this.Close();
+            };
             this.Hide();
         }
     }

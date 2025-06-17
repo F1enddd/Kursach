@@ -277,8 +277,8 @@ namespace KursProject
         {
             if(CitizenSelected == false)
             {
-                Form3 F3 = new Form3(this);
-                F3.ShowDialog();
+                FormListCitizen FLC = new FormListCitizen();
+                FLC.ShowDialog();
                 buttonListCitizen.Text = "Отменить выбор";
             }
             else

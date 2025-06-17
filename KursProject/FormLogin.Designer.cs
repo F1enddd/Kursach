@@ -54,7 +54,7 @@ namespace KursProject
             this.buttonExit.Location = new System.Drawing.Point(140, 221);
             this.buttonExit.Name = "buttonExit";
             this.buttonExit.Size = new System.Drawing.Size(75, 23);
-            this.buttonExit.TabIndex = 0;
+            this.buttonExit.TabIndex = 4;
             this.buttonExit.Text = "Выйти";
             this.buttonExit.UseVisualStyleBackColor = true;
             this.buttonExit.Click += new System.EventHandler(this.buttonExit_Click);
@@ -64,7 +64,7 @@ namespace KursProject
             this.buttonEntry.Location = new System.Drawing.Point(113, 192);
             this.buttonEntry.Name = "buttonEntry";
             this.buttonEntry.Size = new System.Drawing.Size(129, 23);
-            this.buttonEntry.TabIndex = 0;
+            this.buttonEntry.TabIndex = 3;
             this.buttonEntry.Text = "Войти";
             this.buttonEntry.UseVisualStyleBackColor = true;
             this.buttonEntry.Click += new System.EventHandler(this.buttonEntry_Click);
@@ -154,7 +154,7 @@ namespace KursProject
             this.buttonLVLAccess.Location = new System.Drawing.Point(99, 263);
             this.buttonLVLAccess.Name = "buttonLVLAccess";
             this.buttonLVLAccess.Size = new System.Drawing.Size(25, 26);
-            this.buttonLVLAccess.TabIndex = 5;
+            this.buttonLVLAccess.TabIndex = 6;
             this.buttonLVLAccess.Text = "?";
             this.buttonLVLAccess.UseVisualStyleBackColor = true;
             this.buttonLVLAccess.Click += new System.EventHandler(this.buttonLVLAccess_Click);
@@ -173,7 +173,7 @@ namespace KursProject
             this.buttonGuest.Location = new System.Drawing.Point(140, 265);
             this.buttonGuest.Name = "buttonGuest";
             this.buttonGuest.Size = new System.Drawing.Size(174, 23);
-            this.buttonGuest.TabIndex = 0;
+            this.buttonGuest.TabIndex = 5;
             this.buttonGuest.Text = "Войти как гость";
             this.buttonGuest.UseVisualStyleBackColor = true;
             this.buttonGuest.Click += new System.EventHandler(this.buttonGuest_Click);
