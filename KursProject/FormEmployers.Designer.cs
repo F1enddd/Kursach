@@ -346,6 +346,8 @@
             this.Controls.Add(this.buttonAddEmployee);
             this.Controls.Add(this.labelCountOfReq);
             this.Controls.Add(this.listViewEmployers);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormEmployers";
             this.Text = "Просмотр сотрудников";
             this.Load += new System.EventHandler(this.FormEmployers_Load);

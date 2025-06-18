@@ -22,6 +22,11 @@ namespace KursProject
             parentListForm = parent;
         }
 
+        public FormAddCitizen()
+        {
+            InitializeComponent();
+            parentListForm = null;
+        }
         private void buttonAddCitizen_Click(object sender, EventArgs e)
         {
             AddNewCitizen();

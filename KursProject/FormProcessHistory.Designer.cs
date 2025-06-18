@@ -55,6 +55,10 @@
             this.статусBindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.labelCountOfReq = new System.Windows.Forms.Label();
             this.groupBoxReq = new System.Windows.Forms.GroupBox();
+            this.labelDocCounter = new System.Windows.Forms.Label();
+            this.buttonNextDoc = new System.Windows.Forms.Button();
+            this.buttonPrevDoc = new System.Windows.Forms.Button();
+            this.pictureBoxDoc = new System.Windows.Forms.PictureBox();
             this.labelReqData = new System.Windows.Forms.Label();
             this.labelReqCommentary = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -81,10 +85,6 @@
             this.labelEmpFIO = new System.Windows.Forms.Label();
             this.label23 = new System.Windows.Forms.Label();
             this.label24 = new System.Windows.Forms.Label();
-            this.labelDocCounter = new System.Windows.Forms.Label();
-            this.buttonNextDoc = new System.Windows.Forms.Button();
-            this.buttonPrevDoc = new System.Windows.Forms.Button();
-            this.pictureBoxDoc = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.гражданинBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.документBindingSource)).BeginInit();
@@ -95,9 +95,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.сотрудникBindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.статусBindingSource)).BeginInit();
             this.groupBoxReq.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDoc)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDoc)).BeginInit();
             this.SuspendLayout();
             // 
             // listViewHistory
@@ -264,6 +264,47 @@
             this.groupBoxReq.TabStop = false;
             this.groupBoxReq.Text = "Заявление";
             this.groupBoxReq.Enter += new System.EventHandler(this.groupBoxReq_Enter);
+            // 
+            // labelDocCounter
+            // 
+            this.labelDocCounter.AutoSize = true;
+            this.labelDocCounter.Location = new System.Drawing.Point(114, 351);
+            this.labelDocCounter.Name = "labelDocCounter";
+            this.labelDocCounter.Size = new System.Drawing.Size(24, 13);
+            this.labelDocCounter.TabIndex = 21;
+            this.labelDocCounter.Text = "0/0";
+            // 
+            // buttonNextDoc
+            // 
+            this.buttonNextDoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonNextDoc.Location = new System.Drawing.Point(151, 346);
+            this.buttonNextDoc.Name = "buttonNextDoc";
+            this.buttonNextDoc.Size = new System.Drawing.Size(85, 23);
+            this.buttonNextDoc.TabIndex = 19;
+            this.buttonNextDoc.Text = ">";
+            this.buttonNextDoc.UseVisualStyleBackColor = true;
+            this.buttonNextDoc.Click += new System.EventHandler(this.buttonNextDoc_Click);
+            // 
+            // buttonPrevDoc
+            // 
+            this.buttonPrevDoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.buttonPrevDoc.Location = new System.Drawing.Point(9, 347);
+            this.buttonPrevDoc.Name = "buttonPrevDoc";
+            this.buttonPrevDoc.Size = new System.Drawing.Size(92, 23);
+            this.buttonPrevDoc.TabIndex = 20;
+            this.buttonPrevDoc.Text = "<";
+            this.buttonPrevDoc.UseVisualStyleBackColor = true;
+            this.buttonPrevDoc.Click += new System.EventHandler(this.buttonPrevDoc_Click);
+            // 
+            // pictureBoxDoc
+            // 
+            this.pictureBoxDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pictureBoxDoc.Location = new System.Drawing.Point(9, 88);
+            this.pictureBoxDoc.Name = "pictureBoxDoc";
+            this.pictureBoxDoc.Size = new System.Drawing.Size(227, 253);
+            this.pictureBoxDoc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBoxDoc.TabIndex = 18;
+            this.pictureBoxDoc.TabStop = false;
             // 
             // labelReqData
             // 
@@ -541,45 +582,6 @@
             this.label24.TabIndex = 9;
             this.label24.Text = "ФИО";
             // 
-            // labelDocCounter
-            // 
-            this.labelDocCounter.AutoSize = true;
-            this.labelDocCounter.Location = new System.Drawing.Point(114, 351);
-            this.labelDocCounter.Name = "labelDocCounter";
-            this.labelDocCounter.Size = new System.Drawing.Size(24, 13);
-            this.labelDocCounter.TabIndex = 21;
-            this.labelDocCounter.Text = "0/0";
-            // 
-            // buttonNextDoc
-            // 
-            this.buttonNextDoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonNextDoc.Location = new System.Drawing.Point(151, 346);
-            this.buttonNextDoc.Name = "buttonNextDoc";
-            this.buttonNextDoc.Size = new System.Drawing.Size(85, 23);
-            this.buttonNextDoc.TabIndex = 19;
-            this.buttonNextDoc.Text = ">";
-            this.buttonNextDoc.UseVisualStyleBackColor = true;
-            // 
-            // buttonPrevDoc
-            // 
-            this.buttonPrevDoc.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.buttonPrevDoc.Location = new System.Drawing.Point(9, 347);
-            this.buttonPrevDoc.Name = "buttonPrevDoc";
-            this.buttonPrevDoc.Size = new System.Drawing.Size(92, 23);
-            this.buttonPrevDoc.TabIndex = 20;
-            this.buttonPrevDoc.Text = "<";
-            this.buttonPrevDoc.UseVisualStyleBackColor = true;
-            // 
-            // pictureBoxDoc
-            // 
-            this.pictureBoxDoc.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.pictureBoxDoc.Location = new System.Drawing.Point(9, 88);
-            this.pictureBoxDoc.Name = "pictureBoxDoc";
-            this.pictureBoxDoc.Size = new System.Drawing.Size(227, 253);
-            this.pictureBoxDoc.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
-            this.pictureBoxDoc.TabIndex = 18;
-            this.pictureBoxDoc.TabStop = false;
-            // 
             // FormProcessHistory
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -590,6 +592,8 @@
             this.Controls.Add(this.groupBoxReq);
             this.Controls.Add(this.labelCountOfReq);
             this.Controls.Add(this.listViewHistory);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormProcessHistory";
             this.Text = "История обработки";
             this.Load += new System.EventHandler(this.FormProcessHistory_Load);
@@ -604,11 +608,11 @@
             ((System.ComponentModel.ISupportInitialize)(this.статусBindingSource)).EndInit();
             this.groupBoxReq.ResumeLayout(false);
             this.groupBoxReq.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDoc)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBoxDoc)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 

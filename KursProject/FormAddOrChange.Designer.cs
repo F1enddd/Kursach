@@ -466,6 +466,8 @@ namespace KursProject
             this.Controls.Add(this.labelSelectedCitizen);
             this.Controls.Add(this.groupBoxRequestAOC);
             this.Controls.Add(this.groupBoxEmployee);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormAddOrChange";
             this.Text = "FormAddOrChange";
             this.Load += new System.EventHandler(this.FormAddOrChange_Load);

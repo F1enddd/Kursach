@@ -210,6 +210,8 @@ namespace KursProject
             this.Controls.Add(this.buttonEntry);
             this.Controls.Add(this.buttonReg);
             this.Controls.Add(this.buttonExit);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormLoggining";
             this.Text = "Войдите в аккаунт";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormLoggining_FormClosing);

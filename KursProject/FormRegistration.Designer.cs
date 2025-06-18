@@ -235,6 +235,8 @@
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormRegistration";
             this.Text = "Регистрация";
             this.Load += new System.EventHandler(this.FormRegistration_Load);

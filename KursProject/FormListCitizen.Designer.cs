@@ -340,6 +340,8 @@ namespace KursProject
             this.Controls.Add(this.buttonAdd);
             this.Controls.Add(this.ButtonSelectCitizen);
             this.Controls.Add(this.listViewCitizens);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormListCitizen";
             this.Text = "Список граждан";
             this.Load += new System.EventHandler(this.Form3_Load);

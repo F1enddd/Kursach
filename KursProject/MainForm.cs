@@ -38,6 +38,7 @@ namespace KursProject
             {
                 buttonViewWorkers.Enabled = false;
                 buttonDelete.Enabled = false;
+                добавитьСотрудникаToolStripMenuItem.Enabled = false;
             }
             if (lvlAccess == "C")
             {
@@ -46,6 +47,8 @@ namespace KursProject
                 buttonDelete.Enabled = false;
                 buttonUpdate.Enabled = false;
                 изменитьToolStripMenuItem.Enabled = false;
+                структураToolStripMenuItem.Enabled = false;
+
             }
             FillListView();
             MainlistView.ContextMenuStrip = contextMenuStrip1;
@@ -486,5 +489,54 @@ namespace KursProject
             FormEmployers FE = new FormEmployers();
             FE.ShowDialog();
         }
+
+        private void добавитьГражданинаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAddCitizen FAC = new FormAddCitizen();
+            FAC.ShowDialog();
+        }
+
+        private void добавитьЗаявкуToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAddOrChange FAOC = new FormAddOrChange();
+            FAOC.MF = this;
+            FAOC.AddOrChange = false;
+            FAOC.labelSelectedCitizen.Text = "Выбранный гражданин: ";
+            FAOC.Text = "Добавление заявки";
+            FAOC.ShowDialog();
+        }
+
+        private void добавитьСотрудникаToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormRegistration FR = new FormRegistration();
+            FR.ShowDialog();
+        }
+
+        private void добавитьМеруПоддержкиToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormAddMera FAM = new FormAddMera();
+            FAM.ShowDialog();
+        }
+
+        private void графикОбработанныхЗаявленийToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            FormChart FC = new FormChart();
+            FC.ShowDialog();
+        }
+
+        private void оПрограммеToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show(
+    "Система учёта и обработки заявлений граждан на социальную поддержку\n" +
+    "Разработчик: Суслов Д.С.\n" +
+    "Группа: 3П\n" +
+    "Преподаватель: Мясников С.В.\n" +
+    "Год: 2025",
+    "О программе",
+    MessageBoxButtons.OK,
+    MessageBoxIcon.Information
+);
+        }
     }
 }
+

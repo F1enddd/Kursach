@@ -32,6 +32,9 @@
             this.listViewMera = new System.Windows.Forms.ListView();
             this.ID = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.FIO = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Decr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Usl = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.Srok = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.textBoxMera = new System.Windows.Forms.TextBox();
             this.buttonAddMera = new System.Windows.Forms.Button();
             this.labelCountOfReq = new System.Windows.Forms.Label();
@@ -45,9 +48,6 @@
             this.textBoxUsl = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.Decr = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Usl = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.Srok = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.dateTimePickerSrok = new System.Windows.Forms.DateTimePicker();
             this.buttonDelete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.kP_2024_SuslovDataSet)).BeginInit();
@@ -84,6 +84,21 @@
             // 
             this.FIO.Text = "Название";
             this.FIO.Width = 166;
+            // 
+            // Decr
+            // 
+            this.Decr.Text = "Описание";
+            this.Decr.Width = 160;
+            // 
+            // Usl
+            // 
+            this.Usl.Text = "Условия предоставления";
+            this.Usl.Width = 146;
+            // 
+            // Srok
+            // 
+            this.Srok.Text = "Срок действия";
+            this.Srok.Width = 96;
             // 
             // textBoxMera
             // 
@@ -193,21 +208,6 @@
             this.label4.TabIndex = 11;
             this.label4.Text = "Срок предоставления";
             // 
-            // Decr
-            // 
-            this.Decr.Text = "Описание";
-            this.Decr.Width = 160;
-            // 
-            // Usl
-            // 
-            this.Usl.Text = "Условия предоставления";
-            this.Usl.Width = 146;
-            // 
-            // Srok
-            // 
-            this.Srok.Text = "Срок действия";
-            this.Srok.Width = 96;
-            // 
             // dateTimePickerSrok
             // 
             this.dateTimePickerSrok.Location = new System.Drawing.Point(655, 203);
@@ -243,6 +243,8 @@
             this.Controls.Add(this.textBoxDescr);
             this.Controls.Add(this.textBoxMera);
             this.Controls.Add(this.listViewMera);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormAddMera";
             this.Text = "Добавление меры поддержки";
             this.Load += new System.EventHandler(this.FormAddMera_Load);

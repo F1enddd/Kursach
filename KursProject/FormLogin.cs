@@ -62,11 +62,6 @@ namespace KursProject
         private void FormLoggining_Load(object sender, EventArgs e)
         {
             this.сотрудникTableAdapter.Fill(this.kP_2024_SuslovDataSet.Сотрудник);
-            textBoxLogin.TabIndex = 0;
-            textBoxPassword.TabIndex = 1;
-            buttonReg.TabIndex = 2;
-            buttonExit.TabIndex = 3;
-            buttonLVLAccess.TabIndex = 4;
         }
 
         private void FormLoggining_FormClosing(object sender, FormClosingEventArgs e)

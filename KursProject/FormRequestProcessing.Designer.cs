@@ -434,6 +434,8 @@ namespace KursProject
             this.Controls.Add(this.label1);
             this.Controls.Add(this.buttonDeleteImage);
             this.Controls.Add(this.buttonProcess);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "FormRequestProcessing";
             this.Text = "Обработка заявок";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FormRequestProcessing_FormClosing);

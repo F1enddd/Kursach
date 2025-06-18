@@ -191,5 +191,19 @@ namespace KursProject
 
             labelDocCounter.Text = $"{currentDocIndex + 1}/{TemporaryDocumentsList.Count}";
         }
+
+        private void buttonNextDoc_Click(object sender, EventArgs e)
+        {
+            if (TemporaryDocumentsList.Count == 0) return;
+            currentDocIndex = (currentDocIndex + 1) % TemporaryDocumentsList.Count;
+            UpdatePictureBox();
+        }
+
+        private void buttonPrevDoc_Click(object sender, EventArgs e)
+        {
+            if (TemporaryDocumentsList.Count == 0) return;
+            currentDocIndex = (currentDocIndex - 1 + TemporaryDocumentsList.Count) % TemporaryDocumentsList.Count;
+            UpdatePictureBox();
+        }
     }
 }
